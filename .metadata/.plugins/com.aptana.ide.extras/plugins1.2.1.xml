@@ -1,0 +1,363 @@
+<plugins>
+	<plugin>
+		<id>org.polarion.team.svn</id>
+		<name>Subversive</name>
+		<category>Utilities</category> 
+		<description>Subversion SCM integration</description>
+		<url>http://www.polarion.org/projects/subversive/download/1.1/update-site/</url>
+        <more>http://www.polarion.org/index.php?page=overview&amp;project=subversive</more>
+		<sortweight>0</sortweight>
+		<release>
+		  <version>1.1.2</version>
+		  <year>2007</year>
+		  <month>4</month>
+		  <day>28</day>
+		</release>
+	</plugin>
+	<plugin>
+		<id>org.tigris.subversion.subclipse</id>
+		<name>Subclipse</name>
+		<category>Utilities</category> 
+		<description>Subversion SCM integration</description>
+		<url>http://update.aptana.com/install/subclipse/1.4.x/site.xml</url>
+        <more>http://subclipse.tigris.org/</more>
+		<sortweight>0</sortweight>
+		<release>
+		  <version>1.4.2</version>
+		  <year>2008</year>
+		  <month>11</month>
+		  <day>26</day>
+		</release>
+	</plugin>
+	<plugin>
+		<id>com.perforce.p4wsad</id>
+		<name>P4WSAD</name>
+		<category>Utilities</category> 
+		<description>Perforce SCM integration</description>
+		<url>http://www.perforce.com/downloads/http/p4-wsad/install/</url>
+        <more>http://www.perforce.com/perforce/products/p4wsad.html</more>
+		<sortweight>0</sortweight>
+		<release>
+		  <version>2007.3.661</version>
+		  <year>2008</year>
+		  <month>4</month>
+		  <day>12</day>
+		</release>
+	</plugin>
+	<plugin>
+		<id>com.aptana.ide.feature.editor.php</id>
+		<name>Aptana PHP</name>
+		<description>Edit, preview and debug PHP files.</description>
+		<url>http://update.aptana.com/install/php/3.2/</url>
+		<!--url>http://beta.aptana.com/beta/php/3.2/</url-->
+        <more>http://www.aptana.com/php</more>
+		<sortweight>0</sortweight>
+		<release>
+		    <version>1.0.0</version>
+			<year>2008</year>
+			<month>11</month>
+			<day>10</day>
+		</release>
+	</plugin>
+    <plugin>
+        <id>org.radrails.rails_feature</id>
+        <name>Aptana RadRails</name>
+        <category>Platforms</category> 
+        <description>Ruby on Rails support</description>
+        <url>http://update.aptana.com/install/rails/3.2/</url>
+        <more>http://www.aptana.com/rails</more>
+        <sortweight>0</sortweight>
+        <release>
+          <version>1.0.2.200806111809NGT</version>
+          <year>2008</year>
+          <month>6</month>
+          <day>18</day>
+        </release>
+    </plugin>
+    <plugin>
+        <id>com.aptana.ide.feature.framework.air</id>
+        <name>Aptana Adobe AIR [Beta]</name>
+        <category>Platforms</category>
+        <description>Tools for creating desktop Ajax apps with Adobe AIR</description>
+        <url>http://update.aptana.com/install/air/1.5/3.2/</url>
+        <more>http://www.aptana.com/air</more>
+        <sortweight>1</sortweight>
+        <release>
+            <version>1.2.1</version>
+            <year>2008</year>
+            <month>11</month>
+            <day>17</day>
+        </release>
+    </plugin>   
+    <plugin>
+        <id>com.aptana.ide.framework.iphone</id>
+        <name>Aptana Apple iPhone Development</name>
+        <category>Platforms</category> 
+        <description>Build, preview and debug Web and Ajax apps for Apple iPhone</description>
+        <url>http://update.aptana.com/install/iphone/3.2/</url>
+        <more>http://www.aptana.com/iphone</more>
+        <sortweight>1</sortweight>
+        <release>
+          <version>0.1.1</version>
+          <year>2007</year>
+          <month>12</month>
+          <day>20</day>
+        </release>
+    </plugin>
+    <plugin>
+        <id>com.nokia.wrt.feature</id>
+        <name>Nokia WRT Plug-in for Aptana Studio</name>
+        <category>Platforms</category> 
+        <description>Build, preview, and debug Web and Ajax apps for S60 phones</description>
+        <url>http://update.aptana.com/install/nokia/</url>
+        <more>http://www.forum.nokia.com/Resources_and_Information/Tools/Runtimes/Web_Runtime/Aptana_Plugin/</more>
+        <sortweight>1</sortweight>
+        <release>
+          <version>1.0.0.36</version>
+          <year>2009</year>
+          <month>1</month>
+          <day>13</day>
+        </release>
+    </plugin>
+    <plugin>
+		<id>com.aptana.ide.feature.syncing.ftp</id>
+		<name>Aptana Support for FTP Protocol (M10+ only)</name>
+		<category>Utilities</category> 
+		<description>Aptana FTP support</description>
+		<url>http://update.aptana.com/install/ftp/3.2/</url>
+        <more>http://www.aptana.com/plugins</more>
+		<sortweight>0</sortweight>
+		<release>
+		    <version>0.2.10</version>
+			<year>2007</year>
+			<month>10</month>
+			<day>1</day>
+		</release>
+	</plugin>
+	<plugin>
+		<id>org.eclipse.cvs</id>
+		<name>CVS</name>
+		<category>Utilities</category> 
+		<description>Aptana CVS support</description>
+		<url>http://update.aptana.com/install/cvs/</url>
+        <more>http://www.aptana.com/plugins#cvs</more>
+		<sortweight>0</sortweight>
+		<release>
+            <version>1.0.100</version>
+			<year>2008</year>
+			<month>1</month>
+			<day>30</day>
+		</release>
+	</plugin>
+    <plugin>
+		<id>org.spearce.egit</id>
+		<name>Git</name>
+		<category>Utilities</category> 
+		<description>Adds support for Git SCM</description>
+		<url>http://update.aptana.com/install/git/</url>
+		<more>http://git.or.cz/gitwiki/EclipsePlugin</more>
+		<sortweight>0</sortweight>
+		<release>
+            <version>0.3.1.200806041405</version>
+			<year>2008</year>
+			<month>6</month>
+			<day>3</day>
+		</release>
+    </plugin>
+    <plugin>
+		<id>com.aptana.ide.feature.i18n</id>
+		<name>Aptana Internationalization Support</name>
+		<category>Utilities</category> 
+		<description>Language packs for Aptana interface</description>
+		<url>http://update.aptana.com/install/i18n/3.2/</url>
+        <more>http://www.aptana.com/plugins#i18n</more>
+		<sortweight>0</sortweight>
+		<release>
+            <version>1.0.0</version>
+			<year>2007</year>
+			<month>10</month>
+			<day>31</day>
+		</release>
+	</plugin>
+  <plugin>
+		<id>com.aptana.ide.feature.editors.vi</id>
+		<name>vi Support</name>
+		<category>Utilities</category> 
+		<description>Adds a "HTML Editor (vi)" option for file associations</description>
+		<url>http://update.aptana.com/install/vi/3.2/</url>
+        <more>http://www.aptana.com/plugins#vi</more>
+		<sortweight>0</sortweight>
+		<release>
+            <version>1.0.0</version>
+			<year>2007</year>
+			<month>11</month>
+			<day>8</day>
+		</release>
+	</plugin>
+  <plugin>
+		<id>org.aflax.1.0</id>
+		<name>Aflax</name>
+		<category>Ajax</category> 
+		<description>Adds support for the Aflax Ajax library</description>
+		<url>http://update.aptana.com/install/frameworks/aflax/</url>
+        <more>http://www.aptana.com/plugins#aflax</more>
+		<sortweight>2</sortweight>
+		<release>
+            <version>1.0.0</version>
+			<year>2008</year>
+			<month>5</month>
+			<day>23</day>
+		</release>
+	</plugin>
+  <plugin>
+		<id>org.openrico.rico.2.0</id>
+		<name>OpenRico</name>
+		<category>Ajax</category> 
+		<description>Adds support for the OpenRico Ajax library</description>
+		<url>http://update.aptana.com/install/frameworks/rico/</url>
+        <more>http://www.aptana.com/plugins#rico</more>
+		<sortweight>2</sortweight>
+		<release>
+            <version>2.0.0</version>
+			<year>2008</year>
+			<month>5</month>
+			<day>23</day>
+		</release>
+	</plugin>
+  <plugin>
+		<id>org.scriptaculous.1.8</id>
+		<name>Scriptaculous</name>
+		<category>Ajax</category> 
+		<description>Adds support for the Scriptaculous Ajax library</description>
+		<url>http://update.aptana.com/install/frameworks/scriptaculous/</url>
+        <more>http://www.aptana.com/plugins#scriptaculous</more>
+		<sortweight>-1</sortweight>
+		<release>
+            <version>1.8.0</version>
+			<year>2008</year>
+			<month>5</month>
+			<day>23</day>
+		</release>
+	</plugin>
+  <plugin>
+		<id>com.adobe.spry.1.6</id>
+		<name>Adobe Spry</name>
+		<category>Ajax</category>
+		<description>Adds support for the Adobe Spry Ajax library</description>
+		<url>http://update.aptana.com/install/frameworks/spry/</url>
+        <more>http://www.aptana.com/plugins#spry</more>
+		<sortweight>1</sortweight>
+		<release>
+            <version>1.6.0</version>
+			<year>2008</year>
+			<month>5</month>
+			<day>23</day>
+		</release>
+	</plugin>
+  <plugin>
+		<id>com.yahoo.yui.2.6</id>
+		<name>Yahoo! User Interface (YUI) Support</name>
+		<category>Ajax</category>
+		<description>Adds support for the YUI Ajax library</description>
+		<url>http://update.aptana.com/install/frameworks/yui/</url>
+        <more>http://www.aptana.com/plugins#yui</more>
+		<sortweight>0</sortweight>
+		<release>
+            <version>2.6.0</version>
+			<year>2008</year>
+			<month>9</month>
+			<day>20</day>
+		</release>
+	</plugin>
+  <plugin>
+		<id>org.prototypejs.prototype.1.6</id>
+		<name>Prototype</name>
+		<category>Ajax</category>
+		<description>Adds support for the Prototype Ajax library</description>
+		<url>http://update.aptana.com/install/frameworks/prototype/</url>
+        <more>http://www.aptana.com/plugins#prototype</more>
+		<sortweight>-1</sortweight>
+		<release>
+            <version>1.6.0</version>
+			<year>2008</year>
+			<month>5</month>
+			<day>23</day>
+		</release>
+	</plugin>
+  <plugin>
+		<id>com.ms.ajax.3.5</id>
+		<name>Microsoft ASP.NET Ajax Controls</name>
+		<category>Ajax</category>
+		<description>Adds support for the Microsoft Ajax library</description>
+		<url>http://update.aptana.com/install/frameworks/msajax/</url>
+        <more>http://www.aptana.com/plugins#msajax</more>
+		<sortweight>1</sortweight>
+		<release>
+            <version>3.5.0</version>
+			<year>2008</year>
+			<month>5</month>
+			<day>23</day>
+		</release>
+	</plugin>
+  <plugin>
+		<id>net.mootools.1.2</id>
+		<name>Mootools</name>
+		<category>Ajax</category>
+		<description>Adds support for the Mootools Ajax library</description>
+		<url>http://update.aptana.com/install/frameworks/mootools/</url>
+        <more>http://www.aptana.com/plugins#mootools</more>
+		<sortweight>0</sortweight>
+		<release>
+            <version>1.2.1</version>
+			<year>2008</year>
+			<month>11</month>
+			<day>31</day>
+		</release>
+	</plugin>
+  <plugin>
+		<id>com.jquery.1.3</id>
+		<name>jQuery Support</name>
+		<category>Ajax</category>
+		<description>Adds support for the jQuery Ajax library</description>
+		<url>http://update.aptana.com/install/frameworks/jquery/</url>
+        <more>http://www.aptana.com/plugins#jquery</more>
+		<sortweight>-1</sortweight>
+		<release>
+            <version>1.3.1</version>
+			<year>2009</year>
+			<month>0</month>
+			<day>22</day>
+		</release>
+  </plugin>
+  <plugin>
+		<id>com.extjs.ext.2.2</id>
+		<name>Ext JS</name>
+		<category>Ajax</category>
+		<description>Adds support for the Ext JS Ajax library</description>
+		<url>http://update.aptana.com/install/frameworks/ext/</url>
+        <more>http://www.aptana.com/plugins#ext</more>
+		<sortweight>0</sortweight>
+		<release>
+            <version>2.2.0</version>
+			<year>2008</year>
+			<month>8</month>
+			<day>26</day>
+		</release>
+  </plugin>
+  <plugin>
+		<id>org.dojotoolkit.dojo.1.2</id>
+		<name>Dojo</name>
+		<category>Ajax</category>
+		<description>Adds support for the Dojo Ajax library</description>
+		<url>http://update.aptana.com/install/frameworks/dojo/</url>
+        <more>http://www.aptana.com/plugins#dojo</more>
+		<sortweight>0</sortweight>
+		<release>
+            <version>1.2.0</version>
+			<year>2008</year>
+			<month>9</month>
+			<day>6</day>
+		</release>
+  </plugin>
+
+</plugins>

@@ -1,0 +1,5 @@
+#Fri Feb 20 14:43:21 EST 2009
+com.aptana.ide.core.PREF_GLOBAL_SYNC_CLOAKING_EXTENSIONS=.svn;.tmp*~;.settings;CVS;.git;.DS_Store;/tmp/cache/*;/tmp/pids/*;/tmp/sessions/*;/tmp/sockets/*;/log/*.log;/README;/doc/*
+eclipse.preferences.version=1
+com.aptana.ide.core.ui.PREF_KEY_FIRST_STARTUP=true
+com.aptana.ide.core.ui.WEB_PERSPECTIVE_LAST_VERSION=60
