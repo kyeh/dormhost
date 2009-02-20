@@ -1,0 +1,18 @@
+<h1>Listing room_profiles</h1>
+
+<table>
+  <tr>
+  </tr>
+
+<% for room_profile in @room_profiles %>
+  <tr>
+    <td><%= link_to 'Show', room_profile %></td>
+    <td><%= link_to 'Edit', edit_room_profile_path(room_profile) %></td>
+    <td><%= link_to 'Destroy', room_profile, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New room_profile', new_room_profile_path %>

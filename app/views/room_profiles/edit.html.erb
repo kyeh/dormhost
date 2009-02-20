@@ -1,0 +1,12 @@
+<h1>Editing room_profile</h1>
+
+<% form_for(@room_profile) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @room_profile %> |
+<%= link_to 'Back', room_profiles_path %>
