@@ -12,7 +12,7 @@ class CreateRoomProfiles < ActiveRecord::Migration
       t.column  :internet,      :boolean, :default => false
       t.column  :on_campus,     :boolean, :default => false
       t.column  :cost,          :decimal, :precision => 5,  :scale => 2
-      t.column  :notes          :string
+      t.column  :notes,          :string
       
       t.timestamps
     end

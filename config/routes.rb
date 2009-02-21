@@ -1,4 +1,14 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :room_reviews
+
+  map.resources :rooms
+
+  map.resources :favorites
+
+  map.resources :user_reviews
+
+  map.resources :profiles
+
   map.resources :users
 
   map.resources :modifications

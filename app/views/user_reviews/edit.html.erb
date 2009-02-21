@@ -1,0 +1,12 @@
+<h1>Editing user_review</h1>
+
+<% form_for(@user_review) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @user_review %> |
+<%= link_to 'Back', user_reviews_path %>

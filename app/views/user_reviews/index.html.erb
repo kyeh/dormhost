@@ -1,0 +1,18 @@
+<h1>Listing user_reviews</h1>
+
+<table>
+  <tr>
+  </tr>
+
+<% for user_review in @user_reviews %>
+  <tr>
+    <td><%= link_to 'Show', user_review %></td>
+    <td><%= link_to 'Edit', edit_user_review_path(user_review) %></td>
+    <td><%= link_to 'Destroy', user_review, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New user_review', new_user_review_path %>

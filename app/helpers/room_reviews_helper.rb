@@ -1,0 +1,2 @@
+module RoomReviewsHelper
+end

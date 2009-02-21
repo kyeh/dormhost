@@ -1,0 +1,11 @@
+<h1>New favorites</h1>
+
+<% form_for(@favorites) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', favorites_path %>
