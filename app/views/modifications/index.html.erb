@@ -1,0 +1,18 @@
+<h1>Listing modifications</h1>
+
+<table>
+  <tr>
+  </tr>
+
+<% for modification in @modifications %>
+  <tr>
+    <td><%= link_to 'Show', modification %></td>
+    <td><%= link_to 'Edit', edit_modification_path(modification) %></td>
+    <td><%= link_to 'Destroy', modification, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New modification', new_modification_path %>

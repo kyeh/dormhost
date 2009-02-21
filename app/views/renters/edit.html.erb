@@ -1,0 +1,12 @@
+<h1>Editing renter</h1>
+
+<% form_for(@renter) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @renter %> |
+<%= link_to 'Back', renters_path %>

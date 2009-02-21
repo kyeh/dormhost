@@ -1,0 +1,12 @@
+<h1>Editing transaction</h1>
+
+<% form_for(@transaction) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @transaction %> |
+<%= link_to 'Back', transactions_path %>
