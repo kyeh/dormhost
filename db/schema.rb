@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090221194552) do
+ActiveRecord::Schema.define(:version => 20090221202044) do
 
   create_table "available_days", :force => true do |t|
     t.string   "day",        :limit => 50
@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(:version => 20090221194552) do
   end
 
   create_table "room_images", :force => true do |t|
-    t.integer  "room_id",    :null => false
+    t.integer  "room_profile_id", :null => false
     t.string   "image"
     t.datetime "created_at"
     t.datetime "updated_at"

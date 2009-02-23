@@ -91,3 +91,106 @@ Migrating to CreateRoomReviews (20090221194552)
   [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("transactions")[0m
   [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("user_reviews")[0m
   [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("users")[0m
+  [4;36;1mSQL (4.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateHosts (20090220195046)
+Migrating to CreateRoomProfiles (20090220195106)
+Migrating to CreateRenters (20090221185935)
+Migrating to CreateTransactions (20090221190415)
+Migrating to CreateModifications (20090221190818)
+Migrating to CreateUsers (20090221191224)
+Migrating to CreateProfiles (20090221191905)
+Migrating to CreateUserReviews (20090221192307)
+Migrating to CreateFavorites (20090221192646)
+Migrating to CreateRooms (20090221192747)
+Migrating to CreateRoomImages (20090221193805)
+Migrating to CreateAvailableDays (20090221194009)
+Migrating to CreateRoomProfileDays (20090221194055)
+Migrating to CreateLevels (20090221194227)
+Migrating to CreateColleges (20090221194338)
+Migrating to CreateRoomReviews (20090221194552)
+Migrating to RenameColumn (20090221202044)
+  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateHosts (20090220195046)
+Migrating to CreateRoomProfiles (20090220195106)
+Migrating to CreateRenters (20090221185935)
+Migrating to CreateTransactions (20090221190415)
+Migrating to CreateModifications (20090221190818)
+Migrating to CreateUsers (20090221191224)
+Migrating to CreateProfiles (20090221191905)
+Migrating to CreateUserReviews (20090221192307)
+Migrating to CreateFavorites (20090221192646)
+Migrating to CreateRooms (20090221192747)
+Migrating to CreateRoomImages (20090221193805)
+Migrating to CreateAvailableDays (20090221194009)
+Migrating to CreateRoomProfileDays (20090221194055)
+Migrating to CreateLevels (20090221194227)
+Migrating to CreateColleges (20090221194338)
+Migrating to CreateRoomReviews (20090221194552)
+Migrating to RenameColumn (20090221202044)
+  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateHosts (20090220195046)
+Migrating to CreateRoomProfiles (20090220195106)
+Migrating to CreateRenters (20090221185935)
+Migrating to CreateTransactions (20090221190415)
+Migrating to CreateModifications (20090221190818)
+Migrating to CreateUsers (20090221191224)
+Migrating to CreateProfiles (20090221191905)
+Migrating to CreateUserReviews (20090221192307)
+Migrating to CreateFavorites (20090221192646)
+Migrating to CreateRooms (20090221192747)
+Migrating to CreateRoomImages (20090221193805)
+Migrating to CreateAvailableDays (20090221194009)
+Migrating to CreateRoomProfileDays (20090221194055)
+Migrating to CreateLevels (20090221194227)
+Migrating to CreateColleges (20090221194338)
+Migrating to CreateRoomReviews (20090221194552)
+Migrating to RenameColumn (20090221202044)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mCREATE TEMPORARY TABLE "altered_room_images" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "room_profile_id" integer NOT NULL, "image" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("room_images")[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mDROP TABLE "room_images"[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCREATE TABLE "room_images" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "room_profile_id" integer NOT NULL, "image" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("altered_room_images")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mDROP TABLE "altered_room_images"[0m
+  [4;35;1mSQL (2.7ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090221202044')[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("available_days")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("colleges")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("favorites")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("hosts")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("levels")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("modifications")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("profiles")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("renters")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("room_images")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("room_profile_days")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("room_profiles")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("room_reviews")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("rooms")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("transactions")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("user_reviews")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("users")[0m
