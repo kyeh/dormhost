@@ -1,4 +1,7 @@
 class RoomProfilesController < ApplicationController
+  
+  layout "application"
+  
   # GET /room_profiles
   # GET /room_profiles.xml
   def index

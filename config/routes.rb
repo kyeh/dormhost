@@ -1,4 +1,9 @@
 ActionController::Routing::Routes.draw do |map|
+  
+  
+  map.root :controller => 'home'
+  map.home ':page', :controller => 'home', :action => 'show', :page => /home|about|contact|privacy/
+  
   map.resources :room_reviews
 
   map.resources :rooms

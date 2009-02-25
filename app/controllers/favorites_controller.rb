@@ -1,4 +1,5 @@
 class FavoritesController < ApplicationController
+  
   # GET /favorites
   # GET /favorites.xml
   def index
