@@ -1,7 +1,36 @@
-<h1>New room</h1>
+<h1>Create a new room</h1>
 
 <% form_for(@room) do |f| %>
   <%= f.error_messages %>
+  
+	<p>
+		<%= f.label :street_address_1 %><br />
+		<%= f.text_field :street_address_1 %>
+	</p>
+	
+	<p>
+		<%= f.label :street_address_2 %><br />
+		<%= f.text_field :street_address_2 %>
+	</p>
+	
+	<p>
+		<%= f.label :city %><br />
+		<%= f.text_field :city %>
+	</p>
+	
+	<p>
+		<%= f.label :state %><br />
+		<%= f.text_field :state %>
+	</p>
+	
+	<p>
+		<%= f.label :zip %><br />
+		<%= f.text_field :zip %>
+	</p>
+
+	<%= f.hidden_field :host_id, :value => 1 %>
+	<%= f.hidden_field :college_id, :value => 1%>
+	<%= f.hidden_field :active, :value => 1 %>
 
   <p>
     <%= f.submit "Create" %>
