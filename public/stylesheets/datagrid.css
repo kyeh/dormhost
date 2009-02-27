@@ -1,0 +1,127 @@
+/* -- DATAGRID CSS -- */
+
+/*	=============================================== */
+/*	General table stuff for datagrid css class */
+
+table.datagrid {   
+	font: 90% Verdana, Arial, Helvetica, sans-serif;
+	color: #000000;
+	text-align: left;
+	border-collapse: collapse;
+}
+
+table.datagrid a {
+	text-decoration: none;
+	color: #000000;
+}
+table.datagrid a:hover {
+	text-decoration: underline;
+	color: #000000;
+}
+
+/*	=============================================== */
+/*	Time to deal with Table Caption and Header Row  */
+
+caption.datagrid {
+	height: 45px;
+	line-height: 44px;
+	color: #000000;
+	font-weight: bold;
+	text-align: center;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+thead.datagrid th {
+	font-size: 105%;
+	color: #ffffff;
+	background-color: #000000;
+	height: 28px;
+	font-weight: bold;
+	padding: 10px;
+}
+thead.datagrid th:hover {
+	/* background-color: nothing changes right now */
+	
+}
+
+
+/*	=============================================== */
+/*	TR elements handled here (main rows only)  */
+
+.dg_list_line_odd {
+	font: 90% Verdana, Arial, Helvetica, sans-serif;
+	color: #000000;
+	text-align: left;
+	vertical-align: top;
+	line-height: 2.5;
+	padding: 3px;
+}
+.dg_list_line_even {
+	font: 90% Verdana, Arial, Helvetica, sans-serif;
+	color: #000000;
+	text-align: left;
+	vertical-align: top;
+	line-height: 2.5;
+	background-color: #bfbfbf;
+	padding: 3px;
+}
+.dg_list_line_even img {
+	vertical-align: top;
+	padding: 5px 0px 3px 8px;
+}
+.dg_list_line_odd img {
+	vertical-align: top;
+	padding: 5px 0px 3px 8px;
+}
+.dg_list_line_odd:hover {
+	background-color: #0066ff;
+	color: #000000;
+}
+.dg_list_line_odd:hover a {
+	background-color: #0066ff;
+	color: #000000;
+	text-decoration: underline;
+}
+.dg_list_line_even:hover {
+	background-color: #0066ff;
+	color: #000000;
+}
+.dg_list_line_even:hover a {
+	background-color: #0066ff;
+	color: #000000;
+	text-decoration: underline;
+}
+
+
+/*	=============================================== */
+/*	TR elements handled here (alt rows only)  */
+
+tr.dg {
+	line-height: 2;
+	padding: 2px;
+}
+tr.dgalt,th.dgalt,td.dgalt {
+	padding: .75em;
+}
+tr.dgalt:hover {
+	background-color: #0066ff;
+	color: #000000;
+}
+tr.dgalt:hover a {
+	text-decoration: underline;
+	color: #000000;
+	background-color: #0066ff;
+}
+
+
+/*	=============================================== */
+/*	table foot elements handled here  */
+
+tfoot.datagrid tr {
+	/* background-color: nothing set at this time */
+}
+tfoot.datagrid td, tfoot.datagrid th{
+	color: #000;
+	border: 0px;
+}

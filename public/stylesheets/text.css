@@ -1,0 +1,137 @@
+@charset "utf-8";
+
+/********** TEXT ********/
+p {
+	text-align: justify;
+	line-height: 1.5;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+}
+.note {
+	font-size: 90%;	
+	font-style: italic;
+}
+.error {
+	font-size:85%;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	color: #FF0000;
+	font-weight: bold;
+}
+.msg {
+	color: #00843c;
+	font: bold 90% Verdana, Arial, Helvetica, sans-serif;
+}
+
+
+.medtext {
+	font-size:90%;
+}
+.smtext {
+	font-size:80%;
+}
+.title {
+	font-size:125%;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	line-height: 1.5;
+}
+
+.medtitle {
+	font-size:110%;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	line-height: 1.5;
+}
+.supertiny{
+	font-size:5px;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	text-decoration:none;
+}
+
+.announce {
+	font-size:120%;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+}
+
+.announce_red {
+	font-size:120%;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	color: #FF0000;
+}
+
+
+/********** MISC ********/
+
+h1 {
+	font-size:180%;
+	margin:.75em 0 .25em 0;
+}
+
+h2 {
+	font-style:italic;
+	font-size:120%;
+}
+
+label {
+	font-size:85%;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+}
+
+a:link {
+	color: #0066ff; 
+	font-weight: bold;
+	text-decoration:none;
+}
+
+a:visited {
+	color:#0066ff; 
+	font-weight: bold;
+	text-decoration:none;
+}
+
+a:hover {
+	color: #000000;
+	text-decoration:underline;
+}
+
+
+/********** FROM SCAFFOLDING ********/
+
+.fieldWithErrors {
+  padding: 0px;
+  background-color: red;
+  display: table;
+}
+
+#errorExplanation {
+  width: 260px;
+  border: 2px solid red;
+  padding: 5	px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#errorExplanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#errorExplanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 5px;
+  font-size: 15px;
+}
+
+#errorExplanation ul li {
+  font-size: 12px;
+  list-style: square;
+}

@@ -1,4 +1,7 @@
 class ProfilesController < ApplicationController
+  
+  layout "application"
+  
   # GET /profiles
   # GET /profiles.xml
   def index

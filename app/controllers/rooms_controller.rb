@@ -1,4 +1,7 @@
 class RoomsController < ApplicationController
+  
+  layout "application"
+  
   # GET /rooms
   # GET /rooms.xml
   def index
