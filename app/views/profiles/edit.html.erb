@@ -3,9 +3,48 @@
 <% form_for(@profile) do |f| %>
   <%= f.error_messages %>
 
-  <p>
-    <%= f.submit "Update" %>
-  </p>
+	<!--
+	<%= f.hidden_field :user_id, :value => session[:user_id] %> 
+	-->
+	<p>
+		<b>College</b>:<br>
+		<%= f.select(:college_id, College::COLLEGES_LIST, :prompt => "Select...") %>
+	</p>
+
+	<!-- TODO: IMAGE UPLOAD -->
+	
+	<p>
+		<b>Birthdate</b>:<br>
+		<%= f.date_select :birthdate, :order => [:month, :day, :year] %>
+	</p>
+	<p>
+		<b>Graduation Year</b>:<br>
+		<%= f.date_select :grad_year, :order => [:month, :day, :year] %>
+	</p>
+	<p>
+		<b>Phone Number</b>:<br>
+		<%= f.text_field :phone, :size => 20 %>
+	</p>
+	<p>
+		<b>Living Style</b>:<br>
+		<%= f.text_field :living_style, :size => 255 %>
+	</p>
+	<p>
+		<b>Bedtime</b>:<br>
+		<%= f.text_field :bedtime, :size => 20 %>
+	</p>
+	<p>
+		<b>Interests</b>:<br>
+		<%= f.text_field :interests, :size => 255 %>
+	</p>
+	<p>
+		<b>Smoker?<b><br>
+		<%= f.check_box :smoker %>
+	</p>
+
+  	<p>
+    	<%= f.submit "Update" %>
+  	</p>
 <% end %>
 
 <%= link_to 'Show', @profile %> |
