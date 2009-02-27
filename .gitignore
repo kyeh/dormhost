@@ -3,6 +3,9 @@ log
 db/data.yml
 .DS_Store
 index
- 
+
+# SQLite databases
+db/*.sqlite3
+
 # database configurations
 config/database.yml
