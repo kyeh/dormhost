@@ -1,3 +1,28 @@
 
+<p>
+  <b>Address 1:</b>
+  <%=h @room.street_address_1 %>
+</p>
+
+<p>
+  <b>Address 2:</b>
+  <%=h @room.street_address_2 %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%=h @room.city %>
+</p>
+
+<p>
+  <b>State:</b>
+  <%=h @room.state %>
+</p>
+
+<p>
+  <b>Zip Code:</b>
+  <%=h @room.zip %>
+</p>
+
 <%= link_to 'Edit', edit_room_path(@room) %> |
 <%= link_to 'Back', rooms_path %>
