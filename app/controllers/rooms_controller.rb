@@ -17,7 +17,7 @@ class RoomsController < ApplicationController
   # GET /rooms/1.xml
   def show
     @room = Room.find(params[:id])
-
+    @college= @room.college
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @room }
