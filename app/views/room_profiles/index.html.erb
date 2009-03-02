@@ -1,17 +1,19 @@
-<h1>Listing room_profiles</h1>
+<h1>Room Profiles</h1>
 
-<table>
+<table class="datagrid">
+    <thead class="datagrid">
+	<th width="300">Room Profile</th>
   <tr>
   </tr>
 
 <% for room_profile in @room_profiles %>
   <tr>
-	<td align="left">&nbsp;<%= link_to( h(room_profile.room_type), room_profile_path(room_profile)) %></td>
+	<td align="left">&nbsp;<%= link_to( h(room_profile.bed_type), room_profile_path(room_profile)) %></td>
   </tr>
 	<tr>	
         <td>
 	    <%= link_to 'Edit', edit_room_profile_path(room_profile) %>
-	    <%= link_to 'Destroy', room_profile, :confirm => 'Are you sure?', :method => :delete %></td>
+	    <%= link_to 'Delete', room_profile, :confirm => 'Are you sure?', :method => :delete %></td>
     </tr>
 <% end %>
 </table>
