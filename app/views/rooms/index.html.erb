@@ -1,15 +1,21 @@
-<h1>Listing rooms</h1>
+<h1>Your Rooms</h1>
 
 <table>
-  <tr>
-  </tr>
+	<table class="datagrid">
+	  <thead class="datagrid">
+		<th width="300">Room</th>
 
+	
 <% for room in @rooms %>
   <tr>
-    <td><%= link_to 'Show', room %></td>
-    <td><%= link_to 'Edit', edit_room_path(room) %></td>
-    <td><%= link_to 'Destroy', room, :confirm => 'Are you sure?', :method => :delete %></td>
+	<td align="left">&nbsp;<%= link_to( h(room.street_address_1), room_path(room)) %></td>
   </tr>
+	<tr>	
+      <td>
+      <%= link_to 'Edit', edit_room_path(room) %>
+      <%= link_to 'Delete', room, :confirm => 'Are you sure?', :method => :delete %><br /><br />
+      </td>
+    </tr>
 <% end %>
 </table>
 

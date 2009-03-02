@@ -4,7 +4,7 @@
 /*	General table stuff for datagrid css class */
 
 table.datagrid {   
-	font: 90% Verdana, Arial, Helvetica, sans-serif;
+	font: 100% Verdana, Arial, Helvetica, sans-serif;
 	color: #000000;
 	text-align: left;
 	border-collapse: collapse;
@@ -25,7 +25,7 @@ table.datagrid a:hover {
 caption.datagrid {
 	height: 45px;
 	line-height: 44px;
-	color: #000000;
+	color: #0066ff;
 	font-weight: bold;
 	text-align: center;
 	width: 100%;
@@ -34,8 +34,8 @@ caption.datagrid {
 }
 thead.datagrid th {
 	font-size: 105%;
-	color: #ffffff;
-	background-color: #000000;
+	color: #000000;
+	background-color: #0066ff;
 	height: 28px;
 	font-weight: bold;
 	padding: 10px;
@@ -63,7 +63,7 @@ thead.datagrid th:hover {
 	text-align: left;
 	vertical-align: top;
 	line-height: 2.5;
-	background-color: #bfbfbf;
+	background-color: #0066ff;
 	padding: 3px;
 }
 .dg_list_line_even img {
