@@ -3,9 +3,10 @@
 <% form_for(@profile) do |f| %>
   <%= f.error_messages %>
 
-	<!--
+	
 	<%= f.hidden_field :user_id, :value => session[:user_id] %> 
-	-->
+	<%= session[:user_id] %>
+	
 	<p>
 		<b>College</b>:<br>
 		<%= f.select(:college_id, College::COLLEGES_LIST, :prompt => "Select...") %>

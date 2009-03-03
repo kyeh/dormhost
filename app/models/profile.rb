@@ -3,7 +3,7 @@ class Profile < ActiveRecord::Base
   belongs_to :college
   has_one :user
   
-  attr_accessible :birthdate, :grad_year, :phone, :living_style, :bedtime, :interests, :smoker
+  attr_accessible :user_id, :college_id, :birthdate, :grad_year, :phone, :living_style, :bedtime, :interests, :smoker
   
   def is_updatable_by(user)
     user.is_admin?
