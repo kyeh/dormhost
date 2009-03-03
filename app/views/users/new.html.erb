@@ -1,19 +1,37 @@
 <h1>Sign up as a new user</h1>
 <% @user.password = @user.password_confirmation = nil %>
 
-<%= error_messages_for :user %>
 <% form_for :user, :url => users_path do |f| -%>
-<p><%= label_tag 'login' %><br/>
-<%= f.text_field :login %></p>
-
-<p><%= label_tag 'email' %><br/>
-<%= f.text_field :email %></p>
-
-<p><%= label_tag 'password' %><br/>
-<%= f.password_field :password %></p>
-
-<p><%= label_tag 'password_confirmation', 'Confirm Password' %><br/>
-<%= f.password_field :password_confirmation %></p>
-
-<p><%= submit_tag 'Sign up' %></p>
+	<%= error_messages_for :user %>
+	<%= flash[:error] %>
+		<fieldset>
+			<legend>Enter Your Details</legend>
+			
+				<p><%= label_tag 'First Name' %><br/>
+				<%= f.text_field :first_name %></p>
+				
+				<p><%= label_tag 'Last Name' %><br/>
+				<%= f.text_field :last_name %></p>
+				
+				<p><%= label_tag 'Username' %><br/>
+				<%= f.text_field :username %></p>
+				
+				<p><%= label_tag 'email' %><br/>
+				<%= f.text_field :email %></p>
+				
+				<p><%= label_tag 'Confirm Email' %><br/>
+				<%= f.text_field :email %></p>
+				
+				<p><%= label_tag 'password' %><br/>
+				<%= f.password_field :password %></p>
+				
+				<p><%= label_tag 'password_confirmation', 'Confirm Password' %><br/>
+				<%= f.password_field :password_confirmation %></p>
+				
+				Please enter the 2 words below to verify your signup<br />
+				<%= recaptcha_tags %>
+		
+				<p><%= submit_tag 'Sign up' %></p>
+				
+		</fieldset>	
 <% end -%>
