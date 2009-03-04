@@ -16,7 +16,7 @@ class Profile < ActiveRecord::Base
     self.is_admin
   end
   
-  def self.smoker?
+  def self.is_smoker?
     self.smoker
   end
   

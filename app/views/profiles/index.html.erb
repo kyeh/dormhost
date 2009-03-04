@@ -8,10 +8,10 @@ No profile has been created.<br><br>
 	<%= link_to 'Create new profile', new_profile_path %>
 <% else %>
 	<% for profile in @profiles %>
+	<%= render :partial => 'profile_data' %>
+	
   	<tr>
-    	<td><%= link_to 'Show', profile %></td>
-    	<td><%= link_to 'Edit', edit_profile_path(profile) %></td>
-    	<td><%= link_to 'Destroy', profile, :confirm => 'Are you sure?', :method => :delete %></td>
+    	<td><%= link_to 'Edit Profile', edit_profile_path(profile) %></td>
   	</tr>
 	<% end %>
 <% end %>
