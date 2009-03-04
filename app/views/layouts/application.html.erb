@@ -9,7 +9,35 @@
 
 	<body>
 		<div id="wrap">
-	    	<%= link_to '<div id="header"></div>', home_path('home') %>
+<!-- 	    	<%= link_to '<div id="header"></div>', home_path('home') %> -->
+		<div id="header">
+			<% if logged_in? -%>
+				<div id="mini_logout">
+				<div id="user-bar-greeting">Logged in</div> 
+				<div id="user-bar-action"  >(<%= link_to "log out", logout_path, { :title => "Log out" }    %>)</div>
+				</div>
+			<% else -%>
+			<div id="mini_login">
+				<% form_tag session_path do -%>
+				<label for="username" style="font-size: 80%">Username:</label> 
+				<%= text_field_tag 'login', @login %>
+				<br />
+				<label for="password" style="font-size: 80%">Password:</label>
+				<%= password_field_tag 'password', nil %>
+				<br />
+				<%= link_to 'Register', new_user_path %>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    
+				<%= submit_tag 'Log in' %>					
+				<!-- Uncomment this if you want this functionality -->
+				<!--
+				<label for="remember_me">Remember me:</label>
+				<%= check_box_tag 'remember_me', '1', @remember_me %>
+				<br /> -->
+				<% end -%>
+			</div>
+			<% end -%>
+		</div>
+			
 			<br />
 	        <div id="nav">
 					<table bgcolor = #0066ff>

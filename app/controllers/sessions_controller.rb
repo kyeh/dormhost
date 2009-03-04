@@ -24,6 +24,7 @@ class SessionsController < ApplicationController
       note_failed_signin
       @login       = params[:login]
       @remember_me = params[:remember_me]
+      flash[:notice] = "Incorrect username or password"
       render :action => 'new'
     end
   end

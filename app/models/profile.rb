@@ -3,6 +3,9 @@ class Profile < ActiveRecord::Base
   belongs_to :college
   has_one :user
   
+  
+  named_scope :for_user, lambda { |user_id| { :conditions => ["user_id = ?", session[:user_id]] }}
+  
   attr_accessible :user_id, :college_id, :birthdate, :grad_year, :phone, :living_style, :bedtime, :interests, :smoker
   
   def is_updatable_by(user)
