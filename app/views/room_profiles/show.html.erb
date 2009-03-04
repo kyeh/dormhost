@@ -1,9 +1,6 @@
 <h1><%=h @room_profile.bed_type %></h1>
 
-<p>
-  <b>Type:</b>
-  <%=h @room_profile.type %>
-</p>
+
 <p>
   <b>Bed Type:</b>
   <%=h @room_profile.bed_type %>
@@ -41,6 +38,7 @@
   <b>Notes:</b>
   <%=h @room_profile.notes %>
 </p>
+<%= link_to 'Room', room_path(@room_profile) %> <br><br>
 
 <%= link_to 'Edit', edit_room_profile_path(@room_profile) %> |
-<%= link_to 'Back', room_profiles_path %>
+<%= link_to 'All Room Profiles', room_profiles_path %> 

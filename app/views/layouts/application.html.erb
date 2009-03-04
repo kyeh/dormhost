@@ -47,12 +47,21 @@
 			         		<li><%= link_to 'Homepage', home_path('home') %></li>
 							<li><%= link_to 'Profile', profiles_path %></li>
 							<li><%= link_to 'Your Room', rooms_path %></li>
-							<li><%= link_to 'Search Room', room_profiles_path %></li>
+							<li><%= link_to 'Search Room:', room_profiles_path %></li>
 						</ul>
 					</td>
-					<td width = "325">
-						<img src="images/tempSearch.png" />
-					</td>
+						<td>
+							<% form_tag({:controller => "searches", :action => "search"}, :method => "get") do %>
+<!-- this search functionality and the dropdown stuff right now are just for show
+	 need to make routes work for search and need to mvc stuff for both of these... -->
+							    <%= text_field_tag "q", params[:q] %><br>
+							<%= select(:college_id, College::COLLEGES_LIST, :prompt => "Select...") %>
+						</td>
+							<td>
+							    <input type ="submit" value= "GO" />
+							<% end %>
+							</td>
+						  
 					</tr>
 					</table>
 	        	
