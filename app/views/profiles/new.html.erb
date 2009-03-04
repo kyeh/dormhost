@@ -3,9 +3,8 @@
 <% form_for(@profile) do |f| %>
   <%= f.error_messages %>
 
-	<!--
-	<%= f.hidden_field :user_id, :value => session[:user_id] %> 
-	-->
+	
+	<%= f.hidden_field :user_id, :value => session[:user_id] %> 	
 	<p>
 		<b>College</b>:<br>
 		<%= f.select(:college_id, College::COLLEGES_LIST, :prompt => "Select...") %>
@@ -27,7 +26,7 @@
 	</p>
 	<p>
 		<b>Living Style</b>:<br>
-		<%= f.text_field :living_style, :size => 255 %>
+		<%= f.text_area :living_style, :rows => 6, :cols => 40 %>
 	</p>
 	<p>
 		<b>Bedtime</b>:<br>
@@ -35,7 +34,7 @@
 	</p>
 	<p>
 		<b>Interests</b>:<br>
-		<%= f.text_field :interests, :size => 255 %>
+		<%= f.text_area :interests, :rows => 6, :cols => 40 %>
 	</p>
 	<p>
 		<b>Smoker?<b><br>

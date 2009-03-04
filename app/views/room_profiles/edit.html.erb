@@ -1,8 +1,45 @@
-<h1>Editing room_profile</h1>
+<h1>Editing <%=h @room_profile.bed_type %></h1>
 
 <% form_for(@room_profile) do |f| %>
   <%= f.error_messages %>
 
+	<p>
+		<b>Bed Type</b>:<br>
+		<%= f.text_field :bed_type, :size => 42 %>
+	</p>
+	<p>
+		<b>Max Capacity</b>:<br>
+		<%= f.text_field :max_capacity, :size => 20 %>
+	</p>
+	<p>
+		<b>Pets</b>:<br>
+		<%= f.text_field :pets, :size => 42 %>
+	</p>
+	<p>
+		<b>Food Available</b>:<br>
+		<%= f.text_area :food, :rows => 2, :cols => 40 %>
+	</p>
+	<p>
+		<b>Roommates</b>:<br>
+		<%= f.text_field :roommates, :size => 2 %>
+	</p>
+	<p>
+		<b>Internet Available?<b><br>
+		<%= f.check_box :internet %>
+	</p>
+	<p>
+		<b>On Campus?<b><br>
+		<%= f.check_box :on_campus %>
+	</p>
+	<p>
+		<b>Cost</b>:<br>
+		<%= f.text_field :cost, :size => 10 %>
+	</p>
+	<p>
+		<b>Notes</b>:<br>
+		<%= f.text_area :notes, :rows => 6, :cols => 40 %>
+	</p>
+	
   <p>
     <%= f.submit "Update" %>
   </p>

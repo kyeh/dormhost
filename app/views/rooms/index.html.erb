@@ -5,17 +5,21 @@
 	  <thead class="datagrid">
 		<th width="300">Room</th>
 
-	
-<% for room in @rooms %>
-  <tr>
-	<td align="left">&nbsp;<%= link_to( h(room.street_address_1), room_path(room)) %></td>
-  </tr>
+<% unless @rooms.empty? %>	
+	<% for room in @rooms %>
+  	<tr>
+		<td align="left">&nbsp;<%= link_to( h(room.street_address_1), room_path(room)) %></td>
+  	</tr>
 	<tr>	
       <td>
       <%= link_to 'Edit', edit_room_path(room) %>
       <%= link_to 'Delete', room, :confirm => 'Are you sure?', :method => :delete %><br /><br />
       </td>
     </tr>
+	<tr>
+		
+	</tr>
+<% end %>
 <% end %>
 </table>
 

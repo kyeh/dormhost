@@ -31,6 +31,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :renters
 
   map.resources :hosts 
+  
   map.resources :room_profiles
 
   # The priority is based upon order of creation: first created -> highest priority.

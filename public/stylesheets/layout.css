@@ -18,6 +18,19 @@ html, body {
 	height:160px;
 }
 
+#mini_login {
+	float: right;
+	margin-top: 90px;
+	margin-right: 40px;
+	text-align: right;
+}
+
+#mini_logout {
+	float: right;
+	margin-top: 120px;
+	margin-right: 40px;
+}
+
 #nav {
 	width:900px;
 	margin:0;
@@ -114,7 +127,7 @@ html, body {
 	white-space: nowrap;
 	list-style:none;
 	margin:0 auto;
-	font-size:150%;
+	font-size:145%;
 	font-weight:bold;
 }
 
@@ -127,7 +140,7 @@ html, body {
 }
 
 #nav a { 
-	padding:0 10px 0 10px;
+	padding:5px 0px 0 54px;
 	display:block;
 	height:100%;
 }

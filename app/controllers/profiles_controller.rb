@@ -1,6 +1,10 @@
 class ProfilesController < ApplicationController
   
+  # Set layout to application
   layout "application"
+  
+  #Access rules
+  before_filter :login_required
   
   # GET /profiles
   # GET /profiles.xml
@@ -48,7 +52,7 @@ class ProfilesController < ApplicationController
     respond_to do |format|
       if @profile.save
         flash[:notice] = 'Profile was successfully created.'
-        format.html { redirect_to(@profile) }
+        format.html { redirect_to('/profiles') }
         format.xml  { render :xml => @profile, :status => :created, :location => @profile }
       else
         format.html { render :action => "new" }
@@ -65,7 +69,7 @@ class ProfilesController < ApplicationController
     respond_to do |format|
       if @profile.update_attributes(params[:profile])
         flash[:notice] = 'Profile was successfully updated.'
-        format.html { redirect_to(@profile) }
+        format.html { redirect_to('/profiles') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

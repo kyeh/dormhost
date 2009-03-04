@@ -1,4 +1,4 @@
-<h1>New room_profile</h1>
+<h1>New Room Profile</h1>
 
 <% form_for(@room_profile) do |f| %>
   <%= f.error_messages %>
@@ -7,12 +7,8 @@
 	<!-- TODO: IMAGE UPLOAD -->
 	
 	<p>
-		<b>Room Type</b>:<br>
-		<%= f.text_field :type, :size => 50 %>
-	</p>
-	<p>
 		<b>Bed Type</b>:<br>
-		<%= f.text_field :bed_type, :size => 50 %>
+		<%= f.text_field :bed_type, :size => 42 %>
 	</p>
 	<p>
 		<b>Max Capacity</b>:<br>
@@ -20,11 +16,11 @@
 	</p>
 	<p>
 		<b>Pets</b>:<br>
-		<%= f.text_field :pets, :size => 50 %>
+		<%= f.text_field :pets, :size => 42 %>
 	</p>
 	<p>
 		<b>Food Available</b>:<br>
-		<%= f.text_field :food, :size => 100 %>
+		<%= f.text_area :food, :rows => 2, :cols => 40 %>
 	</p>
 	<p>
 		<b>Roommates</b>:<br>
@@ -44,8 +40,11 @@
 	</p>
 	<p>
 		<b>Notes</b>:<br>
-		<%= f.text_field :notes, :size => 255 %>
+		<%= f.text_area :notes, :rows => 6, :cols => 40 %>
 	</p>
+	
+	<%= f.hidden_field :room_id, :value => 5 %>
+	<%= f.hidden_field :level_id, :value => 1%>
 
   <p>
     <%= f.submit "Create" %>

@@ -3,7 +3,8 @@
 # Uncomment below to force Rails into production mode when
 # you don't control web/app server and can't set it the proper way
 # ENV['RAILS_ENV'] ||= 'production'
-
+ENV['RECAPTCHA_PUBLIC_KEY'] = '6LdJRAUAAAAAAJ4Q5KWlva3fs1id3GVTsB3gY-l0'
+ENV['RECAPTCHA_PRIVATE_KEY'] = '6LdJRAUAAAAAALdWVnS9b9f9OPYAfC5xtYHLUDm0'
 # Specifies gem version of Rails to use when vendor/rails is not present
 RAILS_GEM_VERSION = '2.2.2' unless defined? RAILS_GEM_VERSION
 

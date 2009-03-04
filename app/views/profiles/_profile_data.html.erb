@@ -1,0 +1,42 @@
+
+<% for profile in @profiles %>
+	<p>
+		<b>College</b>:
+		<%=h profile.college_id %>
+	</p>
+
+	<!-- TODO: IMAGE UPLOAD -->
+
+	<p>
+		<b>Birthdate</b>:
+		<%=h profile.birthdate %>
+	</p>
+	<p>
+		<b>Graduation Year</b>:
+		<%=h profile.grad_year %>
+	</p>
+	<p>
+		<b>Phone Number</b>:
+		<%=h profile.phone %>
+	</p>
+	<p>
+		<b>Living Style</b>:
+		<%=h profile.living_style %>
+	</p>
+	<p>
+		<b>Bedtime</b>:
+		<%=h profile.bedtime %>
+	</p>
+	<p>
+		<b>Interests</b>:
+		<%=h profile.interests %>
+	</p>
+	
+	<p>
+		<b>Smoker?</b>:
+		<% if profile.smoker == true %>Yes
+		<% else %> No
+		<% end %>
+	</p>
+	
+<% end %>
