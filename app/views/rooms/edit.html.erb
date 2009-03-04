@@ -29,6 +29,10 @@
 	</p>
 	
 	<p>
+		<%= f.collection_select :college_id, College.all, :id, :name, :value => :college_id %>
+	</p>
+	
+	<p>
 		<%= f.submit "Update" %>
 	</p>
 <% end %>
