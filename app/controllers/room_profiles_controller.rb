@@ -2,6 +2,9 @@ class RoomProfilesController < ApplicationController
   
   layout "application"
   
+  before_filter :login_required
+
+  
   # GET /room_profiles
   # GET /room_profiles.xml
   def index
