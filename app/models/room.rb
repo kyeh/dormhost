@@ -5,7 +5,7 @@ class Room < ActiveRecord::Base
   has_one :room_profile
   has_many :favorites
   
-  validates_presence_of :street_address_1, :city, :state, :zip, :message => "must be filled in"
+  validates_presence_of :street_address_1, :city, :state, :zip, :college_id, :message => "must be filled in"
   validates_numericality_of :zip
   validates_length_of :zip, :is => 5, :message => "must be exactly 5 digits"
   
