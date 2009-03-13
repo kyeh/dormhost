@@ -7,6 +7,6 @@ class Room < ActiveRecord::Base
   
   validates_presence_of :street_address_1, :city, :state, :zip, :college_id, :message => "must be filled in"
   validates_numericality_of :zip
-  validates_length_of :zip, :is => 5, :message => "must be exactly 5 digits"
+  validates_length_of :zip, :is => 5, :message => "must be exactly 5 digits" 
   
 end
