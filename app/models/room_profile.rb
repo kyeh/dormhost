@@ -4,8 +4,8 @@ class RoomProfile < ActiveRecord::Base
   has_many :room_images
   has_many :room_profile_days
   
-  
-  attr_accessible :type, :bed_type, :max_capacity, :pets, :food, :roommates, :internet, :on_campus, :cost, :notes
+  validates_presence_of :bed_type, :max_capacity, :pets, :food, :roommates, :cost, :notes, :message => "must be filled in"
+  validates_numericality_of :max_capacity, :roommates, :cost, :message => "must be a number"
   
   def is_updatable_by(user)
     user.is_admin?
