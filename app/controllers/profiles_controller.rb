@@ -9,6 +9,7 @@ class ProfilesController < ApplicationController
   # GET /profiles
   # GET /profiles.xml
   def index
+    @profiles = Profile.for_user(session[:user_id])
     @profiles = Profile.find(:all)
 
     respond_to do |format|
