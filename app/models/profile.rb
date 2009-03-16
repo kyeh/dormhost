@@ -2,9 +2,8 @@ class Profile < ActiveRecord::Base
   has_many :user_reviews
   belongs_to :college
   has_one :user
-  
-  
-  named_scope :for_user, lambda { |user_id| { :conditions => ["user_id = ?", session[:user_id]] }}
+ 
+  named_scope :for_user, lambda { |user_id| { :conditions => ["user_id = ?", user_id] }}
   
   attr_accessible :user_id, :college_id, :birthdate, :grad_year, :phone, :living_style, :bedtime, :interests, :smoker
   

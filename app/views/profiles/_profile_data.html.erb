@@ -1,8 +1,8 @@
-
 <% for profile in @profiles %>
+
 	<p>
 		<b>College</b>:
-		<%=h profile.college_id %>
+		<%=h profile.college.name %>
 	</p>
 
 	<!-- TODO: IMAGE UPLOAD -->
@@ -38,5 +38,5 @@
 		<% else %> No
 		<% end %>
 	</p>
-	
+
 <% end %>
