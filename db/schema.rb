@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090316184833) do
+ActiveRecord::Schema.define(:version => 20090317000906) do
 
   create_table "available_days", :force => true do |t|
     t.string   "day",        :limit => 50
@@ -101,7 +101,7 @@ ActiveRecord::Schema.define(:version => 20090316184833) do
   end
 
   create_table "room_profiles", :force => true do |t|
-    t.integer  "room_id",                                               :null => false
+    t.integer  "room_id",                                                                             :null => false
     t.integer  "level_id"
     t.string   "size_classification", :limit => 50
     t.string   "bed_type",            :limit => 50
@@ -109,12 +109,12 @@ ActiveRecord::Schema.define(:version => 20090316184833) do
     t.string   "pets",                :limit => 50
     t.string   "food",                :limit => 100
     t.integer  "roommates"
-    t.boolean  "internet",                           :default => false
-    t.boolean  "on_campus",                          :default => false
-    t.decimal  "cost"
+    t.boolean  "internet",                                                         :default => false
+    t.boolean  "on_campus",                                                        :default => false
     t.string   "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.decimal  "cost",                               :precision => 5, :scale => 2
   end
 
   create_table "room_reviews", :force => true do |t|
