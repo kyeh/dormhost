@@ -8,7 +8,9 @@ class RoomsController < ApplicationController
   # GET /rooms
   # GET /rooms.xml
   def index
-    @rooms = Room.find(:all)
+	@user = get_user
+	#here need to fix so that that rooms displayed are rooms belonging to user
+	@rooms = Room.find(:all, :conditions => ['host_id = ?', @user.id])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -19,10 +21,14 @@ class RoomsController < ApplicationController
   # GET /rooms/1
   # GET /rooms/1.xml
   def show
+	
     @room = Room.find(params[:id])
     @college= @room.college
-	@room_profile = RoomProfile.find(:all, :conditions => ['room_id = ?', :id])
-	session[:room_id] = params[:id]
+	   @room_profile = RoomProfile.find(:all, :conditions => ['room_id = ?', params[:id]])
+     @room_profile_id = 0
+     @room_profile_id = @room_profile.id unless @room_profile.empty?
+     session[:room_id] = params[:id]
+     
 	
     respond_to do |format|
       format.html # show.html.erb
