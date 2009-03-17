@@ -51,7 +51,7 @@
 						</ul>
 					</td>
 						<td>
-							<% form_tag({:controller => "searches", :action => "search"}, :method => "get") do %>
+							<% form_tag( :action => :search) do %>
 <!-- this search functionality and the dropdown stuff right now are just for show
 	 need to make routes work for search and need to mvc stuff for both of these... -->
 							    <%= text_field_tag "q", params[:q] %><br>

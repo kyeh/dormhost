@@ -1,10 +1,12 @@
-<h1>Your Rooms</h1>
-
 <table>
 	<table class="datagrid">
 	  <thead class="datagrid">
 		<th width="300">Room</th>
 
+<!-- Search Results -->
+<%= render :partial => 'search_results' %>
+
+<h1>Your Rooms</h1>
 <% unless @rooms.empty? %>	
 	<% for room in @rooms %>
   	<tr>

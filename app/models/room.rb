@@ -1,4 +1,6 @@
 class Room < ActiveRecord::Base
+  acts_as_xapian :texts => [:city, :state]
+
   belongs_to :host
   has_many :room_reviews
   belongs_to :college

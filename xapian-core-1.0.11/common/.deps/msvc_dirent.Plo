@@ -1,0 +1,4 @@
+common/msvc_dirent.lo common/msvc_dirent.o: common/msvc_dirent.cc \
+  config.h
+
+config.h:
