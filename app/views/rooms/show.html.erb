@@ -29,6 +29,11 @@
   <b>University:</b>
   <%=h @college.name %>
 </p>
+
+<% if @roomprofile.nil? %> 
+<%= link_to 'Create a Room Profile', new_room_profile_path %> <br><br>
+<% else %>
 <%= link_to 'Room Profile', room_profile_path(@room) %> <br><br>
+<% end %>
 <%= link_to 'Edit', edit_room_path(@room) %> |
 <%= link_to 'All Rooms', rooms_path %>

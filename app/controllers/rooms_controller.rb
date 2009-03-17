@@ -21,6 +21,9 @@ class RoomsController < ApplicationController
   def show
     @room = Room.find(params[:id])
     @college= @room.college
+	@room_profile = RoomProfile.find(:all, :conditions => ['room_id = ?', :id])
+	session[:room_id] = params[:id]
+	
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @room }
