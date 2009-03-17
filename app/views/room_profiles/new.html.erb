@@ -43,7 +43,7 @@
 		<%= f.text_area :notes, :rows => 6, :cols => 40 %>
 	</p>
 	
-	<%= f.hidden_field :room_id, :value => 5 %>
+	<%= f.hidden_field :room_id, :value => session[:room_id] %>
 	<%= f.hidden_field :level_id, :value => 1%>
 
   <p>
