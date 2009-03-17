@@ -20,6 +20,7 @@ class RoomProfilesController < ApplicationController
   # GET /room_profiles/1.xml
   def show
     @room_profile = RoomProfile.find(params[:id])
+    #@room = @room_profile.room
 
     respond_to do |format|
       format.html # show.html.erb
