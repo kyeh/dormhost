@@ -1,0 +1,19 @@
+<% if @search_params.nil? %>
+No params!
+<% else %>
+Search params: <%= @search_params %>
+<% end %>
+
+
+<% unless @xap_results.nil? %>
+<h1>Search Results</h1>
+	<% for result in @xap_results %>
+		<tr>
+			<td align="left">&nbsp;<%= link_to( h(result.street_address_1), room_path(result)) %></td>
+		</tr>
+		<tr>
+
+		</tr>
+
+	<% end %>
+<% end %>

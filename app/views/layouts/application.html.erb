@@ -51,11 +51,9 @@
 						</ul>
 					</td>
 						<td>
-							<% form_tag( :action => :search) do %>
-<!-- this search functionality and the dropdown stuff right now are just for show
-	 need to make routes work for search and need to mvc stuff for both of these... -->
-							    <%= text_field_tag "q", params[:q] %><br>
-							<%= select(:college_id, College::COLLEGES_LIST, :prompt => "Select...") %>
+							<% form_for :room, :url => { :action => :search } do |f| %>
+							    <%= f.text_field (:q) %><br>
+							<%= f.select(:college_id, College::COLLEGES_LIST, :prompt => "Select...") %>
 						</td>
 							<td>
 							    <input type ="submit" value= "GO" />

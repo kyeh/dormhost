@@ -1,9 +1,22 @@
 class RoomsController < ApplicationController
-  
   layout "application"
   
   before_filter :login_required
-
+  
+  def search
+    @search_params = params[:room][:q].to_s
+    puts params[:room][:q].to_s
+    puts "---------------------------------"
+    puts @search_params
+    
+    @xap_search = ActsAsXapian::Search.new([Room], params[:room][:q].to_s, { :limit => 100 })
+    @xap_results = @xap_search.results.collect { |r| r[:model] }
+    
+    respond_to do |format|
+      format.html 
+      format.xml  { render :xml => @xap_results }
+    end
+  end
   
   # GET /rooms
   # GET /rooms.xml
@@ -11,6 +24,7 @@ class RoomsController < ApplicationController
 	@user = get_user
 	#here need to fix so that that rooms displayed are rooms belonging to user
 	@rooms = Room.find(:all, :conditions => ['host_id = ?', @user.id])
+	
 
     respond_to do |format|
       format.html # index.html.erb
