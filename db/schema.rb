@@ -9,7 +9,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090317000906) do
+ActiveRecord::Schema.define(:version => 20090320191748) do
+
+  create_table "acts_as_xapian_jobs", :force => true do |t|
+    t.string  "model",    :null => false
+    t.integer "model_id", :null => false
+    t.string  "action",   :null => false
+  end
+
+  add_index "acts_as_xapian_jobs", ["model", "model_id"], :name => "index_acts_as_xapian_jobs_on_model_and_model_id", :unique => true
 
   create_table "available_days", :force => true do |t|
     t.string   "day",        :limit => 50
