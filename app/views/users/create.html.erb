@@ -1,0 +1,25 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<title>Untitled Document</title>
+	</head>
+	<body>
+		<fieldset>
+      <legend>Your Account</legend>
+      
+      <p>
+        An email has been sent to <%= @user.email %> with instructions to activate 
+        your account.
+        <li>
+          If your email is not valid, you must <%= link_to "sign up", signup_path %> 
+          again and provide a valid email address.
+        </li>
+        <li>
+          If you don't receive an email, check your bulk or trash folder, as your spam 
+          filter may have inadvertantly caught the registration email.
+        </li>
+      </p>
+    </fieldset>
+	</body>
+</html>
