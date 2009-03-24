@@ -21,14 +21,32 @@ class RoomsController < ApplicationController
   # GET /rooms
   # GET /rooms.xml
   def index
-	@user = get_user
-	#here need to fix so that that rooms displayed are rooms belonging to user
-	@rooms = Room.find(:all, :conditions => ['host_id = ?', @user.id])
+  @user = get_user
+  @host = Host.find(:first, :conditions => ['user_id = ?', @user.id])
+  @rooms = Room.find(:all, :conditions => ['host_id = ?', @host.id])
 	
 
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @rooms }
+    end
+  end
+
+
+  def show_private
+    
+    @room = Room.find(params[:id])
+    @college= @room.college
+    @room_profile = RoomProfile.find(:all, :conditions => ['room_id = ?', params[:id]])
+    @room_profile_id = 0
+    @room_profile_id = @room_profile.id unless @room_profile.empty?
+    
+    @transactions = Transaction.find(:all, :conditions => ['room_id = ?', @room.id])
+     
+  
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @room }
     end
   end
 
@@ -38,15 +56,42 @@ class RoomsController < ApplicationController
 	
     @room = Room.find(params[:id])
     @college= @room.college
-	   @room_profile = RoomProfile.find(:all, :conditions => ['room_id = ?', params[:id]])
-     @room_profile_id = 0
-     @room_profile_id = @room_profile.id unless @room_profile.empty?
-     session[:room_id] = params[:id]
+    @room_profile = RoomProfile.find(:all, :conditions => ['room_id = ?', params[:id]])
+    @user = get_user
+    #FIX THIS so that "Request this room" doesn't show if the renter has already requested the room
+    @renter = Renter.find(:first, :conditions => ['user_id = ?', @user.id])
+    @reserved = Transaction.find(:first, :conditions => ['room_id = ?', @room.id])
      
 	
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @room }
+    end
+  end
+  
+  def requested
+    @user = get_user
+    @renter = Renter.find(:first, :conditions => ['user_id = ?', @user.id])
+    @transactions = Transaction.find(:all, :conditions => ['renter_id = ?', @renter.id])
+    @rooms = Array.new
+    for transaction in @transactions
+      room = Room.find(:first, :conditions => ['id = ?', transaction.room_id])
+      #puts room.nil?.to_s + "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
+      @rooms.push(room)
+    end
+    
+    #puts @rooms.empty?.to_s + "################################"
+  end
+  
+  def all
+    user = get_user
+    @host = Host.find(:first, :conditions => ['user_id = ?', user.id])
+    session[:host_id] = @host.id
+    @rooms = Room.find(:all, :conditions => ['host_id != ?', session[:host_id]])
+    
+    respond_to do |format|
+      format.html # all.html.erb
+      format.xml  { render :xml => @rooms }
     end
   end
 
