@@ -30,10 +30,9 @@
   <%=h @college.name %>
 </p>
 
-<% if @room_profile.empty? %> 
-<%= link_to 'Create Room Profile', new_room_profile_path %> <br><br>
+<% if !@reserved.nil? %>
+You have already requested this room.
 <% else %>
-<%= link_to 'View Room Profile', room_profile_path(@room_profile) %> <br><br>
+<%= link_to 'Request this room', new_modification_path(:room_id => @room.id, :renter_id => @renter.id) %>
 <% end %>
-<%= link_to 'Edit', edit_room_path(@room) %> |
 <%= link_to 'All Rooms', rooms_path %>
