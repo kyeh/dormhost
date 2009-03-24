@@ -1,6 +1,9 @@
 class TransactionsController < ApplicationController
   # GET /transactions
   # GET /transactions.xml
+  
+  layout 'application'
+  
   def index
     @transactions = Transaction.find(:all)
 
@@ -14,6 +17,9 @@ class TransactionsController < ApplicationController
   # GET /transactions/1.xml
   def show
     @transaction = Transaction.find(params[:id])
+    @renter = @transaction.renter
+    @user = User.find(@renter.user_id)
+    @modifications = Modification.find(:all, :conditions => ['transaction_id = ?', @transaction.id])
 
     respond_to do |format|
       format.html # show.html.erb
