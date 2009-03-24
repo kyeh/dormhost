@@ -32,7 +32,7 @@
 
 <p>
 <% if @room_profile.empty? %> 
-<%= link_to 'Create Room Profile', new_room_profile_path %> <br><br>
+<%= link_to 'Create Room Profile', new_room_profile_path(:room_id => @room.id) %> <br><br>
 <% else %>
 <%= link_to 'View Room Profile', room_profile_path(@room_profile) %> <br><br>
 <% end %>
