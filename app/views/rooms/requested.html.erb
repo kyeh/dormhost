@@ -1,0 +1,5 @@
+<% for room in @rooms %>
+<p>
+<%= link_to room.street_address_1, room_path(room.id) %>
+</p>
+<% end %>
