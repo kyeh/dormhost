@@ -7,7 +7,7 @@
 <% unless @rooms.empty? %>	
 	<% for room in @rooms %>
   	<tr>
-		<td align="left">&nbsp;<%= link_to( h(room.street_address_1), room_path(room)) %></td>
+		<td align="left">&nbsp;<%= link_to( h(room.street_address_1), 'rooms/show_private/' + room.id.to_s) %></td>
   	</tr>
 	<tr>	
       <td>
