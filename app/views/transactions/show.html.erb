@@ -1,3 +1,48 @@
+<p>
+  <b>Renter: </b>
+  <%=h @user.first_name + " " + @user.last_name%>
+</p>
+
+<p>
+  <b>First requested:</b>
+  <%=h @transaction.created_at.strftime("%B %d %Y") %>
+</p>
+
+<p>
+  <b>Last updated:</b>
+  <%=h @transaction.updated_at.strftime("%B %d %Y") %>
+</p>
+
+<p>
+	<b>Modification history:</b>
+</p>
+
+<% if @modifications.size == 1 %>
+No modifications made yet.
+<% else %>
+<table>
+	<tr>
+		<td><th>Check-in</th></td>
+		<td><th>Check-out</th></td>
+		<td><th>No. Guests</th></td>
+		<td><th width="30">Comments</th></td>
+		<td><th>Approved?</th></td>
+		<td><th>Date changed</th></td>
+		<td></td>
+	</tr>
+<% for modification in @modifications %>
+	<tr>
+		<td>modification.check_in.strftime("%B %d %Y")</td>
+		<td>modification.check_out.strftime("%B %d %Y")</td>
+		<td>modification.guests</td>
+		<td>modification.comments</td>
+		<td><% if modification.approved == true%>X<%end%></td>
+		<td>modification.created_at.strftime("%B %d %Y")</td>
+		<td><% link_to('Confirm', transaction_path(@transaction), :confirm => 'Are you sure you wish to confirm this reservation', :method => :update)%></td>
+	</tr>
+<% end %>
+<% end %>
+
 
 <%= link_to 'Edit', edit_transaction_path(@transaction) %> |
 <%= link_to 'Back', transactions_path %>
