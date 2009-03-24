@@ -38,7 +38,7 @@
   <b>Notes:</b>
   <%=h @room_profile.notes %>
 </p>
-<%= link_to 'Room', room_path(session[:room_id]) %> <br><br>
+<%= link_to 'Room', room_path(@room_profile.room_id) %> <br><br>
 
 <%= link_to 'Edit', edit_room_profile_path(@room_profile) %> |
 <%= link_to 'All Room Profiles', room_profiles_path %> 
