@@ -99,6 +99,9 @@ class RoomsController < ApplicationController
   # GET /rooms/new.xml
   def new
     @room = Room.new
+    @user = get_user
+    @host = Host.find(:first, :conditions => ['user_id = ?', @user.id])
+    session[:host_id] = @host.id
 
     respond_to do |format|
       format.html # new.html.erb
