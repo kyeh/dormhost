@@ -5,13 +5,25 @@ ActionController::Routing::Routes.draw do |map|
   map.search 'rooms/search', :controller => 'rooms', :action => 'search'
   map.search 'room_profiles/search', :controller => 'rooms', :action => 'search'
   
+  map.all '/rooms/all', :controller => 'rooms', :action => 'all'
+  map.show_private '/rooms/show_private', :controller => 'rooms', :action => 'show_private'
+  map.requested '/rooms/requested', :controller => 'rooms', :action => 'requested'
+  
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   map.login '/login', :controller => 'sessions', :action => 'new'
   map.register '/register', :controller => 'users', :action => 'create'
   map.signup '/signup', :controller => 'users', :action => 'new'
-    
-  map.resources :users
-
+  map.resources :users 
+ 
+  map.activate '/activate/:activation_code', 
+             :controller => 'users', 
+             :action => 'activate', 
+             :activation_code => nil
+  
+  map.resources :users, :member => { :suspend   => :put,
+                                   :unsuspend => :put,
+                                   :purge     => :delete }
+  
   map.resource :session
   
   map.root :controller => 'home'
