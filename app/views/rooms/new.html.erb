@@ -32,7 +32,7 @@
 		<%= f.collection_select :college_id, College.all, :id, :name, :prompt => "Select ..." %>
 	</p>
 	
-	<%= f.hidden_field :host_id, :value => 1 %>
+	<%= f.hidden_field :host_id, :value => session[:host_id] %>
 	<%= f.hidden_field :college_id, :value => 1%>
 	<%= f.hidden_field :active, :value => 1 %>
 
