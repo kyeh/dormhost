@@ -6,6 +6,7 @@ class Room < ActiveRecord::Base
   belongs_to :college
   has_one :room_profile
   has_many :favorites
+  has_many :transactions
   
   attr_accessor :q
   
