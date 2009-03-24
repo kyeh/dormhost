@@ -21,7 +21,8 @@ class UsersController < ApplicationController
         # protection if visitor resubmits an earlier form using back
         # button. Uncomment if you understand the tradeoffs.
         # reset session
-        self.current_user = @user # !! now logged in
+        
+        #self.current_user = @user # !! now logged in
         
         @host = Host.new
         @host.user_id = @user.id
@@ -32,13 +33,13 @@ class UsersController < ApplicationController
         success = @host.save && @renter.save
         
         if success && @host.errors.empty? && @renter.errors.empty?
-          
-          redirect_to('/login')
-          flash[:notice] = "Thanks for signing up!  We're sending you an email with your activation code."
+          render :action =>'create'
         else
           flash[:error]  = "We couldn't set up that account, sorry.  Please try again, or contact an admin (link is above)."
           render :action => 'new'
         end
+      else
+          render :action => 'new'
       end
     else
       flash[:error] = "Error verifying with recaptcha please enter the 2 words again and re-enter your password before submission"
