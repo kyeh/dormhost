@@ -1,6 +1,9 @@
 class ModificationsController < ApplicationController
   # GET /modifications
   # GET /modifications.xml
+  
+  layout "application"
+  
   def index
     @modifications = Modification.find(:all)
 
@@ -25,6 +28,7 @@ class ModificationsController < ApplicationController
   # GET /modifications/new.xml
   def new
     @modification = Modification.new
+    #@transaction = Transaction.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,7 +44,13 @@ class ModificationsController < ApplicationController
   # POST /modifications
   # POST /modifications.xml
   def create
+    @transaction = Transaction.new(params[:transaction])
+    @transaction.save
+    
     @modification = Modification.new(params[:modification])
+    @modification.transaction_id = @transaction.id
+    #puts @modification.to_yaml
+ 
 
     respond_to do |format|
       if @modification.save
@@ -48,6 +58,7 @@ class ModificationsController < ApplicationController
         format.html { redirect_to(@modification) }
         format.xml  { render :xml => @modification, :status => :created, :location => @modification }
       else
+        flash[:notice] = 'NOT CREATED. '
         format.html { render :action => "new" }
         format.xml  { render :xml => @modification.errors, :status => :unprocessable_entity }
       end
@@ -81,5 +92,13 @@ class ModificationsController < ApplicationController
       format.html { redirect_to(modifications_url) }
       format.xml  { head :ok }
     end
+  end
+  
+  def reservations
+    
+  end
+  
+  def requests
+    
   end
 end
