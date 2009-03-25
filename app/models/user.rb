@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   include Authentication::ByPassword
   include Authentication::ByCookieToken
 
+  include Authorization::StatefulRoles
   validates_presence_of     :username
   validates_length_of       :username,    :within => 3..40
   validates_uniqueness_of   :username
@@ -15,16 +16,10 @@ class User < ActiveRecord::Base
   
   validates_format_of       :last_name,     :with => Authentication.name_regex,  :message => Authentication.bad_name_message, :allow_nil => true
   validates_length_of       :last_name,     :maximum => 100
-  
-  validates_presence_of     :password
-  validates_length_of       :password,    :within => 6..12 #r@a.wk
-  #validates_uniqueness_of   :password
-  #validates_format_of       :password,    :with => Authentication.email_regex, :message => Authentication.bad_email_message
 
-  
   validates_presence_of     :email
   validates_length_of       :email,    :within => 6..100 #r@a.wk
-  #validates_uniqueness_of   :email
+  validates_uniqueness_of   :email
   validates_format_of       :email,    :with => Authentication.email_regex, :message => Authentication.bad_email_message
 
   
@@ -35,16 +30,15 @@ class User < ActiveRecord::Base
   attr_accessible :username, :email, :first_name, :last_name, :password, :password_confirmation
 
 
-
-  # Authenticates a user by their userfirst_name first_name and unencrypted password.  Returns the user or nil.
+  # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
   #
   # uff.  this is really an authorization, not authentication routine.  
   # We really need a Dispatch Chain here or something.
   # This will also let us return a human error message.
   #
   def self.authenticate(username, password)
-    return nil if username.blank? || password.blank?
-    u = find_by_username(username.downcase) # need to get the salt
+    return nil if username.blank? || username.blank?
+    u = find_in_state :first, :active, :conditions => {:username => username.downcase} # need to get the salt
     u && u.authenticated?(password) ? u : nil
   end
 
@@ -57,5 +51,14 @@ class User < ActiveRecord::Base
   end
 
   protected
+    
+
+    def make_activation_code
+  
+      self.deleted_at = nil
+  
+      self.activation_code = self.class.make_token
+    end
+
 
 end
