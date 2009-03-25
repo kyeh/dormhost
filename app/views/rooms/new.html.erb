@@ -29,6 +29,7 @@
 	</p>
 	
 	<p>
+		<%= f.label :college_id %><br />
 		<%= f.collection_select :college_id, College.all, :id, :name, :prompt => "Select ..." %>
 	</p>
 	
