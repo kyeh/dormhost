@@ -30,7 +30,7 @@
 	
 	<p>
 		<%= f.label :college_id %><br />
-		<%= f.collection_select :college_id, College.all, :id, :name, :prompt => "Select ..." %>
+		<%= f.select(:college_id, College::COLLEGES_LIST, :prompt => "Select...") %>
 	</p>
 	
 	<%= f.hidden_field :host_id, :value => session[:host_id] %>
