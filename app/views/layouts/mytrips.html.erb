@@ -29,6 +29,7 @@
 						<td>
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							
 						</td>
 						<td>
 				<div id="ytext" >
@@ -51,28 +52,18 @@
 			<% end -%>
 		</div>
 			
-				<!-- TABS -->
-
-				<% if logged_in? -%>
-
-				<div id="lineA">
-
-				<table cellspacing="0" cellpadding="0" border="0">
+			
+			<!-- TABS -->
+			
+			<% if logged_in? -%>
+			
+			<div id="lineA">
+			
+			<table cellspacing="0" cellpadding="0" border="0">
 				<tbody>
 					<tr valign="bottom" align="left">
 						<td width="1">
 							<img width="1" vspace="0" hspace="5" height="20" border="0"/>
-						</td>
-						<td width="20" valign="top">
-							<img width="20" vspace="0" hspace="0" height="50" border="0" src="/images/bigL.png"/>
-						</td>
-						<td valign="bottom" nowrap="" align="top">
-							<div id="tabOn">
-								<%= link_to 'Homepage', profiles_path %>
-							</div>
-						</td>
-						<td width="20" valign="top">
-							<img width="20" vspace="0" hspace="0" height="50" border="0" src="/images/bigR.png"/>
 						</td>
 						<td width="20" valign="bottom">
 							<img width="20" vspace="0" hspace="0" height="45" border="0" src="/images/smallL.png"/>
@@ -85,6 +76,27 @@
 									</tr>
 									<tr>
 										<td id="tab" nowrap="" height="45">
+											<%= link_to 'Homepage', profiles_path %>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</td>
+						<td width="20" valign="bottom">
+							<img width="20" vspace="0" hspace="0" height="45" border="0" src="/images/smallR.png"/>
+						</td>
+			
+						<td width="20" valign="bottom">
+							<img width="20" vspace="0" hspace="0" height="45" border="0" src="/images/smallL.png"/>
+						</td>
+						<td valign="bottom" nowrap="">
+							<table height="25" cellspacing="0" cellpadding="0" border="0">
+								<tbody>
+									<tr>
+										<td height="4"/>
+									</tr>
+									<tr>
+										<td id="tab" nowrap="" height="21">
 											<%= link_to 'Plan a Trip', hosts_path %>
 										</td>
 									</tr>
@@ -94,6 +106,7 @@
 						<td width="20" valign="bottom">
 							<img width="20" vspace="0" hspace="0" height="45" border="0" src="/images/smallR.png"/>
 						</td>
+			
 						<td width="20" valign="bottom">
 							<img width="20" vspace="0" hspace="0" height="45" border="0" src="/images/smallL.png"/>
 						</td>
@@ -113,57 +126,33 @@
 						</td>
 						<td width="20" valign="bottom">
 							<img width="20" vspace="0" hspace="0" height="45" border="0" src="/images/smallR.png"/>
+						</td>	
+			
+						<td width="20" valign="top">
+							<img width="20" vspace="0" hspace="0" height="50" border="0" src="/images/bigL.png"/>
 						</td>
-						<td width="20" valign="bottom">
-							<img width="20" vspace="0" hspace="0" height="45" border="0" src="/images/smallL.png"/>
+						<td valign="bottom" nowrap="" align="top">
+							<div id="tabOn">
+								<%= link_to 'My Trips', modifications_path %>
+							</div>
 						</td>
-						<td valign="bottom" nowrap="">
-							<table height="25" cellspacing="0" cellpadding="0" border="0">
-								<tbody>
-									<tr>
-										<td height="4"/>
-									</tr>
-									<tr>
-										<td id="tab" nowrap="" height="21">
-											<%= link_to 'My Trips', modifications_path %>
-										</td>
-									</tr>
-								</tbody>
-							</table>
+						<td width="20" valign="top">
+							<img width="20" vspace="0" hspace="0" height="50" border="0" src="/images/bigR.png"/>
 						</td>
-						<td width="20" valign="bottom">
-							<img width="20" vspace="0" hspace="0" height="45" border="0" src="/images/smallR.png"/>
-						</td>
+		
 					</table>
-
-				<!-- END TABS -->
-
-				<div id="lineH">
-
-				<% else -%>
-
-				<% end -%>
 			
+					<% else -%>
+					<% end -%>
+			<!-- END TABS -->
 			
-			<br />
-	        <!--		<td>
-							<% form_for :room, :url => { :action => :search } do |f| %>
-							    <%= f.text_field (:q) %><br>
-								<%= select_tag :filter, options_for_select([ "All", "Location", "School", "Interests", "Host"], "All") %>
-							
-						</td>
-							<td>
-							    <input type ="submit" value= "GO" />
-							<% end %>
-							</td>
-						  
-	        	
-	        </div> <!-- end of nav div -->
+			<div id="lineMT">
+			
 			<div style="clear:both;"></div>
 	    	<div id="body">
 				<p style="color: green" id="notice"><%= flash[:notice] %></p>
 				<%= yield %>
-			</div> <!-- end of body div -->
+			</div> <!-- end of body div --> 
 
 			<%= render :partial => "partials/footer" %>
 		</div><!-- end of wrap div -->

@@ -1,18 +1,19 @@
-<h1>Listing modifications</h1>
+<h1>Upcoming Trips</h1>
 
-<table>
-  <tr>
-  </tr>
+	<table class="datagrid">
+	  <thead class="datagrid">
+		<th width="300">Modifications</th>
 
 <% for modification in @modifications %>
   <tr>
-    <td><%= link_to 'Show', modification %></td>
-    <td><%= link_to 'Edit', edit_modification_path(modification) %></td>
-    <td><%= link_to 'Destroy', modification, :confirm => 'Are you sure?', :method => :delete %></td>
+	<td align="left"><%= link_to( h(modification.check_in), modification_path(modification)) %></td>
+  </tr>
+  <tr>
+    <td>
+	<%= link_to 'Edit', edit_modification_path(modification) %>
+    <%= link_to 'Destroy', modification, :confirm => 'Are you sure?', :method => :delete %>
+	</td>
   </tr>
 <% end %>
 </table>
 
-<br />
-
-<%= link_to 'New modification', new_modification_path %>

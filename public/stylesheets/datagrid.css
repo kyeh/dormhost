@@ -25,7 +25,7 @@ table.datagrid a:hover {
 caption.datagrid {
 	height: 45px;
 	line-height: 44px;
-	color: #0066ff;
+	color: #333399;
 	font-weight: bold;
 	text-align: center;
 	width: 100%;
@@ -34,8 +34,8 @@ caption.datagrid {
 }
 thead.datagrid th {
 	font-size: 105%;
-	color: #000000;
-	background-color: #0066ff;
+	color: #ffcc66;
+	background-color: #333399;
 	height: 28px;
 	font-weight: bold;
 	padding: 10px;
@@ -63,7 +63,7 @@ thead.datagrid th:hover {
 	text-align: left;
 	vertical-align: top;
 	line-height: 2.5;
-	background-color: #0066ff;
+	background-color: #333399;
 	padding: 3px;
 }
 .dg_list_line_even img {
@@ -75,20 +75,20 @@ thead.datagrid th:hover {
 	padding: 5px 0px 3px 8px;
 }
 .dg_list_line_odd:hover {
-	background-color: #0066ff;
+	background-color: #333399;
 	color: #000000;
 }
 .dg_list_line_odd:hover a {
-	background-color: #0066ff;
+	background-color: #333399;
 	color: #000000;
 	text-decoration: underline;
 }
 .dg_list_line_even:hover {
-	background-color: #0066ff;
+	background-color: #333399;
 	color: #000000;
 }
 .dg_list_line_even:hover a {
-	background-color: #0066ff;
+	background-color: #333399;
 	color: #000000;
 	text-decoration: underline;
 }
@@ -105,13 +105,13 @@ tr.dgalt,th.dgalt,td.dgalt {
 	padding: .75em;
 }
 tr.dgalt:hover {
-	background-color: #0066ff;
+	background-color: #333399;
 	color: #000000;
 }
 tr.dgalt:hover a {
 	text-decoration: underline;
 	color: #000000;
-	background-color: #0066ff;
+	background-color: #333399;
 }
 
 

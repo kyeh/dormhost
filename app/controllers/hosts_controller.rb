@@ -1,4 +1,6 @@
 class HostsController < ApplicationController
+
+layout "planatrip"
   # GET /hosts
   # GET /hosts.xml
   def index

@@ -80,21 +80,22 @@ label {
 }
 
 a:link {
-	color: #0066ff; 
+	color: #333399; 
 	font-weight: bold;
 	text-decoration:none;
 }
 
 a:visited {
-	color:#0066ff; 
+	color:#333399; 
 	font-weight: bold;
 	text-decoration:none;
 }
 
 a:hover {
-	color: #0066ff;
+	color: #333399;
 	text-decoration:underline;
 }
+
 
 
 /********** FROM SCAFFOLDING ********/

@@ -1,9 +1,9 @@
 class ModificationsController < ApplicationController
+  
+  layout "mytrips"
+  
   # GET /modifications
   # GET /modifications.xml
-  
-  layout "application"
-  
   def index
     @modifications = Modification.find(:all)
 

@@ -1,5 +1,18 @@
-<h1>Listing hosts</h1>
+<br>
+<h1>Search for a Room</h1>
+<br><br>
+<p>this doesn't work here yet</p>
+<td>
+	<% form_for :room, :url => { :action => :search } do |f| %>
+	    <%= f.text_field (:q) %><br><br>
+		<%= select_tag :filter, options_for_select([ "All", "Location", "School", "Interests", "Host"], "All") %>
+</td>
+	<td>
+	    <input type ="submit" value= "GO" />
+	<% end %>
+	</td>
 
+<!--
 <table>
   <tr>
   </tr>
@@ -15,4 +28,4 @@
 
 <br />
 
-<%= link_to 'New host', new_host_path %>
+<%= link_to 'New host', new_host_path %> -->

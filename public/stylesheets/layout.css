@@ -1,16 +1,95 @@
 @charset "utf-8";
 /* CSS Document */
 html, body {
-	background: #ff9900;
+	background: #ffcc66;
 	font-family:Arial, Helvetica, sans-serif;
 	font-size:14px;
+}
+
+#lineH {
+background-color:#ffcc66;
+background:url(/images/layout/bodyH_bg_900.jpg) no-repeat top left;
+}
+
+#lineML {
+background-color:#ffcc66;
+background:url(/images/layout/bodyML_bg_900.jpg) no-repeat top left;
+}
+
+#lineMT {
+background-color:#ffcc66;
+background:url(/images/layout/bodyMT_bg_900.jpg) no-repeat top left;
+}
+
+#linePT {
+background-color:#ffcc66;
+background:url(/images/layout/bodyPT_bg_900.jpg) no-repeat top left;
+}
+
+#lineA {
+background-color:#ffcc66;
+background:url(/images/layout/bodyTA_bg_900.jpg) no-repeat top left;
+}
+
+#ytext a {
+	color:#FFCC66;
+	font-size:15px;
+}
+
+#tabOn a {
+	background-color:#333399;
+	border-top:5px solid #FFCC66;
+	color:#FFCC66;
+	font-family:Verdana,Arial,Helvetica,sans-serif;
+	font-size:20px;
+	font-weight:bold;
+	height:18px;
+	line-height:45px;
+	padding:10px 5px 20px;
+	text-decoration:none;
+}
+
+#tab a {
+	background-color:#333366;
+	color:#FFCC66;
+	font-family:Verdana,Arial,Helvetica,sans-serif;
+	font-size:20px;
+	font-weight:bold;
+	height:20px;
+	line-height:45px;
+	padding:6px 5px 10px;
+	text-decoration:none;
+}
+
+#tabBg  {
+background-color:#333399;
+}
+
+#tabOn a {
+	background-color:#333399;
+	border-top:5px solid #FFCC66;
+	color:#FFCC66;
+	font-family:Verdana,Arial,Helvetica,sans-serif;
+	font-size:20px;
+	font-weight:bold;
+	height:18px;
+	line-height:45px;
+	padding:10px 5px 20px;
+	text-decoration:none;
+}
+
+#wrapT {
+	width:900px;
+	margin:0 auto;
+	padding:0;
+	background:url(/images/layout/bodyT_bg_900.jpg) repeat-y top left;
 }
 
 #wrap {
 	width:900px;
 	margin:0 auto;
 	padding:0;
-	background:url(/images/layout/body_bg_900.jpg) repeat-y top left;
+	background:url(/images/layout/body_bg_900.jpg) repeat-y center left;
 }
 
 #header {
@@ -19,15 +98,19 @@ html, body {
 }
 
 #mini_login {
+	color:#FFCC66;
+	font-size:18px;
 	float: right;
-	margin-top: 90px;
+	margin-top: 30px;
 	margin-right: 40px;
 	text-align: right;
 }
 
 #mini_logout {
+	color:#FFCC66;
+	font-size:18px;
 	float: right;
-	margin-top: 120px;
+	margin-top: 40px;
 	margin-right: 40px;
 }
 
@@ -58,7 +141,7 @@ html, body {
 
 #footer {
 	margin:0;
-	padding:10px 15px 5px 15px;
+	padding:10px 15px 15px 15px;
 	background:url(../images/layout/footer_900.jpg) no-repeat bottom left;
 	text-align:center;
 	font-size: 93%;

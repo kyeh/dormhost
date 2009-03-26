@@ -1,2 +1,26 @@
-<h1>Welcome Dormhost</h1>
-
+<table>
+	<tr>
+		<td width="580">
+			<h1>Welcome To Dormhost</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam accumsan, purus a hendrerit cursus, libero nulla commodo sem, ac pretium lorem leo et risus. Vestibulum hendrerit erat sed purus interdum porttitor. Aenean pharetra. Sed et nisi sed nisl pellentesque iaculis. Ut cursus nibh ut erat. Nullam consectetur, enim sit amet ultricies vestibulum, lectus tortor feugiat velit, eget adipiscing sem mauris sagittis nisi. Praesent pretium convallis libero. Donec sollicitudin, nibh at tincidunt porttitor, mi arcu feugiat ante, sit amet pulvinar ligula quam in enim. Suspendisse a enim. Cras commodo mattis augue.</p>
+		</td>
+			<td width= "300" align="right">
+				<table>
+				<tr>
+					<td>
+						<h2>Search for a Room:</h2>
+						<p>this doesn't work here yet</p>
+					<td>
+				</tr>
+				<tr>
+				<td>
+					<% form_for :room, :url => { :action => :search } do |f| %>
+					    <%= f.text_field (:q) %><br><br>
+						<%= select_tag :filter, options_for_select([ "All", "Location", "School", "Interests", "Host"], "All") %>
+					 <input type ="submit" value= "GO" />
+					<% end %>
+				</td>
+				</tr>
+				</table>
+		</tr>
+</table>

@@ -1,5 +1,5 @@
 class RoomsController < ApplicationController
-  layout "application"
+  layout "mylistings"
   
   before_filter :login_required
   
