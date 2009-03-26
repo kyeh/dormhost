@@ -27,11 +27,7 @@
 	
 	
 	<%= f.hidden_field :approved, :value=>0%>
-	
-	<% fields_for :transaction, @transaction do |transaction_fields| %>
-    	<%= transaction_fields.hidden_field :renter_id, :value => params[:renter_id] %>
-		<%= transaction_fields.hidden_field :room_id, :value => params[:room_id] %>
-  	<% end %>
+	<%= f.hidden_field :transaction_id, :value => params[:transaction_id] %>
 
 
   <p>

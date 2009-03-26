@@ -1,5 +1,10 @@
-<% for room in @rooms %>
+<% for transaction in @transactions %>
 <p>
-<%= link_to room.street_address_1, room_path(room.id) %>
+<%= link_to transaction.room.street_address_1, room_path(transaction.room.id) %> -
+<% if transaction.approved == true %> Approved
+<% else if transaction.approved == false %> Declined
+<% else %> Pending
+<%  end end %>
+<%= link_to('View details', '/transactions/manage_transaction/' + transaction.id.to_s) %>
 </p>
 <% end %>

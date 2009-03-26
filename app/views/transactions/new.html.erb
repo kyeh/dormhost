@@ -2,6 +2,36 @@
 
 <% form_for(@transaction) do |f| %>
   <%= f.error_messages %>
+  
+  	<% fields_for :modification, @modification do |modification_field| %>
+	  	<p>
+			<%= modification_field.label :check_in %><br />
+			<%= modification_field.date_select :check_in, :order => [:month, :day, :year] %>
+		</p>
+		
+		<p>
+			<%= modification_field.label :check_out %><br />
+			<%= modification_field.date_select :check_out, :order => [:month, :day, :year] %>
+		</p>
+	  
+	  	<p>
+			<%= modification_field.label :guests %><br />
+			<%= modification_field.text_field :guests %>
+		</p>
+		
+		<p>
+			<% modification_field.label :comments %><br />
+			<%= modification_field.text_area :comments, :rows => 6, :cols => 40 %>
+		</p>
+		
+		<%= modification_field.hidden_field :approved, :value=>0%>
+	
+	<% end %>
+
+    <%= f.hidden_field :renter_id, :value => params[:renter_id] %>
+	<%= f.hidden_field :room_id, :value => params[:room_id] %>
+
+
 
   <p>
     <%= f.submit "Create" %>

@@ -1,3 +1,21 @@
+<p>
+  <b>Check-in: </b>
+  <%=h @modification.check_in.strftime("%B %d %Y")%>
+</p>
 
+<p>
+  <b>Check-out:</b>
+  <%=h @modification.check_out.strftime("%B %d %Y") %>
+</p>
+
+<p>
+  <b>Guests:</b>
+  <%=h @modification.guests %>
+</p>
+
+<p>
+	<b>Comments</b>
+ 	 <%=h @modification.comments %>
+</p>
 <%= link_to 'Edit', edit_modification_path(@modification) %> |
 <%= link_to 'Back', modifications_path %>

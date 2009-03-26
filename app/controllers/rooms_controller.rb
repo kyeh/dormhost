@@ -48,9 +48,9 @@ class RoomsController < ApplicationController
     
     @room = Room.find(params[:id])
     @college= @room.college
-    @room_profile = RoomProfile.find(:all, :conditions => ['room_id = ?', params[:id]])
-    @room_profile_id = 0
-    @room_profile_id = @room_profile.id unless @room_profile.empty?
+    @room_profile = RoomProfile.find(:first, :conditions => ['room_id = ?', params[:id]])
+
+    @room_profile_id = @room_profile.id unless @room_profile.nil?
     
     @transactions = Transaction.find(:all, :conditions => ['room_id = ?', @room.id])
      
@@ -87,11 +87,8 @@ class RoomsController < ApplicationController
     @rooms = Array.new
     for transaction in @transactions
       room = Room.find(:first, :conditions => ['id = ?', transaction.room_id])
-      #puts room.nil?.to_s + "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
       @rooms.push(room)
     end
-    
-    #puts @rooms.empty?.to_s + "################################"
   end
   
   def all

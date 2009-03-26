@@ -8,6 +8,7 @@ ActionController::Routing::Routes.draw do |map|
   map.all '/rooms/all', :controller => 'rooms', :action => 'all'
   map.show_private '/rooms/show_private', :controller => 'rooms', :action => 'show_private'
   map.requested '/rooms/requested', :controller => 'rooms', :action => 'requested'
+  map.manage_transaction '/transactions/manage_transaction', :controller => 'transactions', :action => 'manage_transaction'
   
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   map.login '/login', :controller => 'sessions', :action => 'new'

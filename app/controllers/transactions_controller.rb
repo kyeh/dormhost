@@ -46,13 +46,24 @@ class TransactionsController < ApplicationController
   # POST /transactions
   # POST /transactions.xml
   def create
+    #@transaction = Transaction.new(params[:transaction])
+    
     @transaction = Transaction.new(params[:transaction])
+    #@transaction.save
+    
+    @modification = Modification.new(params[:modification])
+    #@modification.transaction_id = @transaction.id
+    #puts @modification.to_yaml
 
     respond_to do |format|
       if @transaction.save
-        flash[:notice] = 'Transaction was successfully created.'
-        format.html { redirect_to(@transaction) }
-        format.xml  { render :xml => @transaction, :status => :created, :location => @transaction }
+        
+          @modification.transaction_id = @transaction.id
+          if @modification.save
+            flash[:notice] = 'Transaction was successfully created.'
+            format.html { redirect_to(@transaction) }
+            format.xml  { render :xml => @transaction, :status => :created, :location => @transaction }
+          end
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @transaction.errors, :status => :unprocessable_entity }
@@ -75,6 +86,15 @@ class TransactionsController < ApplicationController
         format.xml  { render :xml => @transaction.errors, :status => :unprocessable_entity }
       end
     end
+  end
+  
+  def manage_transaction
+    
+    @transaction = Transaction.find(params[:id])
+    @renter = @transaction.renter
+    @user = User.find(@renter.user_id)
+    @modifications = Modification.find(:all, :conditions => ['transaction_id = ?', @transaction.id])
+    
   end
 
   # DELETE /transactions/1

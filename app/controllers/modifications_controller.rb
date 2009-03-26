@@ -44,11 +44,11 @@ class ModificationsController < ApplicationController
   # POST /modifications
   # POST /modifications.xml
   def create
-    @transaction = Transaction.new(params[:transaction])
-    @transaction.save
+    
+    
     
     @modification = Modification.new(params[:modification])
-    @modification.transaction_id = @transaction.id
+    
     #puts @modification.to_yaml
  
 
@@ -58,7 +58,7 @@ class ModificationsController < ApplicationController
         format.html { redirect_to(@modification) }
         format.xml  { render :xml => @modification, :status => :created, :location => @modification }
       else
-        flash[:notice] = 'NOT CREATED. '
+
         format.html { render :action => "new" }
         format.xml  { render :xml => @modification.errors, :status => :unprocessable_entity }
       end

@@ -31,7 +31,7 @@
 </p>
 
 <p>
-<% if @room_profile.empty? %> 
+<% if @room_profile.nil? %> 
 <%= link_to 'Create Room Profile', new_room_profile_path(:room_id => @room.id) %> <br><br>
 <% else %>
 <%= link_to 'View Room Profile', room_profile_path(@room_profile) %> <br><br>
@@ -41,6 +41,7 @@
 <p>
 	Reservations:
 <p>
+	
 <% if @transactions.empty? then %>
 	No Reservations
 <% else %>

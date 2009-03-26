@@ -17,32 +17,47 @@
 	<b>Modification history:</b>
 </p>
 
-<% if @modifications.size == 1 %>
-No modifications made yet.
-<% else %>
-<table>
+<table width="100%" align="center">
 	<tr>
-		<td><th>Check-in</th></td>
-		<td><th>Check-out</th></td>
-		<td><th>No. Guests</th></td>
-		<td><th width="30">Comments</th></td>
-		<td><th>Approved?</th></td>
-		<td><th>Date changed</th></td>
-		<td></td>
+		<td><b>Check-in</b></td>
+		<td><b>Check-out</b></td>
+		<td><b>No. Guests</b></td>
+		<td><b>Comments</b></td>
+		<td><b>Approved?</b></td>
+		<td><b>Date changed</b></td>
 	</tr>
 <% for modification in @modifications %>
 	<tr>
-		<td>modification.check_in.strftime("%B %d %Y")</td>
-		<td>modification.check_out.strftime("%B %d %Y")</td>
-		<td>modification.guests</td>
-		<td>modification.comments</td>
+		<td><%= modification.check_in.strftime("%B %d %Y") %></td>
+		<td><%= modification.check_out.strftime("%B %d %Y") %></td>
+		<td><%= modification.guests %></td>
+		<td><%= modification.comments %></td>
 		<td><% if modification.approved == true%>X<%end%></td>
-		<td>modification.created_at.strftime("%B %d %Y")</td>
-		<td><% link_to('Confirm', transaction_path(@transaction), :confirm => 'Are you sure you wish to confirm this reservation', :method => :update)%></td>
+		<td><%= modification.created_at.strftime("%B %d %Y") %></td>
 	</tr>
 <% end %>
+</table>
+<BR />
+
+<% if @transaction.approved.nil? %>
+	<p> Approve this reservation:</p>
+	<% form_for @transaction, :url =>{:action => "update"}  do |f| %>
+	<%= f.radio_button( :approved, true )%> Yes &nbsp;&nbsp;
+	<%= f.radio_button( :approved, false )%> No <BR />
+	<%= f.submit "Update", :url => {:action => "update"} %>
+	<% end %>
+<% else %>
+	<p>
+		You have already
+		<% if @transaction.approved == true %>
+			approved
+		<% else %>
+			declined
+		<% end %>
+		this reservation.
+	</p>
 <% end %>
 
-
+<BR />
 <%= link_to 'Edit', edit_transaction_path(@transaction) %> |
 <%= link_to 'Back', transactions_path %>

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090325151122) do
+ActiveRecord::Schema.define(:version => 20090326005635) do
 
   create_table "acts_as_xapian_jobs", :force => true do |t|
     t.string  "model",    :null => false
@@ -152,6 +152,7 @@ ActiveRecord::Schema.define(:version => 20090325151122) do
     t.boolean  "active",     :default => false
     t.datetime "updated_at"
     t.integer  "room_id"
+    t.boolean  "approved"
   end
 
   create_table "user_reviews", :force => true do |t|
