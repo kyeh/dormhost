@@ -2,6 +2,9 @@ class Profile < ActiveRecord::Base
   has_many :user_reviews
   belongs_to :college
   has_one :user
+  
+  acts_as_xapian  :texts => [:interests]
+  
  
   named_scope :for_user, lambda { |user_id| { :conditions => ["user_id = ?", user_id] }}
   

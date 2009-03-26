@@ -4,19 +4,30 @@ class RoomsController < ApplicationController
   before_filter :login_required
   
   def search
-    @search_params = params[:room][:q].to_s
-    puts params[:room][:q].to_s
-    puts "---------------------------------"
-    puts @search_params
-    
-    @xap_search = ActsAsXapian::Search.new([Room], params[:room][:q].to_s, { :limit => 100 })
-    @xap_results = @xap_search.results.collect { |r| r[:model] }
-    
-    respond_to do |format|
-      format.html 
-      format.xml  { render :xml => @xap_results }
+      @search_params = params[:room][:q].to_s
+
+      if (params[:filter] == "Location")
+        @xap_search = ActsAsXapian::Search.new([Room], "(city:" + @search_params + ") OR (state:" + @search_params + ") OR (zip:" + @search_params + ")", { :limit => 100 })
+      elsif (params[:filter] == "School")
+        unless @search_params.nil?
+          @spec = College.find(:first, :conditions => ['name = ?', @search_params])
+          unless @spec.nil?
+            @spec = @spec.id
+          end
+            @xap_search = ActsAsXapian::Search.new([Room], "college:" + @spec.to_s, { :limit => 100})
+        end
+      else
+        @xap_search = ActsAsXapian::Search.new([Room], @search_params, { :limit => 100 })
+      end
+
+      @xap_results = @xap_search.results.collect { |r| r[:model] }
+
+      respond_to do |format|
+        format.html 
+        format.xml  { render :xml => @xap_results }
+      end
     end
-  end
+  
   
   # GET /rooms
   # GET /rooms.xml

@@ -53,7 +53,8 @@
 						<td>
 							<% form_for :room, :url => { :action => :search } do |f| %>
 							    <%= f.text_field (:q) %><br>
-							<%= f.select(:college_id, College::COLLEGES_LIST, :prompt => "Select...") %>
+								<%= select_tag :filter, options_for_select([ "All", "Location", "School", "Interests", "Host"], "All") %>
+							
 						</td>
 							<td>
 							    <input type ="submit" value= "GO" />
