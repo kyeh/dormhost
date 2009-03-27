@@ -4,6 +4,7 @@ ActionController::Routing::Routes.draw do |map|
   map.search 'sessions/search', :controller => 'rooms', :action => 'search'
   map.search 'rooms/search', :controller => 'rooms', :action => 'search'
   map.search 'room_profiles/search', :controller => 'rooms', :action => 'search'
+  map.search 'hosts/search', :controller => 'rooms', :action => 'search'
   
   map.all '/rooms/all', :controller => 'rooms', :action => 'all'
   map.show_private '/rooms/show_private', :controller => 'rooms', :action => 'show_private'
