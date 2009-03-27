@@ -42,6 +42,20 @@
 		<%= f.check_box :smoker %>
 	</p>
 
+  <div>
+    <%= f.label(:photo, 'Upload photo') %>
+    <%= f.file_field(:photo) %>
+  </div>
+
+
+  <%- unless @profile.new_record? || !@profile.photo? -%>
+    <div>
+      <%= f.label(:delete_photo, 'Delete photo') %>
+      <%= image_tag(@profile.photo.url, :alt => 'Photo', :title => 'Current photo') %>
+      <%= f.check_box(:delete_photo) %>
+    </div>
+  <%- end -%>
+
   	<p>
     	<%= f.submit "Update" %>
   	</p>

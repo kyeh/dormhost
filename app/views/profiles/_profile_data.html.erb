@@ -1,11 +1,17 @@
 <% for profile in @profiles %>
 
+
+
+	<!-- TODO: IMAGE UPLOAD -->
+	
+	<p>
+	<%= image_tag profile.photo.url %><br><br><br><br>
+	</p>	
+
 	<p>
 		<b>College</b>:
 		<%=h profile.college.name %>
 	</p>
-
-	<!-- TODO: IMAGE UPLOAD -->
 
 	<p>
 		<b>Birthdate</b>:

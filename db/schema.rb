@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090326005635) do
+ActiveRecord::Schema.define(:version => 20090327150319) do
 
   create_table "acts_as_xapian_jobs", :force => true do |t|
     t.string  "model",    :null => false
@@ -86,6 +86,10 @@ ActiveRecord::Schema.define(:version => 20090326005635) do
     t.boolean  "smoker",                     :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   create_table "renters", :force => true do |t|

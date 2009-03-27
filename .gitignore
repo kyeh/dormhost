@@ -9,3 +9,6 @@ db/*.sqlite3
 
 # database configurations
 config/database.yml
+
+#photo stuff
+public/system/photos/*
