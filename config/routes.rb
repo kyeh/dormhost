@@ -25,6 +25,12 @@ ActionController::Routing::Routes.draw do |map|
                                    :unsuspend => :put,
                                    :purge     => :delete }
   
+  #map.forgot_password '/forgot_password', :controller => 'users', 
+                                    # :action => 'forgot_password'
+  
+  #map.reset_password '/reset_password/:id', :controller => 'users', 
+                                    # :action => 'reset_password' 
+  
   map.resource :session
   
   map.root :controller => 'home'
