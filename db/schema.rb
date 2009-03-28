@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090327150319) do
+ActiveRecord::Schema.define(:version => 20090327180824) do
 
   create_table "acts_as_xapian_jobs", :force => true do |t|
     t.string  "model",    :null => false
@@ -74,16 +74,16 @@ ActiveRecord::Schema.define(:version => 20090327150319) do
   end
 
   create_table "profiles", :force => true do |t|
-    t.integer  "user_id",                                       :null => false
-    t.integer  "college_id",                                    :null => false
+    t.integer  "user_id",                                             :null => false
+    t.integer  "college_id",                                          :null => false
     t.string   "image"
     t.date     "birthdate"
     t.date     "grad_year"
-    t.string   "phone",        :limit => 20
+    t.string   "phone",              :limit => 20
     t.string   "living_style"
     t.string   "bedtime"
     t.string   "interests"
-    t.boolean  "smoker",                     :default => false
+    t.boolean  "smoker",                           :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "photo_file_name"
@@ -185,6 +185,7 @@ ActiveRecord::Schema.define(:version => 20090327150319) do
     t.datetime "activated_at"
     t.string   "state",                                    :default => "passive"
     t.datetime "deleted_at"
+    t.boolean  "is_admin",                                 :default => false
   end
 
   add_index "users", ["username"], :name => "index_users_on_login", :unique => true
