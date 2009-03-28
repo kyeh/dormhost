@@ -1,7 +1,7 @@
 class RoomsController < ApplicationController
   layout "mylistings"
   
-  before_filter :login_required
+  before_filter :login_required, :except => :all
   
   def search
       @search_params = params[:room][:q].to_s
@@ -93,9 +93,14 @@ class RoomsController < ApplicationController
   
   def all
     user = get_user
-    @host = Host.find(:first, :conditions => ['user_id = ?', user.id])
-    session[:host_id] = @host.id
-    @rooms = Room.find(:all, :conditions => ['host_id != ?', session[:host_id]])
+    
+    if !logged_in?
+      @rooms = Room.find(:all)
+    else
+      @host = Host.find(:first, :conditions => ['user_id = ?', user.id])
+      session[:host_id] = @host.id
+      @rooms = Room.find(:all, :conditions => ['host_id != ?', session[:host_id]])
+    end
     
     respond_to do |format|
       format.html # all.html.erb
