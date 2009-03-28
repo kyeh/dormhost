@@ -1,10 +1,11 @@
 <h1>Editing profile</h1>
 
-<% form_for(@profile) do |f| %>
+<% form_for(@profile, :html => { :multipart => true }) do |f| %>
   <%= f.error_messages %>
 
 	
 	<%= f.hidden_field :user_id, :value => session[:user_id] %> 
+			<%= f.hidden_field :delete_photo, :value => 0 %> 
 	
 	<p>
 		<b>College</b>:<br>

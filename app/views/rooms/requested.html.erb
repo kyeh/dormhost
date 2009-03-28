@@ -1,3 +1,5 @@
+<h1>Your requested rooms</h1>
+
 <% for transaction in @transactions %>
 <p>
 <%= link_to transaction.room.street_address_1, room_path(transaction.room.id) %> -

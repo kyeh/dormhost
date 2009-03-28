@@ -20,6 +20,8 @@ class TransactionsController < ApplicationController
     @renter = @transaction.renter
     @user = User.find(@renter.user_id)
     @modifications = Modification.find(:all, :conditions => ['transaction_id = ?', @transaction.id])
+    
+    @last_modification = @modifications.reverse[0]
 
     respond_to do |format|
       format.html # show.html.erb
@@ -61,7 +63,7 @@ class TransactionsController < ApplicationController
           @modification.transaction_id = @transaction.id
           if @modification.save
             flash[:notice] = 'Transaction was successfully created.'
-            format.html { redirect_to(@transaction) }
+            format.html { redirect_to('/transactions/manage_transaction/' + @transaction.id.to_s) }
             format.xml  { render :xml => @transaction, :status => :created, :location => @transaction }
           end
       else
@@ -75,6 +77,12 @@ class TransactionsController < ApplicationController
   # PUT /transactions/1.xml
   def update
     @transaction = Transaction.find(params[:id])
+
+    @modification = Modification.new(params[:modification])
+    #puts "-------------------------------------------"
+    #puts params[:modification].to_i
+    #puts "-------------------------------------------"
+    #@modfication.approved = @transaction.approved
 
     respond_to do |format|
       if @transaction.update_attributes(params[:transaction])

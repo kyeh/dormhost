@@ -45,9 +45,11 @@ class ModificationsController < ApplicationController
   # POST /modifications.xml
   def create
     
-    
-    
+     @transaction = Transaction.new(params[:transaction])
+     @transaction.save
+      
     @modification = Modification.new(params[:modification])
+    @modification.transaction_id = @transaction.id
     
     #puts @modification.to_yaml
  
