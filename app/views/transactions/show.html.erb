@@ -42,6 +42,9 @@
 <% if @transaction.approved.nil? %>
 	<p> Approve this reservation:</p>
 	<% form_for @transaction, :url =>{:action => "update"}  do |f| %>
+		<% fields_for :modification, @modification do |modification_field| %>
+			<%= modification_field.text_field :id, :value => @last_modification.id %>
+		<% end %>
 	<%= f.radio_button( :approved, true )%> Yes &nbsp;&nbsp;
 	<%= f.radio_button( :approved, false )%> No <BR />
 	<%= f.submit "Update", :url => {:action => "update"} %>
