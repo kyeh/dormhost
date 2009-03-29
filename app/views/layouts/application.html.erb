@@ -24,6 +24,9 @@
 				<br />
 				<label for="password" style="font-size: 80%">Password:</label>
 				<%= password_field_tag 'password', nil %>
+				<br />
+				<label for="remember_me" style="font-size: 80%">Remember me:</label>
+				<%= check_box_tag 'remember_me', '1', @remember_me %>
 				<table>
 					<tr>
 						<td>
@@ -31,19 +34,12 @@
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						</td>
 						<td>
-				<div id="ytext" >
-				<%= link_to 'Register', new_user_path %>
-				</div>
-				<tr>
-					<td>
-						<div id="ytext" >
-							<%= link_to 'Forgot_password', forgotpassword_path %>
-						</div>
-					</td>
-				</tr>
-						</td>
+							<div id="ytext">
+								<%= link_to 'Register', new_user_path %> <font color=#FFCC66>|</font> <%= link_to 'Forgot Password?', forgot_password_path %>
+							</div>
+			    		</td>
 						<td>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    
+
 				<%= submit_tag 'Log in' %>	
 				<!-- Uncomment this if you want this functionality -->
 				<!--
@@ -52,7 +48,7 @@
 				<br /> -->
 						</td>
 					</tr>
-					</table>	
+				</table>	
 				<% end -%>
 			</div>
 			<% end -%>

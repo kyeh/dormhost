@@ -185,6 +185,8 @@ ActiveRecord::Schema.define(:version => 20090327180824) do
     t.datetime "activated_at"
     t.string   "state",                                    :default => "passive"
     t.datetime "deleted_at"
+    t.string   "password_reset_code",       :limit => 40
+    t.string   "user_type",                 :limit => 40
     t.boolean  "is_admin",                                 :default => false
   end
 

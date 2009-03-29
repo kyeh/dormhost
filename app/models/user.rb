@@ -49,16 +49,41 @@ class User < ActiveRecord::Base
   def email=(value)
     write_attribute :email, (value ? value.downcase : nil)
   end
+  
+  def forgot_password
+    @forgotten_password = true
+    self.make_password_reset_code
+  end
+
+  def reset_password
+    # First update the password_reset_code before setting the 
+    # reset_password flag to avoid duplicate email notifications.
+    update_attributes(:password_reset_code => nil)
+    @reset_password = true
+  end  
+
+  #used in user_observer
+  def recently_forgot_password?
+    @forgotten_password
+  end
+    
+  def recently_reset_password?
+    @reset_password
+  end
+    
+  def recently_activated?
+    @recent_active
+  end
 
   protected
-    
 
     def make_activation_code
-  
       self.deleted_at = nil
-  
       self.activation_code = self.class.make_token
     end
-
+  
+    def make_password_reset_code
+      self.password_reset_code = Digest::SHA1.hexdigest( Time.now.to_s.split(//).sort_by {rand}.join )
+    end
 
 end
