@@ -1,0 +1,51 @@
+<p>
+  <b>First requested:</b>
+  <%=h @transaction.created_at.strftime("%B %d %Y") %>
+</p>
+
+<p>
+  <b>Last updated:</b>
+  <%=h @transaction.updated_at.strftime("%B %d %Y") %>
+</p>
+
+<% if (@transaction.approved == true) && (@last_modification.check_out.to_time <= Time.now) %>
+<p>
+	<% unless @room_review.nil? %>
+		<%= link_to 'Read your review for this room', room_review_path(@room_review.id) %>
+	<% else %>
+		<%= link_to 'Submit a room review', new_room_review_path(:transaction_id => @transaction.id) %>
+	<% end %>
+</p>
+<% else %>
+<p>
+<%= link_to('Submit a new modification', new_modification_path(:transaction_id => @transaction.id)) %>
+</p>
+<% end %>
+<p>
+	<b>Modification history:</b>
+</p>
+
+<table>
+	<tr>
+		<td><b>Check-in</b></td>
+		<td><b>Check-out</b></td>
+		<td><b>No. Guests</b></td>
+		<td><b>Comments</b></td>
+		<td><b>Approved?</b></td>
+		<td><b>Date changed</b></td>
+	</tr>
+<% for modification in @modifications %>
+	<tr>
+		<td><%= modification.check_in.strftime("%B %d %Y") %></td>
+		<td><%= modification.check_out.strftime("%B %d %Y") %></td>
+		<td><%= modification.guests %></td>
+		<td><%= modification.comments %></td>
+		<td><% if modification.approved == true%>X<%end%></td>
+		<td><%= modification.created_at.strftime("%B %d %Y") %></td>
+	</tr>
+<% end %>
+</table>
+
+
+
+<BR />
