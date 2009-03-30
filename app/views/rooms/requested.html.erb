@@ -1,4 +1,7 @@
-<h1>Your requested rooms</h1>
+
+
+<BR />
+<h2>Your requested rooms</h2>
 
 <% for transaction in @transactions %>
 <p>
@@ -9,4 +12,15 @@
 <%  end end %>
 <%= link_to('View details', '/transactions/manage_transaction/' + transaction.id.to_s) %>
 </p>
+<% end %>
+
+<BR />
+<h2>Past trips</h2>
+
+<% if !@past_trips.nil? %>
+<% for modification in @past_trips%>
+<p>
+	<%= link_to modification.check_in.strftime("%B %d %Y") + " to " + modification.check_out.strftime("%B %d %Y"), '/transactions/manage_transaction/' + modification.transaction_id.to_s %>
+</p>
+<% end %>
 <% end %>

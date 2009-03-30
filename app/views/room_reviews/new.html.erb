@@ -1,7 +1,19 @@
-<h1>New room_review</h1>
+<h1>New Room Review</h1>
 
 <% form_for(@room_review) do |f| %>
   <%= f.error_messages %>
+  
+  <%= f.text_field :transaction_id, :value => params[:transaction_id] %>
+  
+  <p>
+  <%= f.label :rating %>
+  <%= f.select(:rating, {"1" => 01, "2" => 02, "3" => 03, "4" => "4", "5" => "5", "6" => "6", "7" => "7", "8" => "8", "9" => "9", "10" => "10"}.sort) %> 
+  </p>
+  
+  <p>
+  <%= f.label :review %>
+  <%= f.text_area :review, :cols => 40, :rows => 10%>
+  </p>
 
   <p>
     <%= f.submit "Create" %>

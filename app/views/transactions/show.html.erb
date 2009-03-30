@@ -43,7 +43,7 @@
 	<p> Approve this reservation:</p>
 	<% form_for @transaction, :url =>{:action => "update"}  do |f| %>
 		<% fields_for :modification, @modification do |modification_field| %>
-			<%= modification_field.text_field :id, :value => @last_modification.id %>
+			<%= modification_field.hidden_field :id, :value => @last_modification.id %>
 		<% end %>
 	<%= f.radio_button( :approved, true )%> Yes &nbsp;&nbsp;
 	<%= f.radio_button( :approved, false )%> No <BR />

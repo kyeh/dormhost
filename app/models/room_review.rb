@@ -1,4 +1,5 @@
 class RoomReview < ActiveRecord::Base
-  belongs_to :room
+
+  #belongs_to :transaction  #This relationship messes up creating a new room review
   
 end

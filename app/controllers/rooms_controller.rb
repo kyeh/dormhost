@@ -3,6 +3,8 @@ class RoomsController < ApplicationController
   
   before_filter :login_required, :except => :all
   
+  require 'time'
+  
   def search
       @search_params = params[:room][:q].to_s
 
@@ -35,6 +37,16 @@ class RoomsController < ApplicationController
   @user = get_user
   @host = Host.find(:first, :conditions => ['user_id = ?', @user.id])
   @rooms = Room.find(:all, :conditions => ['host_id = ?', @host.id])
+  
+  @reservations = Array.new
+  for room in @rooms 
+    reservations = Transaction.find(:all, :conditions => ['approved = ? and room_id = ?', nil, room.id])
+    if !reservations.empty?
+      for reservation in reservations
+        @reservations.push(reservation)
+      end
+    end
+  end
 	
 
     respond_to do |format|
@@ -71,7 +83,7 @@ class RoomsController < ApplicationController
     @user = get_user
     #FIX THIS so that "Request this room" doesn't show if the renter has already requested the room
     @renter = Renter.find(:first, :conditions => ['user_id = ?', @user.id])
-    @reserved = Transaction.find(:first, :conditions => ['room_id = ?', @room.id])
+    @reserved = Transaction.find(:first, :conditions => ['room_id = ? and renter_id = ?', @room.id, @renter.id])
      
 	
     respond_to do |format|
@@ -89,6 +101,21 @@ class RoomsController < ApplicationController
       room = Room.find(:first, :conditions => ['id = ?', transaction.room_id])
       @rooms.push(room)
     end
+    
+    @past_transactions = Transaction.find(:all, :conditions => ['renter_id = ? AND approved = ?', @renter.id, true])
+    @past_trips = Array.new
+    for past_transaction in @past_transactions
+      modification = Modification.find(:first, :conditions => ['transaction_id = ?', past_transaction.id], :order => 'id DESC')
+      puts "******************************************"
+      #puts past_transaction.id
+      #puts modification.check_out
+      #puts modification.to_yaml
+      puts "-----------------------------------------"
+      if(modification.check_out.to_time < Time.now)
+        @past_trips.push(modification)
+      end
+    end
+    puts @past_trips.size.to_s + " = size ********************"
   end
   
   def all

@@ -20,6 +20,19 @@
 	</tr>
 <% end %>
 <% end %>
+
+
+<th width="300">Reservations</th>
+<% unless @reservations.empty? %>	
+	<% for reservation in @reservations %>
+	<tr>
+		<td align="left">&nbsp;<%= link_to( h(reservation.id), 'rooms/show_private/' + room.id.to_s) %></td>
+  	</tr>
+	
+	<% end%>
+<% end %>
+	
+
 </table>
 
 <br />

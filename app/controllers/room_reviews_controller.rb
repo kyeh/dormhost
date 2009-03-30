@@ -1,6 +1,8 @@
 class RoomReviewsController < ApplicationController
   # GET /room_reviews
   # GET /room_reviews.xml
+  
+  layout 'mytrips'
   def index
     @room_reviews = RoomReview.find(:all)
 
