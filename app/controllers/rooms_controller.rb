@@ -65,6 +65,12 @@ class RoomsController < ApplicationController
     @room_profile_id = @room_profile.id unless @room_profile.nil?
     
     @transactions = Transaction.find(:all, :conditions => ['room_id = ?', @room.id])
+    
+    @modifications = Array.new
+    for transaction in @transactions
+      modification = Modification.find(:first, :conditions => ['transaction_id = ?', transaction.id])
+      @modifications.push(modification)
+    end
      
   
     respond_to do |format|
@@ -84,6 +90,7 @@ class RoomsController < ApplicationController
     #FIX THIS so that "Request this room" doesn't show if the renter has already requested the room
     @renter = Renter.find(:first, :conditions => ['user_id = ?', @user.id])
     @reserved = Transaction.find(:first, :conditions => ['room_id = ? and renter_id = ?', @room.id, @renter.id])
+    @host = Host.find(:first, :conditions => ['user_id = ?', @user.id])
      
 	
     respond_to do |format|

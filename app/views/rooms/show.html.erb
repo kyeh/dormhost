@@ -33,6 +33,8 @@
 <% if !@reserved.nil? %>
 You have already requested this room.
 <% else %>
-<%= link_to 'Request this room', new_transaction_path(:room_id => @room.id, :renter_id => @renter.id) %>
+	<% unless @host.id == @room.host_id %>
+		<%= link_to 'Request this room', new_transaction_path(:room_id => @room.id, :renter_id => @renter.id) %>
+	<% end %>
 <% end %>
 <%= link_to 'All Rooms', rooms_path %>
