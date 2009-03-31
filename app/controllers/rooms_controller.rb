@@ -93,6 +93,7 @@ class RoomsController < ApplicationController
         format.html 
         format.xml  { render :xml => @xap_results }
       end
+      render :layout => "planatrip"
     end
   
   
@@ -162,6 +163,7 @@ class RoomsController < ApplicationController
       format.html # show.html.erb
       format.xml  { render :xml => @room }
     end
+    render :layout => "mytrips"
   end
   
   def requested

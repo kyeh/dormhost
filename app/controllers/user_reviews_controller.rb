@@ -1,9 +1,12 @@
 class UserReviewsController < ApplicationController
+  layout"planatrip"
+  
   # GET /user_reviews
   # GET /user_reviews.xml
   def index
     @user_reviews = UserReview.find(:all)
-
+    @user = get_user
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @user_reviews }
@@ -14,7 +17,7 @@ class UserReviewsController < ApplicationController
   # GET /user_reviews/1.xml
   def show
     @user_review = UserReview.find(params[:id])
-
+    
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @user_review }

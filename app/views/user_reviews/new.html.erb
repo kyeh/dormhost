@@ -1,7 +1,20 @@
-<h1>New user_review</h1>
+<h1>Review This User</h1>
 
 <% form_for(@user_review) do |f| %>
   <%= f.error_messages %>
+
+	  <p>
+	  <%= f.label :rating %>
+	  <%= f.select(:rating, {"01" => 1, "02" => 2, "03" => 3, "04" => 4, "05" => 5, "06" => 6, "07" => 7, "08" => 8, "09" => 9, "10" => 10}.sort) %> 
+	  </p>
+
+	  <p>
+	  <%= f.label :review %>
+	  <%= f.text_area :review, :cols => 40, :rows => 10%>
+	  </p>
+
+		<%= f.text_field :user_id, :value => params[:user_id] %>
+		<%= f.text_field :profile_id, :value => 1%>
 
   <p>
     <%= f.submit "Create" %>

@@ -1,18 +1,47 @@
-<h1>Listing user_reviews</h1>
+<h1><%=@user.first_name + "'s Reviews" %></h1><br>
 
-<table>
-  <tr>
-  </tr>
+<table class="datagrid">
+  <thead class="datagrid">
+	<th width="300">User Reviews</th>
 
 <% for user_review in @user_reviews %>
   <tr>
-    <td><%= link_to 'Show', user_review %></td>
-    <td><%= link_to 'Edit', edit_user_review_path(user_review) %></td>
-    <td><%= link_to 'Destroy', user_review, :confirm => 'Are you sure?', :method => :delete %></td>
+	<% if h(user_review.rating) == "10" %>
+    <td align="left"><%= image_tag("star10.png") %></td>
+	<% end %>
+	<% if h(user_review.rating) == "9" %>
+    <td align="left"><%= image_tag("star9.png") %></td>
+	<% end %>
+	<% if h(user_review.rating) == "8" %>
+    <td align="left"><%= image_tag("star8.png") %></td>
+	<% end %>
+	<% if h(user_review.rating) == "7" %>
+    <td align="left"><%= image_tag("star7.png") %></td>
+	<% end %>
+	<% if h(user_review.rating) == "6" %>
+    <td align="left"><%= image_tag("star6.png") %></td>
+	<% end %>
+	<% if h(user_review.rating) == "5" %>
+    <td align="left"><%= image_tag("star5.png") %></td>
+	<% end %>
+	<% if h(user_review.rating) == "4" %>
+    <td align="left"><%= image_tag("star4.png") %></td>
+	<% end %>
+	<% if h(user_review.rating) == "3" %>
+    <td align="left"><%= image_tag("star3.png") %></td>
+	<% end %>
+	<% if h(user_review.rating) == "2" %>
+    <td align="left"><%= image_tag("star2.png") %></td>
+	<% end %>
+	<% if h(user_review.rating) == "1" %>
+    <td align="left"><%= image_tag("star1.png") %></td>
+	<% end %>
+  </tr>
+  <tr>
+	<td align="left">&nbsp;<%= "Review: " + h(user_review.review) %></td>
+  </tr>
+  <tr>
+	<td align="left">&nbsp;<br></td>
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New user_review', new_user_review_path %>

@@ -10,7 +10,8 @@ class ProfilesController < ApplicationController
   # GET /profiles.xml
   def index
     @profiles = Profile.for_user(session[:user_id])
-
+    @user = get_user
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @profiles }
@@ -21,7 +22,8 @@ class ProfilesController < ApplicationController
   # GET /profiles/1.xml
   def show
     @profile = Profile.find(params[:id])
-
+    @user = get_user
+    
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @profile }
@@ -32,7 +34,8 @@ class ProfilesController < ApplicationController
   # GET /profiles/new.xml
   def new
     @profile = Profile.new
-
+    @user = get_user
+    
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @profile }
@@ -42,12 +45,15 @@ class ProfilesController < ApplicationController
   # GET /profiles/1/edit
   def edit
     @profile = Profile.find(params[:id])
+    @user = get_user
+    
   end
 
   # POST /profiles
   # POST /profiles.xml
   def create
     @profile = Profile.new(params[:profile])
+    @user = get_user
 
     respond_to do |format|
       if @profile.save

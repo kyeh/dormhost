@@ -1,4 +1,4 @@
-<h1>Your Profile</h1>
+<h1> <%=@user.first_name + "'s Profile" %> </h1>
 
 <table>
   <tr>
@@ -15,8 +15,13 @@ No profile has been created.<br><br>
   	</tr>
 	<% end %>
 <% end %>
+         <!-- NEED TO FIX THESE ROUTES/TALK ABOUT HOW WERE GOING TO ROUTE THESE-->
+	<tr>
+		<%= link_to 'View ' + @user.first_name + 's Reviews', user_review_path(@user.id) %> |
+	</tr>
+	<tr>
+		<%= link_to 'Review This User', new_user_review_path(:user_id => @user.id) %>
+	</tr>
 </table>
-
-<br />
 
 
