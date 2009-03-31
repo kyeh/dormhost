@@ -3,6 +3,7 @@ class Room < ActiveRecord::Base
                   :terms => [[:city, 'C', "city"],
                             [:state, 'S', "state"],
                             [:zip, 'Q', "zip"],
+                            [:host, 'H', "host"],
                             [:college_id, 'O', "college"]]
 
   belongs_to :host

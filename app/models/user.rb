@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   include Authentication
   include Authentication::ByPassword
   include Authentication::ByCookieToken
+  
+  acts_as_xapian  :texts => [:first_name, :last_name]
 
   include Authorization::StatefulRoles
   validates_presence_of     :username
