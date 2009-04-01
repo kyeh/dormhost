@@ -1,11 +1,13 @@
 class RatingsController < ApplicationController
-  #before_filter :get_class_by_name
-  #before_filter :login_required
+  before_filter :get_class_by_name
+  before_filter :login_required
     
   def rate
     return unless logged_in?
     
     rateable = @rateable_class.find(params[:id])
+    @current_user = get_user
+    
     
     # Delete the old ratings for current user
     Rating.delete_all(["rateable_type = ? AND rateable_id = ? AND user_id = ?", @rateable_class.base_class.to_s, params[:id], @current_user.id])
@@ -24,9 +26,12 @@ class RatingsController < ApplicationController
   def get_class_by_name
     bad_class = false
     begin
+      puts 'RATABLE CLASS = ' + params[:rateable_type]
+      puts "*****************************************"
       @rateable_class = Module.const_get(params[:rateable_type])
     rescue NameError
       # The user is messing with the content_class...
+      puts "GETS TO BAD CLASS PLACE"
       bad_class = true
     end 
     
