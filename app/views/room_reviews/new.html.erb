@@ -1,5 +1,7 @@
 <h1>New Room Review</h1>
 
+<%= render :partial => "ratings/rate", :locals => { :asset => @room_review } %> 
+
 <% form_for(@room_review) do |f| %>
   <%= f.error_messages %>
   

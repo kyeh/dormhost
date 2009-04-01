@@ -376,3 +376,72 @@ background-color:#333399;
 	float:	right;
 	background:#FF0000;	
 }
+
+/*********** STAR RATING *************/
+
+.star-rating,  
+.star-rating a:hover,  
+.star-rating a:active,  
+.star-rating a:focus,  
+.star-rating .current-rating{  
+    background: url('/images/star_rating.gif') left -1000px repeat-x;  
+}  
+.star-rating{  
+    position: relative;  
+    width: 150px;  
+    height: 30px;  
+    overflow: hidden;  
+    list-style: none;  
+    margin: 0;  
+    padding: 0;  
+    background-position: top left;  
+}  
+.star-rating li{  
+    display: inline;  
+}  
+.star-rating a,  
+.star-rating .current-rating{  
+    position: absolute;  
+    top: 0;  
+    left: 0;  
+    text-indent: -1000em;  
+    height: 30px;  
+    line-height: 30px;  
+    outline: none;  
+    overflow: hidden;  
+    border: none;  
+}  
+.star-rating a:hover,  
+.star-rating a:active,  
+.star-rating a:focus{  
+    background-position: center left;  
+}  
+.star-rating a.one-stars{  
+    width: 20%;  
+    z-index: 6;  
+}  
+.star-rating a.two-stars{  
+    width: 40%;  
+    z-index: 5;  
+}  
+.star-rating a.three-stars{  
+    width: 60%;  
+    z-index: 4;  
+}  
+.star-rating a.four-stars{  
+    width: 80%;  
+    z-index: 3;  
+}  
+.star-rating a.five-stars{  
+    width: 100%;  
+    z-index: 2;  
+}  
+.star-rating .current-rating{  
+    z-index: 1;  
+    background-position: bottom left;  
+}  
+.star-ratings-block {  
+    font-size: .75em;  
+    text-align: center;  
+    width: 100%;  
+}  
