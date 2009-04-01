@@ -19,14 +19,22 @@ class RoomsController < ApplicationController
         
         #Search by college/university
         elsif (params[:filter] == "School")
-          unless @search_params.nil?
-            @spec = College.find(:first, :conditions => ['name = ?', @search_params])
-            unless @spec.nil?
-              @spec = @spec.id
+          @xap_results = Array.new
+          
+          # Find all colleges with names that match the serach params
+          @search1 = ActsAsXapian::Search.new([College], @search_params, { :limit => 100 })
+          @results1 = @search1.results.collect { |r| r[:model] }
+          
+          # Find all rooms that match the colleges found
+          for result1 in @results1
+            @search2 = ActsAsXapian::Search.new([Room], "college:" + result1.id.to_s, { :limit => 100 })
+            @results2 = @search2.results.collect { |r| r[:model] }
+            
+            # Add all found rooms to temp array
+            for result2 in @results2
+              @xap_results.push(result2)
             end
-              @xap_search = ActsAsXapian::Search.new([Room], "college:" + @spec.to_s, { :limit => 100 })
           end
-          @xap_results = @xap_search.results.collect { |r| r[:model] }
         
       
         # Search by host
@@ -108,7 +116,6 @@ class RoomsController < ApplicationController
         
           # Find all the hosts that match the users found
           for result2 in @results2
-            puts "-----------------------------------------------------"
             @search4 = ActsAsXapian::Search.new([Host], result2.id.to_s, { :limit => 100 })
             @results4 = @search4.results.collect { |r| r[:model] }
           
@@ -123,7 +130,22 @@ class RoomsController < ApplicationController
             temp = Room.find(:first, :conditions => ['host_id = ?', host.id])
             @xap_results.push(temp)
           end
-        
+          
+          # Find all colleges that match search params
+          @search5 = ActsAsXapian::Search.new([College], @search_params, { :limit => 100 })
+          @results5 = @search5.results.collect { |r| r[:model] }
+          
+          # Find all rooms that match the colleges found
+          for result5 in @results5
+            @search6 = ActsAsXapian::Search.new([Room], "college:" + result5.id.to_s, { :limit => 100 })
+            @results6 = @search6.results.collect { |r| r[:model] }
+            
+            # Add all found rooms to temp array
+            for result6 in @results6
+              @xap_results.push(result6)
+            end
+          end
+          
           # Find all rooms that contain search params
           @room_search = ActsAsXapian::Search.new([Room], @search_params, { :limit => 100 })
           @room_results = @room_search.results.collect { |r| r[:model] }

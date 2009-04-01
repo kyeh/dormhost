@@ -2,6 +2,8 @@ class College < ActiveRecord::Base
   has_many :rooms
   has_many :profiles
   
+  acts_as_xapian  :texts => [:name]
+  
   COLLEGES_LIST = College.find(:all, :order => "name").map{ |l| ["#{l.name}", l.id] }
   
   def is_updatable_by(user)
