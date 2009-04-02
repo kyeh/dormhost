@@ -89,5 +89,9 @@ module UsersHelper
       link_to_login_with_IP content_text, options
     end
   end
+  
+  def gender_select
+    [["Male", "Male"],["Female","Female"]]
+  end
 
 end

@@ -16,6 +16,9 @@
 				<p><%= label_tag 'Username' %><br/>
 				<%= f.text_field :username %></p>
 				
+				<p><%= label_tag 'Gender' %><br/>
+				<%= f.select( :gender , gender_select ,:prompt => "Please Select") %></p>
+				
 				<p><%= label_tag 'email' %><br/>
 				<%= f.text_field :email %></p>
 				

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090401180629) do
+ActiveRecord::Schema.define(:version => 20090402074036) do
 
   create_table "acts_as_xapian_jobs", :force => true do |t|
     t.string  "model",    :null => false
@@ -198,6 +198,7 @@ ActiveRecord::Schema.define(:version => 20090401180629) do
     t.string   "password_reset_code",       :limit => 40
     t.string   "user_type",                 :limit => 40
     t.boolean  "is_admin",                                 :default => false
+    t.string   "gender",                    :limit => 6
   end
 
   add_index "users", ["username"], :name => "index_users_on_login", :unique => true

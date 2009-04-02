@@ -99,7 +99,7 @@ class UsersController < ApplicationController
       if @user = User.find_by_email(params[:user][:email])
         @user.forgot_password
         @user.save
-        flash.now[:notice] = "A password reset link has been sent to your email address" 
+        redirect_to('/confirmation')
       else
         flash.now[:notice] = "Could not find a user with that email address" 
       end
