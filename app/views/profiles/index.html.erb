@@ -5,7 +5,7 @@
   </tr>
   <tr>
   	<%=link_to 'Change Password', change_password_path%>
-  </tr>
+  </tr><br>
 <% if @profiles.empty? %>
 No profile has been created.<br><br>
 	<%= link_to 'Create new profile', new_profile_path %>
@@ -14,7 +14,7 @@ No profile has been created.<br><br>
 	<%= render :partial => 'profile_data' %>
 	
   	<tr>
-    	<td><%= link_to 'Edit Profile', edit_profile_path(profile) %></td>
+    	<td><%= link_to 'Edit Profile', edit_profile_path(profile) %> | </td>
   	</tr>
 	<% end %>
 <% end %>
@@ -23,10 +23,17 @@ No profile has been created.<br><br>
 		<%= link_to 'View ' + @user.first_name + 's Reviews', user_reviews_path %> |
 	</tr>
 	<tr>
-		<%= link_to 'Review This User', new_user_review_path(:user_id => @user.id) %>
+		<%= link_to 'Review This User', new_user_review_path(:user_id => @user.id)%> |
 	</tr>
+	</br>
 	<tr>
-		<%= link_to 'De-activate account', :confirm => "Do you really want to deactivate your account? Warning: Reinstating your account will take 2 working days"%>
+		<td>
+			
+		<% form_for :user, @user, :url => { :action => "suspend"} do |f| -%>
+			<%= submit_tag 'De-activate Account'%>
+		<% end -%>
+		
+		</td>
 	</tr>
 </table>
 

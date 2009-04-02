@@ -77,7 +77,7 @@ class User < ActiveRecord::Base
   def recently_activated?
     @recent_active
   end
-
+  
   protected
 
     def make_activation_code

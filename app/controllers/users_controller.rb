@@ -129,7 +129,8 @@ class UsersController < ApplicationController
   end
 
   def suspend
-    @user.suspend! 
+    @user.suspend!
+    puts "Hello"
     redirect_to users_path
   end
 
