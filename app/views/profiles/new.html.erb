@@ -14,11 +14,11 @@
 	
 	<p>
 		<b>Birthdate</b>:<br>
-		<%= f.date_select :birthdate, :order => [:month, :day, :year] %>
+		<%= f.date_select :birthdate, :start_year => (Date.today.year-35), :end_year => (Date.today.year), :order => [:month, :day, :year] %>
 	</p>
 	<p>
-		<b>Graduation Year</b>:<br>
-		<%= f.date_select :grad_year, :order => [:month, :day, :year] %>
+		<b>Graduation Date</b>:<br>
+		<%= f.date_select :grad_year, :start_year => (Date.today.year), :end_year => (Date.today.year+10), :order => [:month, :day, :year] %>
 	</p>
 	<p>
 		<b>Phone Number</b>:<br>

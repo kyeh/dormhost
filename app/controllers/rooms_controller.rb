@@ -59,8 +59,11 @@ class RoomsController < ApplicationController
         
           # Find all the rooms that match the hosts found
           for host in @host_results
-            temp = Room.find(:first, :conditions => ['host_id = ?', host.id])
-            @xap_results.push(temp)
+            @temp = Room.find(:all, :conditions => ['host_id = ?', host.id])
+            
+            for tmp in @temp
+              @xap_results.push(tmp)
+            end
           end
         
         
@@ -86,8 +89,11 @@ class RoomsController < ApplicationController
         
           # Find all the rooms that match the hosts found
           for host in @host_results
-            temp = Room.find(:first, :conditions => ['host_id = ?', host.id])
-            @xap_results.push(temp)
+            @temp = Room.find(:all, :conditions => ['host_id = ?', host.id])
+            
+            for tmp in @temp
+              @xap_results.push(tmp)
+            end
           end
         
         # Find rooms that match all conditions
@@ -127,8 +133,11 @@ class RoomsController < ApplicationController
         
           # Find all the rooms that match the hosts found
           for host in @host_results
-            temp = Room.find(:first, :conditions => ['host_id = ?', host.id])
-            @xap_results.push(temp)
+            @temp = Room.find(:all, :conditions => ['host_id = ?', host.id])
+            
+            for tmp in @temp
+              @xap_results.push(tmp)
+            end
           end
           
           # Find all colleges that match search params
@@ -230,7 +239,6 @@ class RoomsController < ApplicationController
       format.html # show.html.erb
       format.xml  { render :xml => @room }
     end
-    render :layout => "mytrips"
   end
   
   def requested
