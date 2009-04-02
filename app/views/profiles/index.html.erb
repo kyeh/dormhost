@@ -3,6 +3,9 @@
 <table>
   <tr>
   </tr>
+  <tr>
+  	<%=link_to 'Change Password', change_password_path%>
+  </tr>
 <% if @profiles.empty? %>
 No profile has been created.<br><br>
 	<%= link_to 'Create new profile', new_profile_path %>
@@ -21,6 +24,9 @@ No profile has been created.<br><br>
 	</tr>
 	<tr>
 		<%= link_to 'Review This User', new_user_review_path(:user_id => @user.id) %>
+	</tr>
+	<tr>
+		<%= link_to 'De-activate account', :confirm => "Do you really want to deactivate your account? Warning: Reinstating your account will take 2 working days"%>
 	</tr>
 </table>
 

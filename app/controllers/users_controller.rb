@@ -79,18 +79,18 @@ class UsersController < ApplicationController
           current_user.password = params[:password]
 
           if current_user.save
-            flash[:notice] = "Password successfully updated" 
-            redirect_to profile_url(current_user.login)
+            flash.now[:notice] = "Password successfully updated" 
+            render :action => 'change_confirmation'
           else
-            flash[:alert] = "Password not changed" 
+            flash.now[:notice] = "Password not changed" 
           end
 
         else
-          flash[:alert] = "New Password mismatch" 
+          flash.now[:notice] = "New Password mismatch" 
           @old_password = params[:old_password]
         end
       else
-        flash[:alert] = "Old password incorrect" 
+        flash.now[:notice] = "Old password incorrect" 
       end
   end
   
@@ -99,7 +99,7 @@ class UsersController < ApplicationController
       if @user = User.find_by_email(params[:user][:email])
         @user.forgot_password
         @user.save
-        redirect_to('/confirmation')
+        render :action => 'confirmation'
       else
         flash.now[:notice] = "Could not find a user with that email address" 
       end
@@ -116,9 +116,10 @@ class UsersController < ApplicationController
             current_user.password = params[:user][:password]
             @user.reset_password
             current_user.save
-            flash.now[:notice] = "Password reset success."
-            redirect_to('/home')
+            #flash.now[:notice] = "Password reset success."
             logout_keeping_session!
+            render :action => 'reset_confirmation'
+            
           else
             flash.now[:notice] = "Password reset failure: Password needs to be 6 or more characters. Please try again!"
           end

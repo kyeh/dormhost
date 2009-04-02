@@ -18,6 +18,7 @@ ActionController::Routing::Routes.draw do |map|
   map.forgot_password '/forgot_password', :controller => 'users', :action => 'forgot_password'
   map.reset_password '/reset_password/:id', :controller => 'users', :action => 'reset_password' 
   map.change_password '/change_password', :controller => 'users', :action => 'change_password'
+  
    
   map.activate '/activate/:activation_code', 
              :controller => 'users', 
