@@ -1,24 +1,27 @@
-<br>
+<div class="search_results" float="left">
+	<br>
+	<h1>Search Results</h1>
+	<% unless @xap_results.nil? %>	
+		<% for result in @xap_results %>
+			<%= link_to( h(result.street_address_1), room_path(result)) %>
+			<% unless result.street_address_2.empty? %>
+				<br>
+				<%= h(result.street_address_2) %>
+			<% end %>
+			<br>
+			<%= h(result.city) + " " + h(result.state) + ", " + h(result.zip) %>
+			<br>
+			<br>
+			<% end %>
+	<% end %>
+</div>
+
+<div class="search_bar" float="right">
 <h1>Search for a Room</h1>
-<td>
 	<% form_for :room, :url => { :action => :search } do |f| %>
 	    <%= f.text_field (:q) %><br><br>
 		<%= select_tag :filter, options_for_select([ "All", "Location", "School", "Interests", "Host"], "All") %>
-</td>
-	<td>
+
 	    <input type ="submit" value= "GO" />
 	<% end %>
-	</td>
-<br>
-<% unless @xap_results.nil? %>
-<h1>Search Results</h1>
-	<% for result in @xap_results %>
-		<tr>
-			<td align="left">&nbsp;<%= link_to( h(result.street_address_1), room_path(result)) %></td><br>
-		</tr>
-		<tr>
-
-		</tr>
-
-	<% end %>
-<% end %>
+</div>

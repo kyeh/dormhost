@@ -1,33 +1,18 @@
 <h1><%=h @room.street_address_1 %></h1>
 
 <p>
-  <b>Address 1:</b>
-  <%=h @room.street_address_1 %>
+	<b>Address</b><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<%=h @room.street_address_1 %><br>
+	<% unless @room.street_address_2.empty? %>
+		&nbsp;&nbsp;&nbsp;&nbsp;<%=h @room.street_address_2 %><br>
+	<% end%>
+	&nbsp;&nbsp;&nbsp;&nbsp;<%=h @room.city + " " + @room.state + ", " + @room.zip %>
 </p>
 
-<p>
-  <b>Address 2:</b>
-  <%=h @room.street_address_2 %>
-</p>
 
 <p>
-  <b>City:</b>
-  <%=h @room.city %>
-</p>
-
-<p>
-  <b>State:</b>
-  <%=h @room.state %>
-</p>
-
-<p>
-  <b>Zip Code:</b>
-  <%=h @room.zip %>
-</p>
-
-<p>
-  <b>University:</b>
-  <%=h @college.name %>
+  <b>University</b><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;<%=h @college.name %>
 </p>
 
 <p>
