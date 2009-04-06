@@ -1,15 +1,21 @@
-<br>
-<h1>Search for a Room</h1>
-<br><br>
-<td>
-	<% form_for :room, :url => { :action => :search } do |f| %>
-	    <%= f.text_field (:q) %><br><br>
-		<%= select_tag :filter, options_for_select([ "All", "Location", "School", "Interests", "Host"], "All") %>
-</td>
-	<td>
-	    <input type ="submit" value= "GO" />
-	<% end %>
-	</td>
+<table cellpadding="30">
+	<tr>
+		<td valign="top">
+			<h1>Search for a Room</h1>
+			<br><br>
+			<% form_for :room, :url => { :action => :search } do |f| %>
+			    <%= f.text_field (:q) %><br><br>
+				<%= select_tag :filter, options_for_select([ "All", "Location", "School", "Interests", "Host"], "All") %>
+
+			    <input type ="submit" value= "GO" />
+			<% end %>
+		</td>
+
+		
+	</tr>
+
+</table>
+
 
 <!--
 <table>

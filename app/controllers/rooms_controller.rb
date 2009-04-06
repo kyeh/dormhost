@@ -227,7 +227,7 @@ class RoomsController < ApplicationController
 	
     @room = Room.find(params[:id])
     @college= @room.college
-    @room_profile = RoomProfile.find(:all, :conditions => ['room_id = ?', params[:id]])
+    @room_profile = RoomProfile.find(:first, :conditions => ['room_id = ?', params[:id]])
     @user = get_user
     #FIX THIS so that "Request this room" doesn't show if the renter has already requested the room
     @renter = Renter.find(:first, :conditions => ['user_id = ?', @user.id])

@@ -1,22 +1,37 @@
+<br><br>
 <h1><%=h @room.street_address_1 %></h1>
+<br>
+<table cellpadding="5">
+	<tr>
+		<td valign="top" width="150"><b>Address</b></td>
+		<td>
+			<%=h @room.street_address_1 %><br>
+			<% unless @room.street_address_2.empty? %>
+				<%=h @room.street_address_2 %><br>
+			<% end %>
+			<%=h @room.city + " " + @room.state + ", " + @room.zip %>
+		</td>
+	</tr>
+	<tr>
+		<td><b>College</b></td>
+		<td><%=h @college.name %></td>
+	</tr>
+	<% unless @room_profile.nil? %>
+		<tr>
+			<td><b>Bed Type</b></td>
+			<td><%=h @room_profile.bed_type %></td>
+		</tr>
+		<tr>
+			<td><b>Max Capacity</b></b><br>
+			<td><%=h @room_profile.max_capacity %></td>
+		</tr>
+	<% end %>
+</table>
 
-<p>
-	<b>Address</b><br>
-	&nbsp;&nbsp;&nbsp;&nbsp;<%=h @room.street_address_1 %><br>
-	<% unless @room.street_address_2.empty? %>
-		&nbsp;&nbsp;&nbsp;&nbsp;<%=h @room.street_address_2 %><br>
-	<% end%>
-	&nbsp;&nbsp;&nbsp;&nbsp;<%=h @room.city + " " + @room.state + ", " + @room.zip %>
-</p>
 
-
-<p>
-  <b>University</b><br>
-  &nbsp;&nbsp;&nbsp;&nbsp;<%=h @college.name %>
-</p>
 
 <!--
-	ADD ROOM PROFILE INFORMATION, HOST INFORMATON 
+	ADD ROOM PROFILE INFORMATION, HOST INFORMATION 
 -->
 
 <% if !@reserved.nil? %>
@@ -27,3 +42,4 @@ You have already requested this room.
 	<% end %>
 <% end %>
 <%= link_to 'All Rooms', rooms_path %>
+</div>
