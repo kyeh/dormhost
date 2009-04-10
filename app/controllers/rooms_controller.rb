@@ -6,6 +6,7 @@ class RoomsController < ApplicationController
   
   require 'time'
   
+  
   def search
       @search_params = params[:room][:q].to_s
       
@@ -276,7 +277,7 @@ class RoomsController < ApplicationController
     else
       @host = Host.find(:first, :conditions => ['user_id = ?', user.id])
       session[:host_id] = @host.id
-      @rooms = Room.find(:all, :conditions => ['host_id != ?', session[:host_id]])
+      @rooms = Room.paginate :page => params[:page], :order => 'created_at DESC'
     end
     
     respond_to do |format|
@@ -354,7 +355,7 @@ class RoomsController < ApplicationController
   def choose_layout    
     if [ 'requested' ].include? action_name
       'mytrips'
-    else if [ 'search' ].include? action_name
+    else if [ 'search', 'all' ].include? action_name
       'planatrip'
     else
       'mylistings'

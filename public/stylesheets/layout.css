@@ -445,3 +445,27 @@ background-color:#333399;
     text-align: center;  
     width: 100%;  
 }  
+
+
+
+
+/********** PAGINATION ********/
+
+.pagination {
+  background: #ffffff;
+  text-align: left;
+  padding: 1em; }
+
+.pagination a, .pagination span {
+    padding: .2em .3em; }
+
+.pagination span.disabled {
+    color: #aaaaaa; }
+.pagination span.current {
+    font-weight: bold;
+}
+.pagination a {
+    color: #000000; }
+
+.pagination a:hover, .pagination a:focus {
+      text-decoration: underline; }
