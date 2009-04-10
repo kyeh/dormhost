@@ -1,5 +1,6 @@
 class RoomsController < ApplicationController
-  layout "mylistings"
+  layout :choose_layout
+
   
   before_filter :login_required, :except => :all
   
@@ -348,4 +349,18 @@ class RoomsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  private
+  def choose_layout    
+    if [ 'requested' ].include? action_name
+      'mytrips'
+    else if [ 'search' ].include? action_name
+      'planatrip'
+    else
+      'mylistings'
+    end
+  
+  end
+  end
+  
 end

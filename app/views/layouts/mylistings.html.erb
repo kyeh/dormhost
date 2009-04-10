@@ -9,58 +9,51 @@
 
 	<body>
 		
-		<div id="wrap">
-<!--	    	<%= link_to '<div id="header"></div>', home_path('home') %> -->
-		<div id="header">
-			<% if logged_in? -%>
-				<div id="mini_logout">
-				<div id="user-bar-greeting">Logged in</div>
-				<div id="ytext">(<%= link_to "log out", logout_path, { :title => "Log out" }    %>)</div>
-				</div>
-			<% else -%>
-			<div id="mini_login">
-				<% form_tag session_path do -%>
-				<label for="username" style="font-size: 80%">Username:</label> 
-				<%= text_field_tag 'login', @login %>
-				<br />
-				<label for="password" style="font-size: 80%">Password:</label>
-				<%= password_field_tag 'password', nil %>
-				<table>
-					<tr>
-						<td>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							
-						</td>
-						<td>
-				<div id="ytext" >
-				<%= link_to 'Register', new_user_path %>
-				</div>
-						</td>
-						<td>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    
-				<%= submit_tag 'Log in' %>	
-				<!-- Uncomment this if you want this functionality -->
-				<!--
-				<label for="remember_me">Remember me:</label>
-				<%= check_box_tag 'remember_me', '1', @remember_me %>
-				<br /> -->
-						</td>
-					</tr>
+			<div id="wrap">
+	<!--	    	<%= link_to '<div id="header"></div>', home_path('home') %> -->
+			<div id="header">
+				<% if logged_in? -%>
+					<div id="mini_logout">
+					<div id="user-bar-greeting">Logged in</div>
+					<div id="ytext">(<%= link_to "log out", logout_path, { :title => "Log out" }    %>)</div>
+					</div>
+				<% else -%>
+				<div id="mini_login">
+					<% form_tag session_path do -%>
+					<label for="username" style="font-size: 80%">Username:</label> 
+					<%= text_field_tag 'login', @login %>
+					<br />
+					<label for="password" style="font-size: 80%">Password:</label>
+					<%= password_field_tag 'password', nil %>
+					<br />
+					<label for="remember_me" style="font-size: 80%">Remember me:</label>
+					<%= check_box_tag 'remember_me', '1', @remember_me %>
+					<table>
+						<tr>
+							<td>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							</td>
+							<td>
+								<div id="ytext">
+									<%= link_to 'Register', new_user_path %> <font color=#FFCC66>|</font> <%= link_to 'Forgot Password?', forgot_password_path %>
+								</div>
+				    		</td>
+							<td>
+
+					<%= submit_tag 'Log in' %>	
+					<!-- Uncomment this if you want this functionality -->
+					<!--
+					<label for="remember_me">Remember me:</label>
+					<%= check_box_tag 'remember_me', '1', @remember_me %>
+					<br /> -->
+							</td>
+						</tr>
 					</table>	
+					<% end -%>
+				</div>
 				<% end -%>
 			</div>
-			<% end -%>
-		</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
 			
 			<!-- TABS -->
 			
@@ -149,13 +142,15 @@
 							<img width="20" vspace="0" hspace="0" height="45" border="0" src="/images/smallR.png"/>
 						</td>
 					</table>
+					
+					<div id="lineML">
 			
 					<% else -%>
-			
+					
 					<% end -%>
 			<!-- END TABS -->
 			
-			<div id="lineML">
+			
 			
 			<div style="clear:both;"></div>
 	    	<div id="body">

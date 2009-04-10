@@ -13,9 +13,10 @@
 	  <%= f.text_area :review, :cols => 40, :rows => 10%>
 	  </p>
 
-		<%= f.text_field :user_id, :value => params[:user_id] %>
+		<%= f.hidden_field :user_id, :value => params[:user_id] %>
 		<%= f.text_field :profile_id, :value => 1%>
-
+		
+		
   <p>
     <%= f.submit "Create" %>
   </p>

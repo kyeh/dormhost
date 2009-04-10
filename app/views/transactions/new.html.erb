@@ -5,22 +5,22 @@
   
   	<% fields_for :modification, @modification do |modification_field| %>
 	  	<p>
-			<%= modification_field.label :check_in %><br />
+			<b>Check in</b><br />
 			<%= modification_field.date_select :check_in, :order => [:month, :day, :year] %>
 		</p>
 		
 		<p>
-			<%= modification_field.label :check_out %><br />
+			<b>Check out</b><br />
 			<%= modification_field.date_select :check_out, :order => [:month, :day, :year] %>
 		</p>
 	  
 	  	<p>
-			<%= modification_field.label :guests %><br />
+			<b>Number of Guests</b><br />
 			<%= modification_field.text_field :guests %>
 		</p>
 		
 		<p>
-			<% modification_field.label :comments %><br />
+			<b>Additional Comments or Special Needs</b><br />
 			<%= modification_field.text_area :comments, :rows => 6, :cols => 40 %>
 		</p>
 		
