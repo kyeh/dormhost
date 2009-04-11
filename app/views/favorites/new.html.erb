@@ -1,7 +1,10 @@
 <h1>New favorites</h1>
 
-<% form_for(@favorites) do |f| %>
+<% form_for(@favorite) do |f| %>
   <%= f.error_messages %>
+
+	<%= f.hidden_field :room_id, :value => @room.id %>
+	<%= f.hidden_field :renter_id, :value => @user.id %>
 
   <p>
     <%= f.submit "Create" %>

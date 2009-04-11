@@ -11,6 +11,7 @@ class ProfilesController < ApplicationController
   def index
     @profiles = Profile.for_user(session[:user_id])
     @user = get_user
+    @favorites = Favorite.for_user(session[:user_id])
     
     respond_to do |format|
       format.html # index.html.erb

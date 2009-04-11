@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090402074036) do
+ActiveRecord::Schema.define(:version => 20090410022153) do
 
   create_table "acts_as_xapian_jobs", :force => true do |t|
     t.string  "model",    :null => false
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(:version => 20090402074036) do
   end
 
   create_table "favorites", :force => true do |t|
-    t.integer  "renter_id",  :null => false
+    t.integer  "user_id",    :null => false
     t.integer  "room_id",    :null => false
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -1,40 +1,61 @@
-<h1> <%=@user.first_name + "'s Profile" %> </h1>
-
 <table>
   <tr>
+	<td width="400"><h1> <%=@user.first_name + "'s Profile" %> </h1>
+		<table>
+		  <tr>
+			<td>
+		  	<%=link_to 'Change Password', change_password_path %>
+			</td>
+
+		  </tr><br>
+			<tr>
+			<% if @profiles.empty? %>
+			No profile has been created.<br><br>
+			<%= link_to 'Create new profile', new_profile_path %><br>
+			<% else %>
+				<% for profile in @profiles %>
+					<%= render :partial => 'profile_data' %>
+			</tr>
+		  	<tr>
+		    	<td><%= link_to 'Edit Profile', edit_profile_path(profile) %> | </td>
+		  	</tr>
+				<% end %>
+			<% end %>
+		         <!-- NEED TO FIX THESE ROUTES/TALK ABOUT HOW WERE GOING TO ROUTE THESE-->
+			<tr>
+				<%= link_to 'View ' + @user.first_name + 's Reviews', user_reviews_path %> |
+			</tr>
+			<tr>
+				<%= link_to 'Review This User', new_user_review_path(:user_id => @user.id)%> |
+			</tr>
+			</br>
+			<tr>
+				<td>
+
+				<% form_for :user, @user, :url => { :action => "suspend"} do |f| -%>
+					<%= submit_tag 'De-activate Account'%>
+				<% end -%>
+
+				</td>
+			</tr>
+			</table>
+	</td>
+	<td valign="top">
+		<h1>Favorites</h1>
+		<% for favorite in @favorites %>
+			<%= link_to( h(favorite.room.street_address_1), room_path(favorite.room)) %>
+			<% unless favorite.room.street_address_2.empty? %>
+				<br>
+				<%= h(favorite.room.street_address_2) %>
+			<% end %>
+			<br>
+			<%= h(favorite.room.city) + " " + h(favorite.room.state) + ", " + h(favorite.room.zip) %>
+			<br>
+			<br>
+		<% end %>
+	</td>
   </tr>
-  <tr>
-  	<%=link_to 'Change Password', change_password_path%>
-  </tr><br>
-<% if @profiles.empty? %>
-No profile has been created.<br><br>
-	<%= link_to 'Create new profile', new_profile_path %>
-<% else %>
-	<% for profile in @profiles %>
-	<%= render :partial => 'profile_data' %>
-	
-  	<tr>
-    	<td><%= link_to 'Edit Profile', edit_profile_path(profile) %> | </td>
-  	</tr>
-	<% end %>
-<% end %>
-         <!-- NEED TO FIX THESE ROUTES/TALK ABOUT HOW WERE GOING TO ROUTE THESE-->
-	<tr>
-		<%= link_to 'View ' + @user.first_name + 's Reviews', user_reviews_path %> |
-	</tr>
-	<tr>
-		<%= link_to 'Review This User', new_user_review_path(:user_id => @user.id)%> |
-	</tr>
-	</br>
-	<tr>
-		<td>
-			
-		<% form_for :user, @user, :url => { :action => "suspend"} do |f| -%>
-			<%= submit_tag 'De-activate Account'%>
-		<% end -%>
-		
-		</td>
-	</tr>
+
 </table>
 
 

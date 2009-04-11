@@ -34,6 +34,18 @@
 	ADD ROOM PROFILE INFORMATION, HOST INFORMATION 
 -->
 
+<br>
+<br>
+<br>
+<% if @fav.nil? %>
+	<%=link_to("Add to Favorites", favorites_url(:favorite => {:user_id => @user.id, :room_id => @room.id}), :method => :post) %>
+<% else %>
+	<%= link_to("Remove from Favorites", favorite_path(@fav), :confirm => 'Are you sure you wish to delete this favorite?', :method => :delete) %>
+<% end %>
+<br>
+<br>
+<br>
+
 <% if !@reserved.nil? %>
 You have already requested this room.
 <% else %>
