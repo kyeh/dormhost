@@ -239,7 +239,9 @@ class RoomsController < ApplicationController
     @renter = Renter.find(:first, :conditions => ['user_id = ?', @user.id])
     @reserved = Transaction.find(:first, :conditions => ['room_id = ? and renter_id = ?', @room.id, @renter.id])
     @host = Host.find(:first, :conditions => ['user_id = ?', @user.id])
-     
+    
+    @room_host = User.find(:first, :conditions => ['id = ?', @room.host.user_id])
+    @host_profile = Profile.find(:first, :conditions => ['user_id = ?', @room_host.id])
 	
     respond_to do |format|
       format.html # show.html.erb
