@@ -13,6 +13,23 @@
 					<br>
 					<%= h(result.city) + " " + h(result.state) + ", " + h(result.zip) %>
 					<br>
+					<% roomhost = User.find(:first, :conditions => ['id = ?', result.host.user_id]) %>
+					<% hostprofile = Profile.find(:first, :conditions => ['user_id = ?', roomhost.id]) %>
+					<table>
+					<tr>
+						<td>
+							<%= image_tag(hostprofile.photo.url, :height => "50") %>
+						</td>
+						<td valign="top">
+							Host:<br>
+							<% if hostprofile.nil? %>
+								<%= h(roomhost.first_name) + " " + h(roomhost.last_name) %>
+							<% else %>
+								<%= link_to( h(roomhost.first_name) + " " + h(roomhost.last_name), profile_path(hostprofile.id) )%>
+							<% end %>
+						</td>
+					</table>
+					<br>
 					<br>
 					<% end %>
 			<% end %>
