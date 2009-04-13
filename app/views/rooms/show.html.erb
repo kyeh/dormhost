@@ -1,45 +1,130 @@
 <br><br>
 <h1><%=h @room.street_address_1 %></h1>
 <br>
-<table cellpadding="5">
+
+<table>
 	<tr>
-		<td valign="top" width="150"><b>Address</b></td>
-		<td>
-			<%=h @room.street_address_1 %><br>
-			<% unless @room.street_address_2.empty? %>
-				<%=h @room.street_address_2 %><br>
+		<td width="280" valign="top">
+			<table>
+				<tr>
+					<td valign="top" width="100" align="right">Location:&nbsp;</td>
+					<td>	
+						<%=h @room.street_address_1 %><br>
+						<% unless @room.street_address_2.empty? %>
+							<%=h @room.street_address_2 %><br>
+						<% end %>
+						<%=h @room.city + " " + @room.state + ", " + @room.zip %><br>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" align="right">Campus:&nbsp;</td>
+					<td><%=h @college.name%></td>
+				</tr>
+				<% unless @room_profile.nil? %>
+					<tr>
+						<td align="right">Cost:&nbsp;</td>
+						<td><%=h @room_profile.cost %></td>
+					</tr>
+					<tr>
+						<td align="right">Bed Type:&nbsp;</td>
+						<td><%=h @room_profile.bed_type %></td>
+					</tr>
+					<tr>
+						<td align="right">Room Type:&nbsp;</td>
+						<td><%=h @room_profile.size_classification %></td>
+					</tr>
+					<tr>
+						<td align="right">Cleanliness:&nbsp;</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td align="right">Availability:&nbsp;</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td align="right">Capacity:&nbsp;</td>
+						<td><%=h @room_profile.max_capacity %></td>
+					</tr>
+					<tr>
+						<td align="right">Pets:&nbsp;</td>
+						<td><%=h @room_profile.pets %></td>
+					</tr>
+					<tr>
+						<td align="right">Food:&nbsp;</td>
+						<td><%=h @room_profile.food %></td>
+					</tr>
+				<% end %>
+				
+			</table>
+		</td>
+		
+		<td width="270" valign="top">
+				<table>
+					<tr>
+						<td align="right">Name:&nbsp;</td>
+						<td><%=h @room_host.first_name + " " + @room_host.last_name %></td>
+					</tr>
+					<tr>
+						<td align="right">Gender:&nbsp;</td>
+						<td><%=h @room_host.gender %></td>
+					</tr>
+				<% unless @host_profile.nil? %>
+					<tr>
+						<td  align="right" valign="top">School:&nbsp;</td>
+						<td><%=h @host_profile.college.name %></td>
+					</tr>
+					<tr>
+						<td align="right">Birthdate:&nbsp;</td>
+						<td><%=h @host_profile.birthdate %></td>
+					</tr>
+					<tr>
+						<td align="right">Grad&nbsp;&nbsp;<br>Year:&nbsp;</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td align="right">Living&nbsp;&nbsp;<br>Style:&nbsp;</td>
+						<td><%=h @host_profile.living_style %></td>
+					</tr>
+					<tr>
+						<td align="right">Bedtime:&nbsp;</td>
+						<td><%=h @host_profile.bedtime %></td>
+					</tr>
+					<tr>
+						<td align="right">Interests:&nbsp;</td>
+						<td><%=h @host_profile.interests %></td>
+					</tr>
+					<tr>
+						<td align="right">Smoker:&nbsp;</td>
+						<td>
+							<% if @host_profile.smoker == true %>
+								Yes
+							<% else %>
+								No
+							<% end %>
+						</td>
+					</tr>
+					<tr>
+						<td align="right">Notes:&nbsp;</td>
+						<td></td>
+					</tr>				
+				</table>
 			<% end %>
-			<%=h @room.city + " " + @room.state + ", " + @room.zip %>
+		</td>
+		
+		<td>
+			<% if !@reserved.nil? %>
+			You have already requested this room.
+			<% else %>
+				<% unless @host.id == @room.host_id %>
+					<%= link_to 'Request this room', new_transaction_path(:room_id => @room.id, :renter_id => @renter.id) %>
+				<% end %>
+			<% end %><br>
+			Contact Host<br>
+			<% if @fav.nil? %>
+				<%=link_to("Add Room to Favorites", favorites_url(:favorite => {:user_id => @user.id, :room_id => @room.id}), :method => :post) %>
+			<% else %>
+				<%= link_to("Remove Room from Favorites", favorite_path(@fav), :confirm => 'Are you sure you wish to delete this favorite?', :method => :delete) %>
+			<% end %>
 		</td>
 	</tr>
-	<tr>
-		<td><b>College</b></td>
-		<td><%=h @college.name %></td>
-	</tr>
-	<% unless @room_profile.nil? %>
-		<tr>
-			<td><b>Bed Type</b></td>
-			<td><%=h @room_profile.bed_type %></td>
-		</tr>
-		<tr>
-			<td><b>Max Capacity</b></b><br>
-			<td><%=h @room_profile.max_capacity %></td>
-		</tr>
-	<% end %>
 </table>
-
-
-
-<!--
-	ADD ROOM PROFILE INFORMATION, HOST INFORMATION 
--->
-
-<% if !@reserved.nil? %>
-You have already requested this room.
-<% else %>
-	<% unless @host.id == @room.host_id %>
-		<%= link_to 'Request this room', new_transaction_path(:room_id => @room.id, :renter_id => @renter.id) %>
-	<% end %>
-<% end %>
-<%= link_to 'All Rooms', rooms_path %>
-</div>

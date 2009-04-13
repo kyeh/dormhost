@@ -228,14 +228,21 @@ class RoomsController < ApplicationController
   def show
 	
     @room = Room.find(params[:id])
+    @user = get_user
+    
+    session[:room_id] = @room.id    #Needed for adding to favorites
+    @fav = Favorite.for_user(session[:user_id]).find(:first, :conditions => ['room_id = ?', @room.id])
+    
+    
     @college= @room.college
     @room_profile = RoomProfile.find(:first, :conditions => ['room_id = ?', params[:id]])
-    @user = get_user
     #FIX THIS so that "Request this room" doesn't show if the renter has already requested the room
     @renter = Renter.find(:first, :conditions => ['user_id = ?', @user.id])
     @reserved = Transaction.find(:first, :conditions => ['room_id = ? and renter_id = ?', @room.id, @renter.id])
     @host = Host.find(:first, :conditions => ['user_id = ?', @user.id])
-     
+    
+    @room_host = User.find(:first, :conditions => ['id = ?', @room.host.user_id])
+    @host_profile = Profile.find(:first, :conditions => ['user_id = ?', @room_host.id])
 	
     respond_to do |format|
       format.html # show.html.erb

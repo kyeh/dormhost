@@ -1,4 +1,6 @@
 class Room < ActiveRecord::Base
+  
+  acts_as_rateable
   acts_as_xapian  :texts => [:street_address_1, :city, :state, :zip],
                   :terms => [[:city, 'C', "city"],
                             [:state, 'S', "state"],
