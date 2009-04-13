@@ -82,6 +82,8 @@ class UsersController < ApplicationController
             flash.now[:notice] = "Password successfully updated" 
             render :action => 'change_confirmation'
           else
+            #puts error_messages_for 'current_user'
+            puts "**************************************************"
             flash.now[:notice] = "Password not changed" 
           end
 

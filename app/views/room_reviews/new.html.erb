@@ -6,11 +6,14 @@
   <%= f.error_messages %>
   <%= f.hidden_field :transaction_id, :value => params[:transaction_id] %>
   
+  <%= render :partial => "ratings/rate", :locals => { :asset => @room } %> 
   
+  <!-- 
   <p>
   <%= f.label :rating %>
   <%= f.select(:rating, {"01" => 1, "02" => 2, "03" => 3, "04" => 4, "05" => 5, "06" => 6, "07" => 7, "08" => 8, "09" => 9, "10" => 10}.sort) %> 
   </p>
+  -->
   
   <p>
   <%= f.label :review %>

@@ -16,6 +16,8 @@ class RoomReviewsController < ApplicationController
   # GET /room_reviews/1.xml
   def show
     @room_review = RoomReview.find(params[:id])
+    @transaction = Transaction.find(@room_review.transaction_id)
+    @room = Room.find(@transaction.room_id)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -27,6 +29,9 @@ class RoomReviewsController < ApplicationController
   # GET /room_reviews/new.xml
   def new
     @room_review = RoomReview.new
+    @transaction = Transaction.find(params[:transaction_id])
+    @room = Room.find(@transaction.room_id)
+    #@room = Room.find(:first, :conditions => ['id = ?', ])
 
     respond_to do |format|
       format.html # new.html.erb
