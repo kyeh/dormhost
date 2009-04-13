@@ -3,7 +3,6 @@ class RoomProfile < ActiveRecord::Base
   belongs_to :level
   has_many :room_images
   has_many :room_profile_days
-  attr_accessible :user_id, :college_id, :photo, :delete_photo
   
   has_attached_file :photo
   
