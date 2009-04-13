@@ -17,8 +17,9 @@
 					<% hostprofile = Profile.find(:first, :conditions => ['user_id = ?', roomhost.id]) %>
 					<table>
 					<tr>
-						<td>
+						<td><% unless hostprofile.nil? %>
 							<%= image_tag(hostprofile.photo.url, :height => "50") %>
+							<% end %>
 						</td>
 						<td valign="top">
 							Host:<br>
