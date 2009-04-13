@@ -1,0 +1,11 @@
+<% @convert = %w[one two three four five] %>
+<div id="star-ratings-block-<%= asset.id %>" class="star-ratings-block">
+    <%= number_with_precision(asset.rating, 1) %>/5 Stars (<%= asset.ratings.size %> votes)<br />
+    <ul class='star-rating'>
+        <li class='current-rating' style='width: <%= (asset.rating * 30).to_i -%>px;'>
+            Currently <%= number_with_precision(asset.rating, 1) %>/5 Stars.
+        </li>
+		
+	
+    </ul>    
+</div>

@@ -7,6 +7,9 @@
 		<td width="280" valign="top">
 			<table>
 				<tr>
+					
+					<%= render :partial => "ratings/rate_static", :locals => { :asset => @room } %> 
+					
 					<td valign="top" width="100" align="right">Location:&nbsp;</td>
 					<td>	
 						<%=h @room.street_address_1 %><br>
