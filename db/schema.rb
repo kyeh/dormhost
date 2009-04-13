@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090402074036) do
+ActiveRecord::Schema.define(:version => 20090413041149) do
 
   create_table "acts_as_xapian_jobs", :force => true do |t|
     t.string  "model",    :null => false
@@ -137,6 +137,10 @@ ActiveRecord::Schema.define(:version => 20090402074036) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.decimal  "cost",                               :precision => 5, :scale => 2
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   create_table "room_reviews", :force => true do |t|
