@@ -5,6 +5,8 @@
         <li class='current-rating' style='width: <%= (asset.rating * 30).to_i -%>px;'>
             Currently <%= number_with_precision(asset.rating, 1) %>/5 Stars.
         </li>
+		
+		
         <% 1.upto(5) do |x| -%>
         <li>
             <%= link_to_remote( "#{x}", 
@@ -14,5 +16,7 @@
                             :title => "Rate this a #{x} out of 5" } ) %>
         </li>
         <% end -%>
+		
+	
     </ul>    
 </div>
