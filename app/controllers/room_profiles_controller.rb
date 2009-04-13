@@ -1,6 +1,6 @@
 class RoomProfilesController < ApplicationController
   
-  layout "mytrips"
+  layout "mylistings"
   
   before_filter :login_required
 

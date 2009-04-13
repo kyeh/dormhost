@@ -25,11 +25,13 @@ class FavoritesController < ApplicationController
   # GET /favorites/new
   # GET /favorites/new.xml
   def new
-    @favorites = Favorites.new
+    @favorite = Favorite.new
+    @room = Room.find(session[:room_id])
+    @user = get_user
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @favorites }
+      format.xml  { render :xml => @favorite }
     end
   end
 
@@ -41,16 +43,32 @@ class FavoritesController < ApplicationController
   # POST /favorites
   # POST /favorites.xml
   def create
-    @favorites = Favorites.new(params[:favorites])
+    puts params[:favorite][:room_id] 
+    puts params[:favorite][:user_id] 
+    puts params[:favorite][:user_id]
+    
+    @room = Room.find(:first, :conditions => ['id = ?', params[:favorite][:room_id]])
+    
+    puts "-----"
+    puts @room.id.to_s + "----------"
+    
+    @user = params[:favorite][:user_id]
+    @favorite = Favorite.new(params[:favorite])
+    @favorite.attributes = params[:favorite]
+#    @favorite.room_id = @room.id
+#    @favorite.user_id = params[:favorite][:user_id]
+    puts @room.id.to_s + "HERE"
 
     respond_to do |format|
-      if @favorites.save
-        flash[:notice] = 'Favorites was successfully created.'
-        format.html { redirect_to(@favorites) }
-        format.xml  { render :xml => @favorites, :status => :created, :location => @favorites }
+      puts @favorite.room_id
+      puts @favorite.user_id
+      if @favorite.save
+        flash[:notice] = 'Room was successfully added to your favorites!'
+        format.html { redirect_to(@room) }
+        format.xml  { render :xml => @favorite, :status => :created, :location => @favorite }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @favorites.errors, :status => :unprocessable_entity }
+        format.xml  { render :xml => @favorite.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -75,11 +93,12 @@ class FavoritesController < ApplicationController
   # DELETE /favorites/1
   # DELETE /favorites/1.xml
   def destroy
-    @favorites = Favorites.find(params[:id])
+    @room = Room.find(:first, :conditions => ['id = ?', session[:room_id]])
+    @favorites = Favorite.find(params[:id])
     @favorites.destroy
 
     respond_to do |format|
-      format.html { redirect_to(favorites_url) }
+      format.html { redirect_to(@room) }
       format.xml  { head :ok }
     end
   end

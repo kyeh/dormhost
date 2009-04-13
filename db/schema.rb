@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(:version => 20090413041149) do
   end
 
   create_table "favorites", :force => true do |t|
-    t.integer  "renter_id",  :null => false
+    t.integer  "user_id",    :null => false
     t.integer  "room_id",    :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
