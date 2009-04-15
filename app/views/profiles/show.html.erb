@@ -1,9 +1,13 @@
 <h1><%= @profile_user.first_name + " " + @profile_user.last_name %></h1>
 <br>
+<table>
+<tr>
+<td width = '350'>
 <p>
 <%= image_tag @profile.photo.url %><br><br><br><br>
 </p>	
-<br>
+</td>
+<td>
 <p>
 	<b>College</b>:
 	<%=h @profile.college.name %>
@@ -41,4 +45,12 @@
 	<% end %>
 </p>
 
+</td>
+</tr>
+</table>
+
+
+	<!-- NEED TO FIX THESE ROUTES/TALK ABOUT HOW WERE GOING TO ROUTE THESE-->
+	<%= link_to 'View ' + @user.first_name + 's Reviews', user_reviews_path %> &nbsp; | &nbsp;
+	<%= link_to 'Review This User', new_user_review_path(:user_id => @user.id)%> 
 

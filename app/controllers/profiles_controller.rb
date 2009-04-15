@@ -1,7 +1,6 @@
 class ProfilesController < ApplicationController
   
-  # Set layout to application
-  layout "application"
+  layout :choose_layout
   
   #Access rules
   before_filter :login_required
@@ -98,4 +97,13 @@ class ProfilesController < ApplicationController
     end
   end
 
+  private
+  def choose_layout    
+    if [ 'show' ].include? action_name
+      'planatrip'
+    else
+      'application'
+    end
+    end
+  
 end

@@ -362,7 +362,7 @@ class RoomsController < ApplicationController
   def choose_layout    
     if [ 'requested' ].include? action_name
       'mytrips'
-    else if [ 'search', 'all' ].include? action_name
+    else if [ 'search', 'all', 'show' ].include? action_name
       'planatrip'
     else
       'mylistings'
