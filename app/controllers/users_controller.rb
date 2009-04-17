@@ -131,9 +131,9 @@ class UsersController < ApplicationController
   end
 
   def suspend
+    @user = User.find(params[:user][:id])
     @user.suspend!
-    puts "Hello"
-    redirect_to users_path
+    redirect_to('/deactivated')
   end
 
   def unsuspend

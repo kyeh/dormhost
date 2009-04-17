@@ -57,6 +57,7 @@
 				<br><br><br>
 			<%=link_to 'Change Password', change_password_path %>
 			<% form_for :user, @user, :url => { :action => "suspend"} do |f| -%>
+				<%= f.hidden_field :id %>
 				<br><%= submit_tag 'De-activate Account'%>
 			<% end -%>
 

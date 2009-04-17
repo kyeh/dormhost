@@ -18,13 +18,13 @@ class SessionsController < ApplicationController
       self.current_user = user
       new_cookie_flag = (params[:remember_me] == "1")
       handle_remember_cookie! new_cookie_flag
-      redirect_back_or_default('/home')
-      flash[:notice] = "Logged in successfully"
+      redirect_back_or_default('/profiles')
+      flash.now[:notice] = "Logged in successfully"
     else
       note_failed_signin
       @login       = params[:login]
       @remember_me = params[:remember_me]
-      flash[:notice] = "Incorrect username or password"
+      flash.now[:notice] = "Incorrect username or password"
       render :action => 'new'
     end
   end
