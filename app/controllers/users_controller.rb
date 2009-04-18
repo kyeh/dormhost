@@ -157,7 +157,7 @@ class UsersController < ApplicationController
 
 protected
   def find_user
-    @user = User.find(params[:id])
+    @user = User.find(params[:user][:id])
   end
 
 end
