@@ -60,8 +60,7 @@ class TransactionsController < ApplicationController
     respond_to do |format|
       
       @transaction.request_rooms
-      @room = Room.find(@transaction.room_id)
-      
+            
       if @transaction.save
         
           @modification.transaction_id = @transaction.id

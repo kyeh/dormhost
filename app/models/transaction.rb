@@ -8,17 +8,9 @@ class Transaction < ActiveRecord::Base
     @requested_rooms = true
   end
   
-   def submit_new_modification
-    @new_modification = true
-  end
-  
   #used in Transaction obeserver
   def recently_request_rooms?
     @requested_rooms
-  end
-  
-  def recently_submit_new_modification?
-    @new_modification
   end
   
 end

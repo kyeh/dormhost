@@ -45,8 +45,8 @@ class ModificationsController < ApplicationController
   # POST /modifications.xml
   def create
     
-     @transaction = Transaction.find(params[:modification][:transaction_id])
-     @transaction.update_attributes(params[:transaction])
+    @transaction = Transaction.find(params[:modification][:transaction_id])
+    @transaction.update_attributes(params[:transaction])
       
     @modification = Modification.new(params[:modification])
     @modification.transaction_id = @transaction.id
@@ -55,7 +55,11 @@ class ModificationsController < ApplicationController
  
 
     respond_to do |format|
+      
+      @modification.submit_new_modification
+      
       if @modification.save
+        
         flash[:notice] = 'Modification was successfully created.'
         format.html { redirect_to(@modification) }
         format.xml  { render :xml => @modification, :status => :created, :location => @modification }
@@ -64,7 +68,9 @@ class ModificationsController < ApplicationController
         format.html { render :action => "new" }
         format.xml  { render :xml => @modification.errors, :status => :unprocessable_entity }
       end
+      
     end
+    
   end
 
   # PUT /modifications/1
