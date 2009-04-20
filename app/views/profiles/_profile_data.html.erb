@@ -1,19 +1,18 @@
 <% for profile in @profiles %>
 	
 	<p>
-	<%= image_tag profile.photo.url, :height => "300" %><br><br><br><br>
+	<%= image_tag profile.photo.url, :width => "300" %><br><br><br><br>
 	</p>	
 <br>
 	<p>
 		<b>College</b>:
 		<%=h profile.college.name %>
 	</p>
-
 	<p>
 		<b>Birthdate</b>:
 		<%=h profile.birthdate %>
 	</p>
-	<p>
+<!--	<p>
 		<b>Graduation Date</b>:
 		<%=h profile.grad_year %>
 	</p>
@@ -40,5 +39,5 @@
 		<% else %> No
 		<% end %>
 	</p>
-
+-->
 <% end %>

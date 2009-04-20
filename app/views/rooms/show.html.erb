@@ -6,13 +6,12 @@
 			<%= render :partial => "ratings/rate_static", :locals => { :asset => @room } %>
 		<td>
 			<td valign = "top">
-				<h1><%=h @room_host.username %></h1>
+				<h1><%=h @room_host.first_name %></h1>
 				<%= render :partial => "ratings/rate_static", :locals => { :asset => @room_host } %>
 			<td>
 	</tr>
 </table>		
 <br>
-
 			<table>
 
 				<tr>
@@ -38,13 +37,17 @@
 									<%=h @college.name %>
 								</td>
 							</tr>
-							<tr>
+								<% if @room_profile.nil? %>
+								<tr>
+									<b>A room profile has not been <br>created for this room.</b>
+								</tr>
+								<% else %>
+								<tr>
 								<td valign = "top" align = "left">
 									Nightly Cost:&nbsp;
 								</td>
 								<td>	
-									<% unless @room_profile.nil? %>						
-									<%=h @room_profile.cost %>
+									<%=h number_to_currency(@room_profile.cost) %>
 								</td>
 							</tr>
 							<tr>
@@ -87,6 +90,7 @@
 										<%=h @room_profile.food %>
 									</td>
 								</tr>
+								<% end %>
 						</table>
 						
 						
@@ -110,14 +114,16 @@
 									<%=h @room_host.gender %>
 								</td>
 							</tr>
+							<% if @host_profile.nil? %>
+							<tr>		
+								<b>This host has not created<br>a user profile.</b>
+							</tr> 
+								<% else %>
 							<tr>
-								
-								
 								<td valign = "top" align = "left">
 									School:&nbsp;
 								</td>
-								<td>	
-									<% unless @host_profile.nil? %>						
+								<td>			
 									<%=h @host_profile.college.name %>
 								</td>
 							</tr>
@@ -173,6 +179,7 @@
 									</td>
 								</tr>
 								<% end %> 
+								<% end %>
 						</table>
 					</td>
 				</tr>
@@ -190,12 +197,12 @@
 			<% else %>
 				<%= link_to("Remove Room from Favorites", favorite_path(@fav), :confirm => 'Are you sure you wish to delete this favorite?', :method => :delete) %>
 			<% end %>
-			<% end %>
+		
 		</td>
 		<td><br><br>
 			<b>Contact Host<b>
+				<% end %>	
 		</td>
 	</tr>
 </table>
-<% end %>
-<% end %>
+

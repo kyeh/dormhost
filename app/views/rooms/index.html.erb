@@ -1,40 +1,33 @@
 <table>
-	<table class="datagrid">
-	  <thead class="datagrid">
-		<th width="300">Room</th>
+	<table >
+		<% unless @reservations.empty? %>
+		<h1>Reservations</h1>	
+			<% for reservation in @reservations %>
+			<tr>
+				<td align="left">&nbsp;<%= link_to( h(reservation.id), 'rooms/show_private/' + room.id.to_s) %></td>
+		  	</tr>
 
-<h1>Your Rooms</h1>
-<% unless @rooms.empty? %>	
-	<% for room in @rooms %>
-  	<tr>
-		<td align="left">&nbsp;<%= link_to( h(room.street_address_1), 'rooms/show_private/' + room.id.to_s) %></td>
-  	</tr>
-	<tr>	
-      <td>
-      <%= link_to 'Edit', edit_room_path(room) %>
-      <%= link_to 'Delete', room, :confirm => 'Are you sure?', :method => :delete %><br /><br />
-      </td>
-    </tr>
-	<tr>
+			<% end%>
+		<% end %><br><br>
 		
+	
+<% unless @rooms.empty? %>	
+	<h1>Your Rooms</h1>
+	<% for room in @rooms %>
+	<tr>
+		<td width="100" align="left" valign ="top">
+			<% roomprof = RoomProfile.find(:first, :conditions => ['room_id = ?', room.id]) %>
+			<%= image_tag roomprof.photo.url, :width => "200" %>
+		</td>
+		<td align="left">
+			<%= link_to( h(room.street_address_1), 'rooms/show_private/' + room.id.to_s) %><br><br>
+			<%= link_to 'Edit This Room', edit_room_path(room) %><br>
+		    <%= link_to 'Delete This Room', room, :confirm => 'Are you sure?', :method => :delete %><br /><br />
+		</td>
 	</tr>
 <% end %>
 <% end %>
 
-
-<th width="300">Reservations</th>
-<% unless @reservations.empty? %>	
-	<% for reservation in @reservations %>
-	<tr>
-		<td align="left">&nbsp;<%= link_to( h(reservation.id), 'rooms/show_private/' + room.id.to_s) %></td>
-  	</tr>
-	
-	<% end%>
-<% end %>
-	
-
 </table>
 
-<br />
-
-<%= link_to 'New room', new_room_path %>
+<%= link_to 'Post a New room', new_room_path %>

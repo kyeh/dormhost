@@ -4,7 +4,7 @@
 <tr>
 <td width = '350'>
 <p>
-<%= image_tag @profile.photo.url %><br><br><br><br>
+<%= image_tag @profile.photo.url, :width => "300"%><br><br><br><br>
 </p>	
 </td>
 <td>
@@ -51,6 +51,6 @@
 
 
 	<!-- NEED TO FIX THESE ROUTES/TALK ABOUT HOW WERE GOING TO ROUTE THESE-->
-	<%= link_to 'View ' + @user.first_name + 's Reviews', user_reviews_path %> &nbsp; | &nbsp;
+	<%= link_to 'View ' + @user.first_name + '\'s Reviews', user_reviews_path %> &nbsp; | &nbsp;
 	<%= link_to 'Review This User', new_user_review_path(:user_id => @user.id)%> 
 
