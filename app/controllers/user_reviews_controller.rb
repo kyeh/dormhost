@@ -17,6 +17,9 @@ class UserReviewsController < ApplicationController
   # GET /user_reviews/1.xml
   def show
     @user_review = UserReview.find(params[:id])
+    @transaction = Transaction.find(@user_review.transaction_id)
+    @host = Host.find(@transaction.room.host.id)
+    @user = User.find(@host.user_id)
     
     respond_to do |format|
       format.html # show.html.erb

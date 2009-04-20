@@ -18,9 +18,9 @@
 	<BR />
 	
 	<% unless @user_review.nil? %>
-		<%= link_to 'Read your review for this user', user_review_path(@user_review.id) %>
+		<%= link_to 'Read your review for this host', user_review_path(@user_review.id) %>
 	<% else %>
-		<%= link_to 'Submit a review for this user', new_user_review_path(:transaction_id => @transaction.id) %>
+		<%= link_to 'Submit a review for this host', new_user_review_path(:transaction_id => @transaction.id) %>
 	<% end %>
 </p>
 <% else %>

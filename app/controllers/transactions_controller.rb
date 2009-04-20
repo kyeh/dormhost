@@ -112,6 +112,7 @@ class TransactionsController < ApplicationController
     @user = User.find(@renter.user_id)
     @modifications = Modification.find(:all, :conditions => ['transaction_id = ?', @transaction.id])
     @room_review = RoomReview.find(:first, :conditions => ['transaction_id = ?', @transaction.id])
+    @user_review = UserReview.find(:first, :conditions => ['transaction_id = ?', @transaction.id])
     
     @last_modification = @modifications[0] 
     

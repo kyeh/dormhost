@@ -1,7 +1,14 @@
+<h1>User Review</h1>
 
+<p>
+  <b>Rating</b>
+  <%=h @user.rating %>
+</p>
 
+<p>
+  <b>Review:</b>
+  <%=h @user_review.review %>
+</p>
 
-
-
-
-<%= link_to 'Back', user_reviews_path %>
+<%= link_to 'Edit', edit_room_review_path(@user_review) %> |
+<%= link_to 'Back', room_reviews_path %>

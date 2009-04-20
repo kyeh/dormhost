@@ -6,7 +6,8 @@
 			<%= render :partial => "ratings/rate_static", :locals => { :asset => @room } %>
 		<td>
 			<td valign = "top">
-				<h1><%=h @room_host.first_name %></h1>
+				<h1><%=h @room_host.username %></h1>
+				<%= render :partial => "ratings/rate_static", :locals => { :asset => @room_host } %>
 			<td>
 	</tr>
 </table>		
