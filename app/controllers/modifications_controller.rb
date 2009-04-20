@@ -61,7 +61,7 @@ class ModificationsController < ApplicationController
       if @modification.save
         
         flash[:notice] = 'Modification was successfully created.'
-        format.html { redirect_to(@modification) }
+        format.html { redirect_to('/transactions/manage_transaction/' + @modification.transaction_id.to_s) }
         format.xml  { render :xml => @modification, :status => :created, :location => @modification }
       else
 
