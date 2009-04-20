@@ -91,7 +91,7 @@ class TransactionsController < ApplicationController
     respond_to do |format|
       @transaction.approve_reservation
       if @transaction.update_attributes(params[:transaction])
-        @modification.update_attribute(:approved,@transaction.approved)
+        @modification.update_attributes(:approved => @transaction.approved)
         flash[:notice] = 'Transaction was successfully updated.'
         format.html { redirect_to(@transaction) }
         format.xml  { head :ok }
