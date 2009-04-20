@@ -80,15 +80,16 @@ class TransactionsController < ApplicationController
   # PUT /transactions/1.xml
   def update
     @transaction = Transaction.find(params[:id])
-
-    @modification = Modification.new(params[:modification])
+    
+    @modification = Modification.find(params[:modification][:id])
     #puts "-------------------------------------------"
     #puts params[:modification].to_i
     #puts "-------------------------------------------"
-    #@modfication.approved = @transaction.approved
-
+        
+    puts @modification.id
     respond_to do |format|
       if @transaction.update_attributes(params[:transaction])
+        @modification.update_attribute(:approved,@transaction.approved)
         flash[:notice] = 'Transaction was successfully updated.'
         format.html { redirect_to(@transaction) }
         format.xml  { head :ok }
