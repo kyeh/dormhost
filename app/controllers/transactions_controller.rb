@@ -82,20 +82,25 @@ class TransactionsController < ApplicationController
     @transaction = Transaction.find(params[:id])
     
     @modification = Modification.find(params[:modification][:id])
+    
     #puts "-------------------------------------------"
     #puts params[:modification].to_i
     #puts "-------------------------------------------"
         
-    puts @modification.id
+    
     respond_to do |format|
+      @transaction.approve_reservation
       if @transaction.update_attributes(params[:transaction])
         @modification.update_attribute(:approved,@transaction.approved)
         flash[:notice] = 'Transaction was successfully updated.'
         format.html { redirect_to(@transaction) }
         format.xml  { head :ok }
+        
       else
+        
         format.html { render :action => "edit" }
         format.xml  { render :xml => @transaction.errors, :status => :unprocessable_entity }
+        
       end
     end
   end

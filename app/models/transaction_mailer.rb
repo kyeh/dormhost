@@ -7,6 +7,13 @@ class TransactionMailer < ActionMailer::Base
     @content_type = "text/html"
   end
   
+  def notify_approval(host, renter, room)
+    setup_email(renter)
+    @subject    += "Your have a room reservation request has been approved"
+    body :host => host, :renter => renter, :room => room 
+    @content_type = "text/html"
+  end
+  
   protected
 
     def setup_email(user)

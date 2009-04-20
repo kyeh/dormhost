@@ -8,9 +8,17 @@ class Transaction < ActiveRecord::Base
     @requested_rooms = true
   end
   
+  def approve_reservation
+    @approve_reservation = true
+  end
+  
   #used in Transaction obeserver
   def recently_request_rooms?
     @requested_rooms
+  end
+  
+  def recently_approve_reservation?
+    @approve_reservation
   end
   
 end
