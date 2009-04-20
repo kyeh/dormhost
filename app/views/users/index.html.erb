@@ -1,15 +1,27 @@
-<h1>Listing users</h1>
+<h1>Users</h1>
 
 <table>
-  <tr>
-  </tr>
+	<thead class="datagrid">
+		<th width="200">Name</th>
+		<th>Admin?</th>
+		<th>Active?</th>
+		<th width="200">Options</th>
+	</thead>
 
 <% for user in @users %>
-  <tr>
-    <td><%= link_to 'Show', user %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>
-    <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+  	<tr>
+		<td><%=h user.first_name + " " + user.last_name %></td>
+    	<td>
+    		<% if user.is_admin? %>Yes
+			<% else %>No
+			<% end %>
+    	</td>
+		<td>
+		</td>
+    	<td>&nbsp;&nbsp;&nbsp;<%= link_to 'Edit', edit_user_path(user.id) %>&nbsp;&nbsp;&nbsp;
+			<%=link_to("De-activate", users_url(:user => {:id => user.id}), :action => :suspend) %>
+		</td>
+  	</tr>
 <% end %>
 </table>
 
