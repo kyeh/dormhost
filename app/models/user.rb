@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   include Authentication::ByCookieToken
   
   acts_as_xapian  :texts => [:first_name, :last_name]
+  acts_as_rateable
 
   include Authorization::StatefulRoles
   validates_presence_of     :username

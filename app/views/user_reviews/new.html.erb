@@ -2,18 +2,22 @@
 
 <% form_for(@user_review) do |f| %>
   <%= f.error_messages %>
+  
+  <%= render :partial => "ratings/rate", :locals => { :asset => @user } %> 
 
+	<!-- 
 	  <p>
 	  <%= f.label :rating %>
 	  <%= f.select(:rating, {"01" => 1, "02" => 2, "03" => 3, "04" => 4, "05" => 5, "06" => 6, "07" => 7, "08" => 8, "09" => 9, "10" => 10}.sort) %> 
 	  </p>
+	  -->
 
 	  <p>
 	  <%= f.label :review %>
 	  <%= f.text_area :review, :cols => 40, :rows => 10%>
 	  </p>
 
-		<%= f.hidden_field :user_id, :value => params[:user_id] %>
+		<%= f.hidden_field :transaction_id, :value => params[:transaction_id] %>
 		<%= f.text_field :profile_id, :value => 1%>
 		
 		

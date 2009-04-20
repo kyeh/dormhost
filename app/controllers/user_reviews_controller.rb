@@ -28,6 +28,12 @@ class UserReviewsController < ApplicationController
   # GET /user_reviews/new.xml
   def new
     @user_review = UserReview.new
+    @transaction = Transaction.find(params[:transaction_id])
+    @host = Host.find(@transaction.room.host.id)
+    @user = User.find(@host.user_id)
+    
+    #puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& user.id = " + @user.id.to_s
+    #puts
 
     respond_to do |format|
       format.html # new.html.erb
@@ -38,6 +44,7 @@ class UserReviewsController < ApplicationController
   # GET /user_reviews/1/edit
   def edit
     @user_review = UserReview.find(params[:id])
+    
   end
 
   # POST /user_reviews

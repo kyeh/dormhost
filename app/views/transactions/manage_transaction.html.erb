@@ -15,6 +15,13 @@
 	<% else %>
 		<%= link_to 'Submit a room review', new_room_review_path(:transaction_id => @transaction.id) %>
 	<% end %>
+	<BR />
+	
+	<% unless @user_review.nil? %>
+		<%= link_to 'Read your review for this user', user_review_path(@user_review.id) %>
+	<% else %>
+		<%= link_to 'Submit a review for this user', new_user_review_path(:transaction_id => @transaction.id) %>
+	<% end %>
 </p>
 <% else %>
 <p>
