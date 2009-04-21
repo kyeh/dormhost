@@ -320,7 +320,7 @@ class RoomsController < ApplicationController
     respond_to do |format|
       if @room.save
         flash[:notice] = 'Room was successfully created.'
-        format.html { redirect_to(new_room_profile_path) }
+        format.html { redirect_to(new_room_profile_path(:room_id => @room.id)) }
         format.xml  { render :xml => @room, :status => :created, :location => @room }
       else
         format.html { render :action => "new" }
