@@ -17,7 +17,9 @@
 			<% end %>
 	</td>	         
 	<td valign="top">
-		
+		<% if @favorites.empty? %>
+		No favorites have been added.
+		<% else %>
 		<% for favorite in @favorites %>
 		<br><br>
 			<%= link_to( h(favorite.room.street_address_1), room_path(favorite.room)) %>
@@ -43,11 +45,15 @@
 						<%= link_to( h(roomhost.first_name) + " " + h(roomhost.last_name), profile_path(hostprofile.id) )%>
 					<% end %>
 					<% end %>
+					<% end %>
 					
+					<br>
+					<br>
+					<%= render :partial => 'admin_menu' %>
 				</td>
 				</tr>
 			</table>
-			<%= render :partial => 'admin_menu' %>
+			
 	</td>
   </tr>
 		<tr>
@@ -68,6 +74,7 @@
 			<% end -%>
 
 			</td>
+			
 		</tr>
 </table>
 

@@ -3,6 +3,26 @@
 <% form_for(@user) do |f| %>
   <%= f.error_messages %>
 
+	<p>
+		<%= f.label :first_name %><br />
+		<%= f.text_field :first_name %>
+	</p>
+	
+	<p><%= f.label :last_name %><br/>
+	<%= f.text_field :last_name %></p>
+	
+	<p>
+		<%= f.label :username %><br />
+		<%= f.text_field :username %>
+	</p>
+	
+	<p><%= f.label :gender %><br/>
+	<%= f.select( :gender , gender_select ,:prompt => "Please Select") %></p>
+	
+	<p><%= f.label :email %><br/>
+	<%= f.text_field :email %></p>
+	
+
   <p>
     <%= f.submit "Update" %>
   </p>
