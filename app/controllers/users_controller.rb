@@ -19,6 +19,7 @@ class UsersController < ApplicationController
   end
   
   def index
+    @user = get_user
     @users = User.find(:all)
   end
  
@@ -60,6 +61,23 @@ class UsersController < ApplicationController
       render :action => 'new'
     end
     
+  end
+  
+  # PUT /users/1
+  # PUT /users/1.xml
+  def update
+    @user = User.find(params[:id])
+
+    respond_to do |format|
+      if @user.update_attributes(params[:user])
+        flash[:notice] = 'User was successfully updated.'
+        format.html { redirect_to(users_path) }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+      end
+    end
   end
 
   def activate

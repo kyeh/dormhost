@@ -9,6 +9,7 @@
 	</thead>
 
 <% for user in @users %>
+	<% unless user.id == @user.id %>
   	<tr>
 		<td><%=h user.first_name + " " + user.last_name %></td>
     	<td>
@@ -17,11 +18,25 @@
 			<% end %>
     	</td>
 		<td>
+			<% if user.state == "suspended" %>No
+			<% else %>Yes
+			<% end %>
 		</td>
-    	<td>&nbsp;&nbsp;&nbsp;<%= link_to 'Edit', edit_user_path(user.id) %>&nbsp;&nbsp;&nbsp;
-			<%=link_to("De-activate", users_url(:user => {:id => user.id}), :action => :suspend) %>
+    	<td><%= link_to 'Edit', edit_user_path(user.id) %>
+			<% if user.state == "suspended" %>
+				<% form_for :user, user, :url => { :action => "unsuspend"} do |f| -%>
+					<%= f.hidden_field :id, :value => user.id %>
+					<br><%= submit_tag 'Activate Account'%>
+				<% end -%>
+			<% else %>
+				<% form_for :user, user, :url => { :action => "suspend"} do |f| -%>
+					<%= f.hidden_field :id, :value => user.id %>
+					<br><%= submit_tag 'De-activate Account'%>
+				<% end -%>
+			<% end %>
 		</td>
   	</tr>
+	<% end %>
 <% end %>
 </table>
 
