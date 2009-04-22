@@ -1,0 +1,35 @@
+admin:
+  id: 1000
+  username: admin
+  first_name: Admin
+  last_name: User
+  email: test@andrew.cmu.edu
+  salt: 3f7298de131f44fc174bdbf983494ece50584ab7
+  crypted_password: da4bed99ee288d91780819131c5f551e4b4fdf87
+  is_admin: true
+  state: active
+  activated_at: 2009-04-22 06:28:11
+  
+user1:
+  id: 1001
+  username: user
+  first_name: Test
+  last_name: User
+  email: test@andrew.cmu.edu
+  salt: 3f7298de131f44fc174bdbf983494ece50584ab7
+  crypted_password: da4bed99ee288d91780819131c5f551e4b4fdf87
+  is_admin: false
+  state: active
+  activated_at: 2009-04-22 06:28:11
+  
+user2:
+  id: 1002
+  username: user2
+  first_name: Test
+  last_name: User
+  email: test@andrew.cmu.edu
+  salt: 3f7298de131f44fc174bdbf983494ece50584ab7
+  crypted_password: da4bed99ee288d91780819131c5f551e4b4fdf87
+  is_admin: false
+  state: active
+  activated_at: 2009-04-22 06:28:11
