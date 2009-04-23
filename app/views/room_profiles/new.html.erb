@@ -4,8 +4,9 @@
   <%= f.error_messages %>
 
 	
-	<!-- TODO: IMAGE UPLOAD -->
-	
+	<table>
+		<tr>
+			<td width="350">
 	<p>
 		<b>Bed Type</b>:<br>
 		<%= f.text_field :bed_type, :size => 42 %>
@@ -34,6 +35,8 @@
 		<b>On Campus?<b><br>
 		<%= f.check_box :on_campus %>
 	</p>
+	</td>
+	<td valign="top">
 	<p>
 		<b>Cost</b>:<br>
 		<%= f.text_field :cost, :size => 10 %>
@@ -42,7 +45,7 @@
 		<b>Notes</b>:<br>
 		<%= f.text_area :notes, :rows => 6, :cols => 40 %>
 	</p>
-	<p>
+	<p><br><br><br>
 		<b>Room Profile Picture:<b><br>
 		<%= f.file_field :photo %>
 	</p>
@@ -55,3 +58,4 @@
 <% end %>
 
 <%= link_to 'Back', room_profiles_path %>
+</td></tr></table>

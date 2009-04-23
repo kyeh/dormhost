@@ -1,8 +1,10 @@
 <h1><%=h @room_profile.bed_type %></h1>
-
-<p>
-<%= image_tag @room_profile.photo.url, :width => "300" %><br><br><br><br><br><br><br><br><br><br><br><br>
-</p>
+<table>
+	<tr>
+		<td>
+			<%= image_tag @room_profile.photo.url, :width => "300" %><br><br><br><br><br><br><br><br><br><br><br><br>
+		</td>
+		<td>
 <p>
   <b>Bed Type:</b>
   <%=h @room_profile.bed_type %>
@@ -40,6 +42,10 @@
   <b>Notes:</b>
   <%=h @room_profile.notes %>
 </p>
+
+</td>
+</tr>
+</table>
 <%= link_to 'Room', room_path(@room_profile.room_id) %> <br><br>
 
 <%= link_to 'Edit', edit_room_profile_path(@room_profile) %> |

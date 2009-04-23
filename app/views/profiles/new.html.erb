@@ -1,16 +1,18 @@
-<h1>New profile</h1>
+<h1>New profile</h1><br>
 
 <% form_for @profile, :html => { :multipart => true } do |f| %>
   <%= f.error_messages %>
 
 	
-	<%= f.hidden_field :user_id, :value => session[:user_id] %> 	
+	<%= f.hidden_field :user_id, :value => session[:user_id] %> 
+	
+	<table>
+		<tr>
+			<td width = "350" valign="top">	
 	<p>
 		<b>College</b>:<br>
 		<%= f.select(:college_id, College::COLLEGES_LIST, :prompt => "Select...") %>
 	</p>
-
-	<!-- TODO: IMAGE UPLOAD -->
 	
 	<p>
 		<b>Birthdate</b>:<br>
@@ -28,6 +30,8 @@
 		<b>Living Style</b>:<br>
 		<%= f.text_area :living_style, :rows => 6, :cols => 40 %>
 	</p>
+	</td>
+	<td valign="top">
 	<p>
 		<b>Bedtime</b>:<br>
 		<%= f.text_field :bedtime, :size => 20 %>
@@ -48,7 +52,12 @@
 
   <p>
     <%= f.submit "Create" %>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;				    
+	&nbsp;&nbsp;&nbsp;&nbsp;
+	<%= link_to 'Back', profiles_path %>
   </p>
 <% end %>
 
-<%= link_to 'Back', profiles_path %>
+
+</td></tr></table>

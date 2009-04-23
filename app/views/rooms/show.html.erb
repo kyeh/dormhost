@@ -3,12 +3,15 @@
 	<tr>
 		<td width="350">
 			<h1><%=h @room.street_address_1 %></h1>
+			<%= image_tag @room_profile.photo.url, :width => "100" %>
 			<%= render :partial => "ratings/rate_static", :locals => { :asset => @room } %>
-		<td>
-			<td valign = "top">
+			
+		</td>
+			<td width="350">
 				<h1><%=h @room_host.first_name %></h1>
+				<%= image_tag @host_profile.photo.url, :width => "100" %>	
 				<%= render :partial => "ratings/rate_static", :locals => { :asset => @room_host } %>
-			<td>
+			</td>
 	</tr>
 </table>		
 <br>

@@ -1,9 +1,15 @@
 <% for profile in @profiles %>
-	
+<table>
+	<tr>
+	<td>	
 	<p>
-	<%= image_tag profile.photo.url, :width => "300" %><br><br><br><br>
-	</p>	
+	<%= image_tag profile.photo.url, :width => "200" %><br><br><br><br>
+	</p>
+	</td>
 <br>
+	</tr>
+	<tr>
+	<td>
 	<p>
 		<b>College</b>:
 		<%=h profile.college.name %>
@@ -40,4 +46,7 @@
 		<% end %>
 	</p>
 -->
+</td>
+</tr>
+</table>
 <% end %>
