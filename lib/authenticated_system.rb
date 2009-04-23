@@ -16,6 +16,7 @@ module AuthenticatedSystem
     def current_user=(new_user)
       session[:user_id] = new_user ? new_user.id : nil
       @current_user = new_user || false
+      session[:username] = @current_user.username
     end
 
     # Check if the user is authorized

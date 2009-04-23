@@ -15,6 +15,10 @@ class RoomProfilesController < ApplicationController
       format.xml  { render :xml => @room_profiles }
     end
   end
+  
+  def when
+    render :text => "This means blah blah blah"
+  end
 
   # GET /room_profiles/1
   # GET /room_profiles/1.xml

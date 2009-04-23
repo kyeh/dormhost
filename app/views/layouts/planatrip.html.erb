@@ -14,7 +14,7 @@
 		<div id="header">
 			<% if logged_in? -%>
 				<div id="mini_logout">
-				<div id="user-bar-greeting">Logged in</div>
+				<div id="user-bar-greeting">Logged in as <%= session[:username] %></div>
 				<div id="ytext">(<%= link_to "log out", logout_path, { :title => "Log out" }    %>)</div>
 				</div>
 			<% else -%>
