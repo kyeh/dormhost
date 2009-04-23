@@ -6,7 +6,7 @@
 
 	<table>
 		<tr>
-			<td width="350" valign= "top">
+			<td width="355" valign= "top">
 	<p>
 		<b>Bed Type</b>:<br>
 		<%= f.text_field :bed_type, :size => 42 %>
@@ -45,9 +45,7 @@
 		<b>Notes</b>:<br>
 		<%= f.text_area :notes, :rows => 6, :cols => 40 %>
 	</p>
-	<p><br><br><br>
-		<b>Room Profile Picture:<b><br>
-		<%= f.file_field :photo %>
+		<br><br>
   <div>
     <%= f.label(:photo, 'Upload photo') %>
     <%= f.file_field(:photo) %>

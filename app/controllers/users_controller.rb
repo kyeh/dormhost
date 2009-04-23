@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   
   def index
     @user = get_user
-    @users = User.find(:all)
+    @users = User.paginate :page => params[:page], :order => 'created_at DESC'
   end
  
   def create

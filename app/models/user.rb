@@ -5,6 +5,9 @@ class User < ActiveRecord::Base
   include Authentication::ByPassword
   include Authentication::ByCookieToken
   
+   cattr_reader :per_page
+    @@per_page = 5
+  
   acts_as_xapian  :texts => [:first_name, :last_name]
   acts_as_rateable
 
