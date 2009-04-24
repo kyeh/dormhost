@@ -1,6 +1,9 @@
 renter1:
+  id: 1000
   user_id: 1000
 renter2:
+  id: 1001
   user_id: 1001
 host3:
+  id: 1002
   user_id: 1002
