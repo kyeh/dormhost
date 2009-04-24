@@ -4,6 +4,7 @@ class RoomProfilesController < ApplicationController
   
   before_filter :login_required
 
+
   
   # GET /room_profiles
   # GET /room_profiles.xml

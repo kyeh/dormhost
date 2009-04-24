@@ -3,6 +3,21 @@ class RoomReviewsController < ApplicationController
   # GET /room_reviews.xml
   
   layout 'mytrips'
+  
+  # this method takes the id of the room that we are showing room_profiles for
+  def all_for_room
+    @room = Room.find(params[:id])
+    @transactions = Transaction.find(:all, :conditions => ['room_id = ?', params[:id]])
+    
+    @room_reviews = Array.new
+    for transaction in @transactions
+      room_review = RoomReview.find(:first, :conditions => ['transaction_id = ?', transaction.id])
+      if room_review != nil
+       @room_reviews.push(room_review)
+      end
+    end
+  end
+  
   def index
     @room_reviews = RoomReview.find(:all)
 
@@ -48,6 +63,7 @@ class RoomReviewsController < ApplicationController
   # POST /room_reviews.xml
   def create
     @room_review = RoomReview.new(params[:room_review])
+    @room_review.rating = session[:rating]
 
     respond_to do |format|
       if @room_review.save

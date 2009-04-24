@@ -7,6 +7,7 @@ class RatingsController < ApplicationController
     
     rateable = @rateable_class.find(params[:id])
     @current_user = get_user
+    session[:rating] = params[:rating]
     
     
     # Delete the old ratings for current user

@@ -34,7 +34,7 @@
 	<p>
 		<%= link_to transaction.room.street_address_1, transaction_path(transaction) %>
 		requested by
-		<%= link_to transaction.renter.user.username, user_path(transaction.renter.user.id)%>
+		<%= link_to transaction.renter.user.username, profile_path(transaction.renter.user.id)%>
 	</p>
 	
 	<% end %>
