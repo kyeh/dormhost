@@ -1,7 +1,7 @@
 <br><br>
 <table>
 	<tr>
-		<td width="350">
+		<td width="350" valign = "top">
 			<h1><%=h @room.street_address_1 %></h1>
 			<% unless @room_profile.nil? %><%= image_tag @room_profile.photo.url, :width => "100" %><% end %>
 			<%= render :partial => "ratings/rate_static", :locals => { :asset => @room } %>
@@ -11,9 +11,10 @@
 			<% end %>
 			
 		</td>
-			<td width="350">
+			<td width="350" valign = "top">
 				<h1><%=h @room_host.first_name %></h1>
-			<% unless @host_profile.nil? %><%= image_tag @host_profile.photo.url, :width => "100" %><% end %>	
+			<% unless @host_profile.nil? %>
+				<%= image_tag @host_profile.photo.url, :width => "100" %><% end %>	
 				<%= render :partial => "ratings/rate_static", :locals => { :asset => @room_host } %>
 			</td>
 	</tr>

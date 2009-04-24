@@ -182,11 +182,16 @@ class RoomsController < ApplicationController
   @host = Host.find(:first, :conditions => ['user_id = ?', @user.id])
   @rooms = Room.find(:all, :conditions => ['host_id = ?', @host.id])
   
+  
   @reservations = Array.new
   for room in @rooms 
-    reservations = Transaction.find(:all, :conditions => ['approved = ? and room_id = ?', nil, room.id])
+    
+    puts "******" + room.street_address_1
+    reservations = Transaction.find(:all, :conditions => ['room_id = ?', room.id])
+    puts "-----------empty? = " + reservations.empty?.to_s
     if !reservations.empty?
       for reservation in reservations
+        puts "!!!!!!!!!!" + reservation.id.to_s
         @reservations.push(reservation)
       end
     end
@@ -243,6 +248,8 @@ class RoomsController < ApplicationController
     
     @room_host = User.find(:first, :conditions => ['id = ?', @room.host.user_id])
     @host_profile = Profile.find(:first, :conditions => ['user_id = ?', @room_host.id])
+    
+    
 	
     respond_to do |format|
       format.html # show.html.erb

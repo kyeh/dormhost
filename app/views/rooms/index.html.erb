@@ -1,16 +1,18 @@
 <table>
 	<table >
+		<tr>
 		<% unless @reservations.empty? %>
-		<h1>Reservations</h1>	
+		<br><br>	
 			<% for reservation in @reservations %>
-			<tr>
-				<td align="left">&nbsp;<%= link_to( h(reservation.id), 'rooms/show_private/' + room.id.to_s) %></td>
+			<% if reservation.approved != true %>
+				<td align="left">&nbsp;<%= link_to( "New Reservation Request!", '/transactions/' +reservation.id.to_s) %></td>
 		  	</tr>
+			<% end %>
 
 			<% end%>
-		<% end %><br><br>
-		
-	
+		<% end %>
+	</table>
+	<table>
 <% unless @rooms.empty? %>	
 	<h1>Your Rooms</h1>
 	<% for room in @rooms %>
