@@ -14,9 +14,11 @@ namespace :db do
       college.state             = Faker::Address.us_state_abbr
     end
     
+    #edit to change number of rooms generated
+    ROOM_NUMBER= 100
 
-    Room.populate 1 do |room|
-      room.college_id       = 1 + rand(20)
+    Room.populate ROOM_NUMBER do |room|
+      room.college_id       = 2001 + rand(20)
       room.host_id          = 1002
       room.street_address_1 = Faker::Address.street_address
       room.street_address_2 = ""
@@ -25,7 +27,7 @@ namespace :db do
       room.active           = true
       room.zip              = Faker::Address.zip_code
       
-      RoomProfile.populate 1 do |room_profile|
+      RoomProfile.populate ROOM_NUMBER do |room_profile|
         room_profile.room_id    = room.id
         room_profile.size_classification  = Populator.words(1..3)
         room_profile.bed_type             = Populator.words(1..3)

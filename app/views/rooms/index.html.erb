@@ -19,7 +19,9 @@
 	<tr>
 		<td width="100" align="left" valign ="top">
 			<% roomprof = RoomProfile.find(:first, :conditions => ['room_id = ?', room.id]) %>
+			<% if roomprof != nil %>
 			<%= image_tag roomprof.photo.url, :width => "200" %>
+			<% end %>
 		</td>
 		<td align="left">
 			<%= link_to( h(room.street_address_1), 'rooms/show_private/' + room.id.to_s) %><br><br>
