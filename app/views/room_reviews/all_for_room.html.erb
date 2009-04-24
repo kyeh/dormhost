@@ -1,0 +1,33 @@
+<h1>All Room Reviews for <%= @room.street_address_1 %></h1>
+
+<p> Average rating for this room: </p>
+<%= render :partial => "ratings/rate", :locals => { :asset => @room } %> 
+
+<hr>
+
+<% unless @room_reviews.empty? %>
+
+	<% for room_review in @room_reviews %>
+		
+		<div id="star-ratings-block-<%= room_review.id %>" class="star-ratings-block">
+			
+		    <ul class='star-rating'>
+		    	<li class='current-rating' style='width: <%= (room_review.rating * 30).to_i -%>px;'>
+		        </li>
+			  </ul> 
+				
+			<p>Review:&nbsp;&nbsp;<%= room_review.review %></p>
+				
+			
+		     
+		</div>
+		
+		<hr>
+		
+	<% end %>
+	
+<% else %>
+
+	There are no reviews for this room.
+
+<% end %>
