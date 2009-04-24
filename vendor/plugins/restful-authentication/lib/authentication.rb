@@ -14,7 +14,7 @@ module Authentication
 
   self.email_name_regex  = '[\w\.%\+\-]+'.freeze
   self.domain_head_regex = '(?:[A-Z0-9\-]+\.)+'.freeze
-  self.domain_tld_regex  = '(?:[A-Z]{2}|edu|com)'.freeze
+  self.domain_tld_regex  = '(?:[A-Z]{2}|edu)'.freeze
   self.email_regex       = /\A#{email_name_regex}@#{domain_head_regex}#{domain_tld_regex}\z/i
   self.bad_email_message = "should be a school email containing .edu".freeze
 
