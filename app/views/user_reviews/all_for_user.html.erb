@@ -1,0 +1,35 @@
+<% puts @user.to_yaml %>
+
+<h1>All User Reviews for <%= @user.username %></h1>
+
+<p> Average rating for this user: </p>
+<%= render :partial => "ratings/rate_static", :locals => { :asset => @user } %> 
+
+<hr>
+
+<% unless @user_reviews.empty? %>
+
+	<% for user_review in @user_reviews %>
+		
+		<div id="star-ratings-block-<%= user_review.id %>" class="star-ratings-block">
+			
+		    <ul class='star-rating'>
+		    	<li class='current-rating' style='width: <%= (user_review.rating * 30).to_i -%>px;'>
+		        </li>
+			  </ul> 
+				
+			<p>Review:&nbsp;&nbsp;<%= user_review.review %></p>
+				
+			
+		     
+		</div>
+		
+		<hr>
+		
+	<% end %>
+	
+<% else %>
+
+	There are no reviews for this user.
+
+<% end %>

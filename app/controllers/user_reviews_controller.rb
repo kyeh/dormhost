@@ -12,6 +12,15 @@ class UserReviewsController < ApplicationController
       format.xml  { render :xml => @user_reviews }
     end
   end
+  
+  # This method takes the user's id as the URL id
+  def all_for_user
+    
+    puts "GETS HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE"
+    @user = User.find(params[:id])
+    puts @user.to_yaml
+    @user_reviews = UserReview.find(:all, :conditions => ['user_id = ?', @user.id])
+  end
 
   # GET /user_reviews/1
   # GET /user_reviews/1.xml
@@ -54,6 +63,7 @@ class UserReviewsController < ApplicationController
   # POST /user_reviews.xml
   def create
     @user_review = UserReview.new(params[:user_review])
+    @user_review.rating = session[:rating]
 
     respond_to do |format|
       if @user_review.save

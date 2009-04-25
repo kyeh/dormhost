@@ -16,7 +16,12 @@
 			<% unless @host_profile.nil? %>
 				<%= image_tag @host_profile.photo.url, :width => "100" %><% end %>	
 				<%= render :partial => "ratings/rate_static", :locals => { :asset => @room_host } %>
+				
+				<% unless @room_host.rating == 0 %>
+					<%= link_to 'View all reviews for this user', '/user_reviews/all_for_user/' + @user.id.to_s%>
+				<% end %>
 			</td>
+			
 	</tr>
 </table>		
 <br>
