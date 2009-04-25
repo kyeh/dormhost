@@ -7,7 +7,7 @@
 	<tr>
 	<td width="350">
 			<% if @profiles.empty? %>
-			No profile has been created.<br><br>
+			No profile created. <br><br> <b> You need to create a valid profile <br> in order to post or rent a room.</b> <br><br>
 			<%= link_to 'Create new profile', new_profile_path %><br>
 			<% else %>
 				<% for profile in @profiles %>
