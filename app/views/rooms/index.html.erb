@@ -20,7 +20,11 @@
 		<td width="100" align="left" valign ="top">
 			<% roomprof = RoomProfile.find(:first, :conditions => ['room_id = ?', room.id]) %>
 			<% if roomprof != nil %>
-			<%= image_tag roomprof.photo.url, :width => "200" %>
+					<% if roomprof.photo_file_name.nil? %>
+					<%= image_tag 'questionMark.png', :height => "50" %>
+					<% else %>
+					<%= image_tag(roomprof.photo.url, :height => "50") %>
+					<% end %>
 			<% end %>
 		</td>
 		<td align="left">

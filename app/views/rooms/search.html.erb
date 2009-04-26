@@ -15,12 +15,28 @@
 					<br>
 					<% roomhost = User.find(:first, :conditions => ['id = ?', result.host.user_id]) %>
 					<% hostprofile = Profile.find(:first, :conditions => ['user_id = ?', roomhost.id]) %>
+					<% roomprofile = RoomProfile.find(:first, :conditions => ['room_id = ?', result.id]) %>
 					<table>
 					<tr>
 						<td><% unless hostprofile.nil? %>
+							<% if hostprofile.photo_file_name.nil? %>
+							<%= image_tag 'emptyFace.png', :height => "50" %>
+							<% else %>
 							<%= image_tag(hostprofile.photo.url, :height => "50") %>
 							<% end %>
+							<% end %>
 						</td>
+						<td>
+							<% unless roomprofile.nil?%>
+								<% if roomprofile.photo_file_name.nil? %>
+									<%= image_tag 'questionMark.png', :height => "50" %>
+								<% else %>
+									<%= image_tag(roomprofile.photo.url, :height => "50") %>
+								<% end %>
+							<% else %>
+								<%= image_tag 'questionMark.png', :height => "50" %>
+							<% end %>
+						</td> 
 						<td valign="top">
 							Host:<br>
 							<% if hostprofile.nil? %>
