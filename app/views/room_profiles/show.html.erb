@@ -2,7 +2,11 @@
 <table>
 	<tr>
 		<td>
-			<%= image_tag @room_profile.photo.url, :width => "300" %><br><br><br><br><br><br><br><br><br><br><br><br>
+			<% if @room_profile.photo_file_name.nil? %>
+			<%= image_tag 'questionMark.png', :width => "300" %>
+			<% else %>
+			<%= image_tag(@room_profile.photo.url, :width => "300") %>
+			<% end %>
 		</td>
 		<td>
 <p>

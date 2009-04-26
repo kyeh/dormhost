@@ -3,7 +3,11 @@
 	<tr>
 	<td>	
 	<p>
-	<%= image_tag profile.photo.url, :width => "200" %><br><br><br><br>
+	<% if profile.photo_file_name.nil? %>
+		<%= image_tag 'emptyFace.png', :width => "200" %>
+	<% else %>
+		<%= image_tag(profile.photo.url, :width => "200" ) %>
+	<% end %>
 	</p>
 	</td>
 <br>

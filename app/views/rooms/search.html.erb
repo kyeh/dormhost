@@ -18,7 +18,11 @@
 					<table>
 					<tr>
 						<td><% unless hostprofile.nil? %>
+							<% if hostprofile.photo_file_name.nil? %>
+							<%= image_tag 'emptyFace.png', :height => "50" %>
+							<% else %>
 							<%= image_tag(hostprofile.photo.url, :height => "50") %>
+							<% end %>
 							<% end %>
 						</td>
 						<td valign="top">

@@ -3,7 +3,13 @@
 	<tr>
 		<td width="350" valign = "top">
 			<h1><%=h @room.street_address_1 %></h1>
-			<% unless @room_profile.nil? %><%= image_tag @room_profile.photo.url, :width => "100" %><% end %>
+			<% unless @room_profile.nil? %>
+				<% if @room_profile.photo_file_name.nil? %>
+				<%= image_tag 'questionMark.png', :width => "100" %>
+				<% else %>
+				<%= image_tag(@room_profile.photo.url, :width => "100") %>
+				<% end %>
+			<% end %>
 			<%= render :partial => "ratings/rate_static", :locals => { :asset => @room } %>
 			
 			<% unless @room.rating == 0 %>
@@ -14,7 +20,12 @@
 			<td width="350" valign = "top">
 				<h1><%=h @room_host.first_name %></h1>
 			<% unless @host_profile.nil? %>
-				<%= image_tag @host_profile.photo.url, :width => "100" %><% end %>	
+					<% if @host_profile.photo_file_name.nil? %>
+					<%= image_tag 'emptyFace.png', :width => "100" %>
+					<% else %>
+					<%= image_tag(@host_profile.photo.url, :width => "100") %>
+					<% end %>
+				<% end %>
 				<%= render :partial => "ratings/rate_static", :locals => { :asset => @room_host } %>
 				
 				<% unless @room_host.rating == 0 %>
