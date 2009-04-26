@@ -4,8 +4,6 @@ class RoomProfilesController < ApplicationController
   
   before_filter :login_required
 
-
-  
   # GET /room_profiles
   # GET /room_profiles.xml
   def index
@@ -20,7 +18,11 @@ class RoomProfilesController < ApplicationController
   def when
     render :text => "This means blah blah blah"
   end
-
+  
+  def list
+    render :text=>(Marker.find :all).to_json
+  end
+  
   # GET /room_profiles/1
   # GET /room_profiles/1.xml
   def show
@@ -48,13 +50,26 @@ class RoomProfilesController < ApplicationController
   def edit
     @room_profile = RoomProfile.find(params[:id])
   end
-
+  
+  # GET /
+  def create_marker
+    @marker = Marker.new(params[:m])
+    @marker.room_id = 2
+    puts @marker.room_id
+    if @marker.save
+        res={:success=>true,:content=>"<div><strong>Details</strong>#{marker.details}</div>"}
+        else
+          res={:success=>false,:content=>"Could not save the marker"}
+      end
+      render :text=>res.to_json
+  end
+  
   # POST /room_profiles
   # POST /room_profiles.xml
   def create
     @room_profile = RoomProfile.new(params[:room_profile])
-
     respond_to do |format|
+        
       if @room_profile.save
         flash[:notice] = 'RoomProfile was successfully created.'
         format.html { redirect_to(@room_profile) }

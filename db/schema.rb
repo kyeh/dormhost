@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090424231340) do
+ActiveRecord::Schema.define(:version => 20090426163105) do
 
   create_table "acts_as_xapian_jobs", :force => true do |t|
     t.string  "model",    :null => false
@@ -58,6 +58,15 @@ ActiveRecord::Schema.define(:version => 20090424231340) do
   create_table "levels", :force => true do |t|
     t.integer  "rank"
     t.string   "cleanliness", :limit => 50
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "markers", :force => true do |t|
+    t.integer  "room_id",                                                   :null => false
+    t.decimal  "lat",                       :precision => 15, :scale => 10
+    t.decimal  "lng",                       :precision => 15, :scale => 10
+    t.string   "details",    :limit => 200
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -174,13 +183,13 @@ ActiveRecord::Schema.define(:version => 20090424231340) do
   end
 
   create_table "user_reviews", :force => true do |t|
+    t.integer  "profile_id",                        :null => false
     t.integer  "rating"
     t.string   "review"
     t.boolean  "status",         :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "transaction_id"
-    t.integer  "user_id"
   end
 
   create_table "users", :force => true do |t|
