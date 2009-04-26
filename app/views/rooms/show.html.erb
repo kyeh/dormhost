@@ -10,6 +10,8 @@
 				<% else %>
 				<%= image_tag(@room_profile.photo.url, :width => "100") %>
 				<% end %>
+			<% else %>
+				<%= image_tag 'questionMark.png', :width => "100" %>
 			<% end %>
 			<%= render :partial => "ratings/rate_static", :locals => { :asset => @room } %>
 			

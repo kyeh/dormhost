@@ -34,12 +34,14 @@
 			<table>
 				<tr>
 				<td>
-					<% puts "ERROR CHECKING HERE *********************" %>
-					<% puts hostprofile.photo_file_name.nil? %>
-					<% if hostprofile.photo_file_name.nil? %>
-					<%= image_tag 'emptyFace.png', :height => "50" %>
+					<% unless hostprofile.nil? %>
+						<% if hostprofile.photo_file_name.nil? %>
+						<%= image_tag 'emptyFace.png', :height => "50" %>
+						<% else %>
+						<%= image_tag(hostprofile.photo.url, :height => "50") %>
+						<% end %>
 					<% else %>
-					<%= image_tag(hostprofile.photo.url, :height => "50") %>
+						<%= image_tag 'emptyFace.png', :height => "50" %>
 					<% end %>
 				</td>
 				<td valign="top">
