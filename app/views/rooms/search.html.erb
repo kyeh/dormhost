@@ -8,6 +8,8 @@
 			<% unless @xap_results.nil? %>	
 				<% for result in @xap_results %>
 				
+				<% roomprofile = RoomProfile.find(:first, :conditions => ['room_id = ?', result.id]) %>
+				
 				<table>
 				<tr>		
 					<td>
@@ -49,7 +51,7 @@
 								
 					<% roomhost = User.find(:first, :conditions => ['id = ?', result.host.user_id]) %>
 					<% hostprofile = Profile.find(:first, :conditions => ['user_id = ?', roomhost.id]) %>
-					<% roomprofile = RoomProfile.find(:first, :conditions => ['room_id = ?', result.id]) %>
+					
 					<table>
 					<tr>
 						<td><% unless hostprofile.nil? %>
