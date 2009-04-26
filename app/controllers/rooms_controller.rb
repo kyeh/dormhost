@@ -232,12 +232,17 @@ class RoomsController < ApplicationController
 
 
   def show_private
-    
+    @user = get_user
     @room = Room.find(params[:id])
     @college= @room.college
     @room_profile = RoomProfile.find(:first, :conditions => ['room_id = ?', params[:id]])
 
     @room_profile_id = @room_profile.id unless @room_profile.nil?
+    
+    @host = Host.find(:first, :conditions => ['user_id = ?', @user.id])
+    
+    @room_host = User.find(:first, :conditions => ['id = ?', @room.host.user_id])
+    @host_profile = Profile.find(:first, :conditions => ['user_id = ?', @room_host.id])
     
     @transactions = Transaction.find(:all, :conditions => ['room_id = ?', @room.id])
     

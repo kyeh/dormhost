@@ -28,9 +28,7 @@
 			<% end %>
 		</td>
 		<td align="left">
-			<%= link_to( h(room.street_address_1), 'rooms/show_private/' + room.id.to_s) %><br><br>
-			<%= link_to 'Edit This Room', edit_room_path(room) %><br>
-		    <%= link_to 'Delete This Room', room, :confirm => 'Are you sure?', :method => :delete %><br /><br />
+			<%= link_to( h(room.street_address_1), 'rooms/show_private/' + room.id.to_s) %><br><br><br /><br />
 		</td>
 	</tr>
 <% end %>

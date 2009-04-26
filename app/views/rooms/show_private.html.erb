@@ -1,46 +1,175 @@
-<h1><%=h @room.street_address_1 %></h1>
+<table>
+	<tr>
+		<td width="350" valign = "top">
+			<h1><%=h @room.street_address_1 %></h1>
+			<% unless @room_profile.nil? %>
+				<% if @room_profile.photo_file_name.nil? %>
+				<%= image_tag 'questionMark.png', :width => "100" %>
+				<% else %>
+				<%= image_tag(@room_profile.photo.url, :width => "100") %>
+				<% end %>
+			<% end %>
+			<%= render :partial => "ratings/rate_static", :locals => { :asset => @room } %>
+			
+			<% unless @room.rating == 0 %>
+				<%= link_to 'View all reviews for this room', '/room_reviews/all_for_room/' + @room.id.to_s %>
+			<% end %>
+			
+		</td>
+			<td width="350" valign = "top">
+				<br><br>
+				<p>
+				<%= link_to 'Edit Room', edit_room_path(@room) %><br>
+				<% if @room_profile.nil? %> 
+				<%= link_to 'Create Room Profile', new_room_profile_path(:room_id => @room.id) %> <br><br>
+				<% else %>
+				<%= link_to 'Edit Room Profile', edit_room_profile_path(@room_profile) %> <br>
+				<% end %>
+				<%= link_to 'Delete Room', @room, :confirm => 'Are you sure?', :method => :delete %>
+				</p>
+			</td>
+			
+	</tr>
+</table>		
+<br>
+			<table>
 
-<p>
-	<b>Address</b><br>
-	&nbsp;&nbsp;&nbsp;&nbsp;<%=h @room.street_address_1 %><br>
-	<% unless @room.street_address_2.empty? %>
-		&nbsp;&nbsp;&nbsp;&nbsp;<%=h @room.street_address_2 %><br>
-	<% end%>
-	&nbsp;&nbsp;&nbsp;&nbsp;<%=h @room.city + " " + @room.state + ", " + @room.zip %>
-</p>
+				<tr>
+					<td valign="top" width="350" align="left">					
+						<table>
+							<tr>
+								<td valign = "top" align = "left">
+									Location:&nbsp;
+								</td>
+								<td>
+									<%=h @room.street_address_1 %><br>
+									<% unless @room.street_address_2.empty? %>
+									<%=h @room.street_address_2 %><br>
+									<% end %>
+									<%=h @room.city + " " + @room.state + ", " + @room.zip %>
+								</td>
+							</tr>
+							<tr>
+								<td valign = "top" align = "left">
+									Campus:&nbsp;
+								</td>
+								<td>
+									<%=h @college.name %>
+								</td>
+							</tr>
+								<% if @room_profile.nil? %>
+								<tr>
+									<b>A room profile has not been <br>created for this room.</b>
+								</tr>
+								<% else %>
+								<tr>
+								<td valign = "top" align = "left">
+									Nightly Cost:&nbsp;
+								</td>
+								<td>	
+									<%=h number_to_currency(@room_profile.cost) %>
+								</td>
+							</tr>
+							<tr>
+								<td valign = "top" align = "left">
+									Bed Type:&nbsp;
+								</td>
+								<td>
+									<%=h @room_profile.bed_type %>
+								</td>
+							</tr>
+							<tr>
+								<td valign = "top" align = "left">
+									Room Type:&nbsp;
+								</td>
+								<td>
+									<%=h @room_profile.size_classification %>
+								</td>
+							</tr>
+							<tr>
+								<td valign = "top" align = "left">
+									Capacity:&nbsp;
+								</td>
+								<td>
+									<%=h @room_profile.max_capacity %>
+								</td>
+							</tr>
+							<tr>
+								<td valign = "top" align = "left">
+									Pets:&nbsp;
+								</td>
+								<td>
+									<%=h @room_profile.pets %>
+								</td>
+							</tr>
+								<tr>
+									<td valign = "top" align = "left">
+										Food:&nbsp;
+									</td>
+									<td>
+										<%=h @room_profile.food %>
+									</td>
+								</tr>
+								<% end %>
+						</table>
+						
+						
+					</td>
+					<td valign="top" width="300" align="left">
+						<p>
+							<b>Reservations:</b>
+						<p>
+						<% if @transactions.empty? then %>
+							No Reservations
+						<% else %>
+							<% for transaction in @transactions %>
+							<p>
+								<%= link_to transaction.room.street_address_1, transaction_path(transaction) %>
+								requested by
+								<%= link_to transaction.renter.user.username, profile_path(transaction.renter.user.id)%>
+							</p>
+
+							<% end %>
+						<% end %>
+						
+					</td>
+				</tr>
+				
+	<tr>
+		<td width="350"><br>
+			<% unless @host.id == @room.host_id %>
+				<% if !@reserved.nil? %>
+					You have already requested this room.
+					<% else %>
+					<%= link_to 'Request this room', new_transaction_path(:room_id => @room.id, :renter_id => @renter.id) %>
+				<% end %><br>
+			<% if @fav.nil? %>
+				<%=link_to("Add Room to Favorites", favorites_url(:favorite => {:user_id => @user.id, :room_id => @room.id}), :method => :post) %>
+			<% else %>
+				<%= link_to("Remove Room from Favorites", favorite_path(@fav), :confirm => 'Are you sure you wish to delete this favorite?', :method => :delete) %>
+			<% end %>
+		
+		</td>
+		<td><br><br>
+			<% hostmail = @room_host.email %>
+			<a href="mailto:<%=hostmail%>"><b>Contact Host<b></a>
+				<% end %>	
+		</td>
+	</tr>
+</table>
 
 
-<p>
-  <b>University</b><br>
-  &nbsp;&nbsp;&nbsp;&nbsp;<%=h @college.name %>
-</p>
 
-<p>
-<% if @room_profile.nil? %> 
-<%= link_to 'Create Room Profile', new_room_profile_path(:room_id => @room.id) %> <br><br>
-<% else %>
-<%= link_to 'View Room Profile', room_profile_path(@room_profile) %> <br><br>
-<% end %>
-</p>
 
-<p>
-	Reservations:
-<p>
+
+
+
+
+
+
+
+
+
 	
-<% if @transactions.empty? then %>
-	No Reservations
-<% else %>
-	<% for transaction in @transactions %>
-	<p>
-		<%= link_to transaction.room.street_address_1, transaction_path(transaction) %>
-		requested by
-		<%= link_to transaction.renter.user.username, profile_path(transaction.renter.user.id)%>
-	</p>
-	
-	<% end %>
-<% end %>
+
 </p>
-
-
-<%= link_to 'Edit', edit_room_path(@room) %> |
-<%= link_to 'All Rooms', rooms_path %>
