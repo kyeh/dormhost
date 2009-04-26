@@ -6,42 +6,45 @@
 	<%= flash[:error] %>
 		<fieldset>
 			<legend>Enter Your Details</legend>
+			<i style="color:blue;">Fields marked </i>
+			<b style="color:blue;">*</b>
+			<i style="color:blue;"> are mandatory</i>
 			<table>
 				<tr>
 					<td width = "350" valign="top">
 			
-				<p><%= label_tag 'First Name' %><br/>
+				<p><%= label_tag 'First Name' %><b style="color:red;">*</b><br/>
 				<%= f.text_field :first_name %></p>
 				
-				<p><%= label_tag 'Last Name' %><br/>
+				<p><%= label_tag 'Last Name' %><b style="color:red;">*</b><br/>
 				<%= f.text_field :last_name %></p>
 				
-				<p><%= label_tag 'Gender' %><br/>
+				<p><%= label_tag 'Gender' %><b style="color:red;">*</b><br/>
 				<%= f.select( :gender , gender_select ,:prompt => "Please Select") %></p>
 				
-				<p><%= label_tag 'Username' %><br/>
+				<p><%= label_tag 'Username' %><b style="color:red;">*</b><br/>
 				<%= f.text_field :username %></p>
 				
-				<p><%= label_tag 'password' %><br/>
+				<p><%= label_tag 'password' %><b style="color:red;">*</b><br/>
 				<%= f.password_field :password %></p>
 				
-				<p><%= label_tag 'password_confirmation', 'Confirm Password' %><br/>
+				<p><%= label_tag 'password_confirmation', 'Confirm Password' %><b style="color:red;">*</b><br/>
 				<%= f.password_field :password_confirmation %></p>
 				</td>
 				<td width = "350" valign="top">
 						
-				<p><%= label_tag 'email' %><br/>
+				<p><%= label_tag 'email' %><b style="color:red;">*</b><br/>
 				<%= f.text_field :email %></p>
 
-				<p><%= label_tag 'Confirm Email' %><br/>
+				<p><%= label_tag 'Confirm Email' %><b style="color:red;">*</b><br/>
 				<%= f.text_field :email %></p>
 				
-				Please enter the 2 words below to verify your signup<br />
+				Please enter the 2 words below to verify your signup<b style="color:red;">*</b><br />
 				<%= recaptcha_tags %>
 							
 				<BR />
 				<font size=2>
-					I understand and agree to the DormHost Terms and Conditions of Use.
+					I understand and agree to the DormHost Terms and Conditions of Use.<b style="color:red;">*</b>
 					<%= f.check_box :terms %>
 				</font>
 					
