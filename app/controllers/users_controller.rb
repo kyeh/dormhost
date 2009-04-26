@@ -28,8 +28,11 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if verify_recaptcha(@user)
       
-      @user.register! if @user && @user.valid?
-      success = @user && @user.valid?
+      puts "*****************" + @user.terms.to_s
+      puts "*****************" + @user.username.to_s
+      
+      @user.register! if @user && @user.valid? && @user.terms == true
+      success = @user && @user.valid? && @user.terms == true
       
       if success && @user.errors.empty?
 
@@ -47,12 +50,14 @@ class UsersController < ApplicationController
           render :action =>'create'
         
         else
-          
           flash[:error]  = "We couldn't set up that account, sorry.  Please try again, or contact an admin (link is above)."
           render :action => 'new'
           
         end 
       else
+        if @user.terms == false
+            @user.errors.add(:terms, "You must approve the terms of service before you can create an account.")
+          end
         render :action => 'new'
       end
     
