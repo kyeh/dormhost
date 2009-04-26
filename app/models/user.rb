@@ -28,6 +28,9 @@ class User < ActiveRecord::Base
   validates_uniqueness_of   :email
   validates_format_of       :email,    :with => Authentication.email_regex, :message => Authentication.bad_email_message
   
+  validates_presence_of     :password
+  validates_length_of       :password,    :within => 6..15
+  
   validates_presence_of     :gender
 
   

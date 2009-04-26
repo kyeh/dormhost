@@ -4,32 +4,32 @@
   <%= f.error_messages %>
   
 	<p>
-		<%= f.label :street_address_1 %><br />
+		<%= f.label :street_address_1 %><b style="color:red;">*</b><br />
 		<%= f.text_field :street_address_1 %>
 	</p>
 	
 	<p>
-		<%= f.label :street_address_2 %><br />
+		<%= f.label :street_address_2 %><b style="color:red;">*</b><br />
 		<%= f.text_field :street_address_2 %>
 	</p>
 	
 	<p>
-		<%= f.label :city %><br />
-		<%= f.text_field :city %>
+		<%= f.label :city %><b style="color:red;">*</b><br />
+		<%= f.text_field :city %></br><i style="font-size:10px;">E.g. Pittsburgh or New York</i>
 	</p>
 	
 	<p>
-		<%= f.label :state %><br />
-		<%= f.text_field :state %>
+		<%= f.label :state %><b style="color:red;">*</b><br />
+		<%= f.text_field :state %></br><i style="font-size:10px;">Enter the abbreviations of the state. E.g. AZ for ARIZONA</i>
 	</p>
 	
 	<p>
-		<%= f.label :zip %><br />
-		<%= f.text_field :zip %>
+		<%= f.label :zip %><b style="color:red;">*</b><br />
+		<%= f.text_field :zip %></br><i style="font-size:10px;">E.g. 12345 or 12345-9876 </i>
 	</p>
 	
 	<p>
-		<%= f.label :college_id %><br />
+		<%= f.label :college_id %><b style="color:red;">*</b><br />
 		<%= f.select(:college_id, College::COLLEGES_LIST, :prompt => "Select...") %>
 	</p>
 	

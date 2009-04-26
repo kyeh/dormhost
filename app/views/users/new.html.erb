@@ -23,10 +23,10 @@
 				<%= f.select( :gender , gender_select ,:prompt => "Please Select") %></p>
 				
 				<p><%= label_tag 'Username' %><b style="color:red;">*</b><br/>
-				<%= f.text_field :username %></p>
+				<%= f.text_field :username %></br><i style="font-size:10px;">Between 3 to 40 characters</i></p>
 				
 				<p><%= label_tag 'password' %><b style="color:red;">*</b><br/>
-				<%= f.password_field :password %></p>
+				<%= f.password_field :password %></br><i style="font-size:10px;">Between 6 to 15 characters</i></p>
 				
 				<p><%= label_tag 'password_confirmation', 'Confirm Password' %><b style="color:red;">*</b><br/>
 				<%= f.password_field :password_confirmation %></p>
@@ -34,7 +34,7 @@
 				<td width = "350" valign="top">
 						
 				<p><%= label_tag 'email' %><b style="color:red;">*</b><br/>
-				<%= f.text_field :email %></p>
+				<%= f.text_field :email %></br><i style="font-size:10px;">Email has to be a valid .edu email domain. E.g. john@example.edu</i></p>
 
 				<p><%= label_tag 'Confirm Email' %><b style="color:red;">*</b><br/>
 				<%= f.text_field :email %></p>
