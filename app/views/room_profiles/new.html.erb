@@ -12,7 +12,7 @@
 	
 	<table>
 		<tr>
-			<td width="350">
+			<td width="350px">
 	<p>
 		<b>Bed Type</b>:<br>
 		<%= f.text_field :bed_type, :size => 42 %>
@@ -41,30 +41,42 @@
 		<b>On Campus?<b><br>
 		<%= f.check_box :on_campus %>
 	</p>
+	<p>
+		&nbsp;
+	</p>
+	<p>
+		&nbsp;
+	</p>
+	<p>
+		&nbsp;
+	</p>
+	<p>
+		&nbsp;
+	</p>
 	</td>
-	<td valign="top">
+	
+	<td valign="top" width="350px">
 	<p>
 		<b>Cost</b>:<br>
 		<%= f.text_field :cost, :size => 10 %>
 	</p>
 	<p>
 		<b>Notes</b>:<br>
-		<%= f.text_area :notes, :rows => 6, :cols => 40 %>
+		<%= f.text_area :notes, :rows => 5, :cols => 40 %>
 	</p>
-	<p><br><br><br>
+	<p>
 		<b>Room Profile Picture:<b><br>
 		<%= f.file_field :photo %>
 	</p>
 	<%= f.hidden_field :room_id, :value => params[:room_id] %>
 	<%= f.hidden_field :level_id, :value => 1%>
-	<p>
-		<b>Google Maps</b>
-		<div id="map" style="width: 500px; height: 300px"></div>
+    <p>	
+	<div id="map" style="width: 400px; height: 200px"></div>
 	</p>
-  <p>
-    <%= f.submit "Create" %>
-  </p>
+	<%= f.submit "Create" %>
+  
 <% end %>
 
 <%= link_to 'Back', room_profiles_path %>
 </td></tr></table>
+
