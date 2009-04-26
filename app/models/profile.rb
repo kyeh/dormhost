@@ -3,8 +3,6 @@ class Profile < ActiveRecord::Base
   belongs_to :college
   has_one :user
   
-  GRAD_YEARS = ['2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017']
-  
   acts_as_xapian  :texts => [:interests]
   
  
