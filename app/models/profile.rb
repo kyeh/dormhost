@@ -5,6 +5,8 @@ class Profile < ActiveRecord::Base
   
   acts_as_xapian  :texts => [:interests]
   
+  GRAD_YEARS = ['2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017']
+  
  
   named_scope :for_user, lambda { |user_id| { :conditions => ["user_id = ?", user_id] }}
   

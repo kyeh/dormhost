@@ -31,12 +31,16 @@
 </p>
 <p>
   <b>Internet?:</b>
-  <%=h @room_profile.internet %>
+  	<% if @room_profile.internet == true %>Yes
+	<% else %>No
+	<% end %>
 </p>
 
 <p>
   <b>On Campus?:</b>
-  <%=h @room_profile.on_campus %>
+  	<% if @room_profile.on_campus == true %>Yes
+	<% else %> No
+	<% end %>
 </p>
 <p>
   <b>Cost:</b>
