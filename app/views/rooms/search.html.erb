@@ -1,5 +1,17 @@
 <table cellpadding="30">
 	<tr>
+		<td>
+			<% unless roomprofile.nil?%>
+				<% if roomprofile.photo_file_name.nil? %>
+					<%= image_tag 'questionMark.png', :height => "50" %>
+				<% else %>
+					<%= image_tag(roomprofile.photo.url, :height => "50") %>
+				<% end %>
+			<% else %>
+				<%= image_tag 'questionMark.png', :height => "50" %>
+			<% end %>
+		</td> 
+						
 		<td width="400">
 			<h1>Search Results</h1>
 			<br><br>
@@ -26,17 +38,7 @@
 							<% end %>
 							<% end %>
 						</td>
-						<td>
-							<% unless roomprofile.nil?%>
-								<% if roomprofile.photo_file_name.nil? %>
-									<%= image_tag 'questionMark.png', :height => "50" %>
-								<% else %>
-									<%= image_tag(roomprofile.photo.url, :height => "50") %>
-								<% end %>
-							<% else %>
-								<%= image_tag 'questionMark.png', :height => "50" %>
-							<% end %>
-						</td> 
+						
 						<td valign="top">
 							Host:<br>
 							<% if hostprofile.nil? %>
