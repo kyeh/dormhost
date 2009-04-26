@@ -1,12 +1,12 @@
 class Room < ActiveRecord::Base
   
   acts_as_rateable
-  acts_as_xapian  :texts => [:street_address_1, :city, :state, :zip],
-                  :terms => [[:city, 'C', "city"],
-                            [:state, 'S', "state"],
-                            [:zip, 'Q', "zip"],
-                            [:host, 'H', "host"],
-                            [:college_id, 'O', "college"]]
+  acts_as_xapian  :texts =>   [:street_address_1, :city, :state, :zip],
+                  :terms =>   [[:city, 'C', "city"],
+                              [:state, 'S', "state"],
+                              [:zip, 'Q', "zip"],
+                              [:host, 'H', "host"],
+                              [:college_id, 'O', "college"]]
 
   belongs_to :host
   belongs_to :college
