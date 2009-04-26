@@ -1,22 +1,33 @@
 <table cellpadding="30">
-	<tr>
-		<td>
-			<% unless roomprofile.nil?%>
-				<% if roomprofile.photo_file_name.nil? %>
-					<%= image_tag 'questionMark.png', :height => "50" %>
-				<% else %>
-					<%= image_tag(roomprofile.photo.url, :height => "50") %>
-				<% end %>
-			<% else %>
-				<%= image_tag 'questionMark.png', :height => "50" %>
-			<% end %>
-		</td> 
-						
+	<tr>				
 		<td width="400">
 			<h1>Search Results</h1>
 			<br><br>
+								
+								
 			<% unless @xap_results.nil? %>	
 				<% for result in @xap_results %>
+				
+				<table>
+				<tr>		
+					<td>
+						<% unless roomprofile.nil?%>
+							<% if roomprofile.photo_file_name.nil? %>
+								<%= image_tag 'questionMark.png', :height => "100" %>
+							<% else %>
+								<%= image_tag(roomprofile.photo.url, :height => "100") %>
+							<% end %>
+						<% else %>
+							<%= image_tag 'questionMark.png', :height => "50" %>
+						<% end %>
+					</td> 
+					
+					<td>
+					<table>
+						<tr>
+							<td>
+								<!--- TEST MEGHA -->
+								
 					<%= link_to( h(result.street_address_1), room_path(result)) %>
 					<% unless result.street_address_2.empty? %>
 						<br>
@@ -25,6 +36,17 @@
 					<br>
 					<%= h(result.city) + " " + h(result.state) + ", " + h(result.zip) %>
 					<br>
+					
+					
+					
+					
+							</td>
+						</tr>
+						<tr>
+							<td>
+								
+								
+								
 					<% roomhost = User.find(:first, :conditions => ['id = ?', result.host.user_id]) %>
 					<% hostprofile = Profile.find(:first, :conditions => ['user_id = ?', roomhost.id]) %>
 					<% roomprofile = RoomProfile.find(:first, :conditions => ['room_id = ?', result.id]) %>
@@ -48,6 +70,21 @@
 							<% end %>
 						</td>
 					</table>
+					
+					
+					
+					</td>
+					
+				</tr>
+			</table>
+			
+			</td>
+			</tr>
+			</table>
+			
+			
+			
+			
 					<br>
 					<br>
 				<% end %>
