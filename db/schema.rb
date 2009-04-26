@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090426163105) do
+ActiveRecord::Schema.define(:version => 20090426193722) do
 
   create_table "acts_as_xapian_jobs", :force => true do |t|
     t.string  "model",    :null => false
@@ -87,7 +87,7 @@ ActiveRecord::Schema.define(:version => 20090426163105) do
     t.integer  "college_id",                                          :null => false
     t.string   "image"
     t.date     "birthdate"
-    t.date     "grad_year"
+    t.string   "grad_year",          :limit => 4
     t.string   "phone",              :limit => 20
     t.string   "living_style"
     t.string   "bedtime"
