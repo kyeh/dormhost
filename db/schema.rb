@@ -215,6 +215,4 @@ ActiveRecord::Schema.define(:version => 20090426173033) do
     t.boolean  "terms"
   end
 
-  add_index "users", ["username"], :name => "index_users_on_login", :unique => true
-
 end
