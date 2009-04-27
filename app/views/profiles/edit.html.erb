@@ -54,8 +54,12 @@
   <%- unless @profile.new_record? || !@profile.photo? -%>
     <div>
       <%= f.label(:delete_photo, 'Delete photo') %>
-      <%= image_tag(@profile.photo.url, :alt => 'Photo', :title => 'Current photo') %>
       <%= f.check_box(:delete_photo) %>
+	  <% if @profile.photo_file_name.nil? %>
+	  <%= image_tag '/questionMark.png', :width => 300 %>
+	  <% else %>
+	  <%= image_tag(@profile.photo.url, :alt => 'Photo', :title => 'Current photo', :width=> 300) %>
+	  <% end %>
     </div>
   <%- end -%>
 
