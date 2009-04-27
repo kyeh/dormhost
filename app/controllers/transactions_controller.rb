@@ -2,7 +2,7 @@ class TransactionsController < ApplicationController
   # GET /transactions
   # GET /transactions.xml
   
-  layout 'mylistings'
+  layout 'mytrips'
   
   def index
     @transactions = Transaction.find(:all)
