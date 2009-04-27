@@ -10,7 +10,7 @@
 		<tr>
 			<td width = "350" valign="top">	
 	<p>
-		<b>College</b>:<br>
+		<%= f.label :college %><b style="color:red;">*</b><BR />
 		<%= f.select(:college_id, College::COLLEGES_LIST, :prompt => "Select...") %>
 	</p>
 	
