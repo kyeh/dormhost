@@ -19,7 +19,8 @@ ActionController::Routing::Routes.draw do |map|
   map.reset_password '/reset_password/:id', :controller => 'users', :action => 'reset_password' 
   map.change_password '/change_password', :controller => 'users', :action => 'change_password'
   map.suspend '/profiles/suspend', :controller => 'users', :action => 'suspend'
-
+  map.create '/marker/create_marker', :controller=>'marker', :action=>'create'
+  map.list '/marker/list', :controller=>'marker', :action=>'list'
    
   map.activate '/activate/:activation_code', 
              :controller => 'users', 
@@ -59,6 +60,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :room_profiles
 
+  map.resources :marker
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:

@@ -18,7 +18,7 @@ function createMarker(){
 	var request = GXmlHttp.create();
 	
 	//call the create action back on the server
-	request.open('GET', 'create_marker' + getVars, true);
+	request.open('GET', 'create' + getVars, true);
 	request.onreadystatechange = function(){
 		if (request.readyState == 4) {
 			//the request is complete.
@@ -28,7 +28,6 @@ function createMarker(){
 			try {
 				//parse the result to JSON(simply by eval-ing it)
 				res=eval("(" + request.responseText + ")");
-				document.write(request.responseText);
 				content=res.content;
 				success=res.success;
 			} 
@@ -63,7 +62,6 @@ function addMarkerToMap(latlng,html){
 	return marker;
 }
 
-
 function listMarkers() {
 	
 	var request = GXmlHttp.create();
@@ -78,6 +76,7 @@ function listMarkers() {
 			//parse the result to JSON, by eval-ing it.
 			//the response is an array of markers
 			markers=eval( "(" + request.responseText + ")");
+			document.write(request.responseText);
 			for(var i = 0; i< markers.length ; i++){
 				
 				var marker=markers[i].marker;

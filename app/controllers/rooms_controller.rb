@@ -360,6 +360,7 @@ class RoomsController < ApplicationController
         flash[:notice] = 'Room was successfully created.'
         format.html { redirect_to(new_room_profile_path(:room_id => @room.id)) }
         format.xml  { render :xml => @room, :status => :created, :location => @room }
+        
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @room.errors, :status => :unprocessable_entity }

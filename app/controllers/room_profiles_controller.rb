@@ -18,11 +18,7 @@ class RoomProfilesController < ApplicationController
   def when
     render :text => "This means blah blah blah"
   end
-  
-  def list
-    render :text=>(Marker.find :all).to_json
-  end
-  
+    
   # GET /room_profiles/1
   # GET /room_profiles/1.xml
   def show
@@ -51,19 +47,6 @@ class RoomProfilesController < ApplicationController
     @room_profile = RoomProfile.find(params[:id])
   end
   
-  # GET /
-  def create_marker
-    @marker = Marker.new(params[:m])
-    @marker.room_id = 2
-    puts @marker.room_id
-    if @marker.save
-        res={:success=>true,:content=>"<div><strong>Details</strong>#{marker.details}</div>"}
-        else
-          res={:success=>false,:content=>"Could not save the marker"}
-      end
-      render :text=>res.to_json
-  end
-  
   # POST /room_profiles
   # POST /room_profiles.xml
   def create
@@ -72,7 +55,7 @@ class RoomProfilesController < ApplicationController
         
       if @room_profile.save
         flash[:notice] = 'RoomProfile was successfully created.'
-        format.html { redirect_to(@room_profile) }
+        format.html { redirect_to('/marker/map')}
         format.xml  { render :xml => @room_profile, :status => :created, :location => @room_profile }
       else
         format.html { render :action => "new" }
