@@ -54,7 +54,7 @@
   <%- unless @room_profile.new_record? || !@room_profile.photo? -%>
     <div>
       <%= f.label(:delete_photo, 'Delete photo') %>
-      <%= image_tag(@room_profile.photo.url, :alt => 'Photo', :title => 'Current photo') %>
+      <%= image_tag(@room_profile.photo.url, :alt => 'Photo', :title => 'Current photo', :width => 300) %>
       <%= f.check_box(:delete_photo) %>
     </div>
   <%- end -%>	
