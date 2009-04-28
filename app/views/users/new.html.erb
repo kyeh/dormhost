@@ -20,7 +20,8 @@
 				<%= f.text_field :last_name %></p>
 				
 				<p><%= label_tag 'Gender' %><b style="color:red;">*</b><br/>
-				<%= f.select( :gender , gender_select ,:prompt => "Please Select") %></p>
+				<%= f.radio_button :gender, "Male" %>Male
+				<%= f.radio_button :gender, "Female" %>Female</p>
 				
 				<p><%= label_tag 'Username' %><b style="color:red;">*</b><br/>
 				<%= f.text_field :username %></br><i style="font-size:10px;">Between 3 to 40 characters</i></p>
