@@ -9,30 +9,35 @@
 			<td width="350px">
 	<p>
 		<%= f.label :bed_type %>:<b style="color:red;">*</b><br />
-		<%= f.text_field :bed_type, :size => 42 %>
+		<%= f.text_field :bed_type, :size => 42 %><BR />
+		<i style="font-size:10px;">I.e. double, queen, sofa, air mattress, etc.</i>
 	</p>
 	<p>
-		<%= f.label :available_spots %><b style="color:red;">*</b><br />
-		<%= f.text_field :max_capacity, :size => 20 %>
+		<%= f.label (:max_capacity, "Available spots") %><b style="color:red;">*</b><br />
+		<%= f.text_field :max_capacity, :size => 20 %><BR />
+		<i style="font-size:10px;">How many people would you be willing to accomdate?</i>
 	</p>
 	<p>
 		<%= f.label :pets %><b style="color:red;">*</b><br />
-		<%= f.text_field :pets, :size => 42 %>
+		<%= f.text_field :pets, :size => 42 %><BR />
+		<i style="font-size:10px;">Do you have pets at your residence?</i>
 	</p>
 	<p>
-		<%= f.label :is_there_food_available_for_the_renter? %><b style="color:red;">*</b><br />
-		<%= f.text_area :food, :rows => 2, :cols => 40 %>
+		<%= f.label (:food, 'Is there food available for the renter?') %><b style="color:red;">*</b><br />
+		<%= f.text_area :food, :rows => 2, :cols => 40 %><BR />
+		<i style="font-size:10px;">I.e. would you provide breakfast, coffee, etc?</i>
 	</p>
 	<p>
-		<%= f.label :number_of_roommates %><b style="color:red;">*</b><br />
-		<%= f.text_field :roommates, :size => 2 %>
+		<%= f.label (:roommates, "Number of roomates") %><b style="color:red;">*</b>
+		<%= f.text_field :roommates, :size => 2 %><BR />
+		<i style="font-size:10px;">How many other people do you live with?</i>
 	</p>
 	<p>
-		<%= f.label :internet_available? %><b style="color:red;">*</b>
+		<%= f.label (:internet, "Internet available?") %>
 		<%= f.check_box :internet %>
 	</p>
 	<p>
-		<%= f.label :on_campus? %><b style="color:red;">*</b>
+		<%= f.label (:on_campus, "On campus?") %>
 		<%= f.check_box :on_campus %>
 	</p>
 	</td>
@@ -44,11 +49,12 @@
 	</p>
 	<p>
 		<%= f.label :additional_notes %><b style="color:red;">*</b><br />
-		<%= f.text_area :notes, :rows => 5, :cols => 40 %>
+		<%= f.text_area :notes, :rows => 5, :cols => 40 %><BR />
+		<i style="font-size:10px;">Any specific details regarding the availability of the room, or <BR> anything else a renter should know.</i>
 	</p>
 	
 	<p><br><br><br>
-		<%= f.label :room_profile_picture %><b style="color:red;">*</b><br />
+		<%= f.label :room_profile_picture %><br />
 		<%= f.file_field :photo %>
 	</p>
 	<%= f.hidden_field :room_id, :value => params[:room_id] %>

@@ -8,42 +8,49 @@
 		<tr>
 			<td width="355" valign= "top">
 	<p>
-		<b>Bed Type</b>:<br>
-		<%= f.text_field :bed_type, :size => 42 %>
+		<%= f.label :bed_type %>:<b style="color:red;">*</b><br />
+		<%= f.text_field :bed_type, :size => 42 %><BR />
+		<i style="font-size:10px;">I.e. double, queen, sofa, air mattress, etc.</i>
 	</p>
 	<p>
-		<b>Available Spots</b>:<br>
-		<%= f.text_field :max_capacity, :size => 20 %>
+		<%= f.label (:max_capacity, "Available spots") %><b style="color:red;">*</b><br />
+		<%= f.text_field :max_capacity, :size => 20 %><BR />
+		<i style="font-size:10px;">How many people would you be willing to accomdate?</i>
 	</p>
 	<p>
-		<b>Pets</b>:<br>
-		<%= f.text_field :pets, :size => 42 %>
+		<%= f.label :pets %><b style="color:red;">*</b><br />
+		<%= f.text_field :pets, :size => 42 %><BR />
+		<i style="font-size:10px;">Do you have pets at your residence?</i>
 	</p>
 	<p>
-		<b>Is there food available for the renter? </b><br>
-		<%= f.text_area :food, :rows => 2, :cols => 40 %>
+		<%= f.label (:food, 'Is there food available for the renter?') %><b style="color:red;">*</b><br />
+		<%= f.text_area :food, :rows => 2, :cols => 40 %><BR />
+		<i style="font-size:10px;">I.e. would you provide breakfast, coffee, etc?</i>
 	</p>
 	<p>
-		<b>Number of Roommates</b>:<br>
-		<%= f.text_field :roommates, :size => 2 %>
+		<%= f.label (:roommates, "Number of roomates") %><b style="color:red;">*</b>
+		<%= f.text_field :roommates, :size => 2 %><BR />
+		<i style="font-size:10px;">How many other people do you live with?</i>
 	</p>
 	<p>
-		<b>Internet Available?<b><br>
+		<%= f.label (:internet, "Internet available?") %>
 		<%= f.check_box :internet %>
 	</p>
 	<p>
-		<b>On Campus?<b><br>
+		<%= f.label (:on_campus, "On campus?") %>
 		<%= f.check_box :on_campus %>
 	</p>
 	</td>
+	
 	<td valign="top">
 	<p>
-		<b>Cost</b>:<br>
+		<%= f.label :cost %><b style="color:red;">*</b><br />
 		<%= f.text_field :cost, :size => 10 %>
 	</p>
 	<p>
-		<b>Notes</b>:<br>
-		<%= f.text_area :notes, :rows => 6, :cols => 40 %>
+		<%= f.label :additional_notes %><b style="color:red;">*</b><br />
+		<%= f.text_area :notes, :rows => 5, :cols => 40 %><BR />
+		<i style="font-size:10px;">Any specific details regarding the availability of the room, or <BR> anything else a renter should know.</i>
 	</p>
 		<br><br>
   <div>
