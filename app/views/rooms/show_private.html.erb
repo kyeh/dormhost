@@ -21,7 +21,7 @@
 				<p>
 				<%= link_to 'Edit Room', edit_room_path(@room) %><br>
 				<% if @room_profile.nil? %> 
-				<%= link_to 'Create Room Profile', new_room_profile_path(:room_id => @room.id) %> <br><br>
+				<%= link_to 'Create Room Profile', new_room_profile_path(:room_id => @room.id) %> <br>
 				<% else %>
 				<%= link_to 'Edit Room Profile', edit_room_profile_path(@room_profile) %> <br>
 				<% end %>

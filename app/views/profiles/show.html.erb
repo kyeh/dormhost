@@ -23,9 +23,10 @@
 	<%=h @profile.birthdate %>
 </p>
 <p>
-	<b>Graduation Date</b>:
-	<%=h @profile.grad_year %>
-</p>
+	<b>Graduation Year</b>:
+	2010
+<!--	<%=h @profile.grad_year %>  -->
+</p>	
 <p>
 	<b>Phone Number</b>:
 	<%=h @profile.phone %>
@@ -53,9 +54,8 @@
 </td>
 </tr>
 </table>
-
+<br>
 
 	<!-- NEED TO FIX THESE ROUTES/TALK ABOUT HOW WERE GOING TO ROUTE THESE-->
-	<%= link_to 'View ' + @user.first_name + '\'s Reviews', '/user_reviews/all_for_user/' + @user.id.to_s %> &nbsp; | &nbsp;
-	<%= link_to 'Review This User', new_user_review_path(:user_id => @user.id)%> 
+	<%= link_to('< Back', :back) %>
 

@@ -13,7 +13,13 @@
 <br>
 	</tr>
 	<tr>
-	<td>
+	<td><br>
+		<%= render :partial => "ratings/rate_static", :locals => { :asset => @user } %>
+		
+		<% unless @user.rating == 0 %>
+			<%= link_to 'View all reviews for this user', '/user_reviews/all_for_user/' + @user.id.to_s%>
+		<% end %><br><br>
+<!--
 	<p>
 		<b>College</b>:
 		<%=h profile.college.name %>
@@ -22,7 +28,7 @@
 		<b>Birthdate</b>:
 		<%=h profile.birthdate %>
 	</p>
-<!--	<p>
+	<p>
 		<b>Graduation Date</b>:
 		<%=h profile.grad_year %>
 	</p>

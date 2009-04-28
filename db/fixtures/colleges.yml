@@ -1,6 +1,39 @@
-cmu:
+carlow:
   id: 2000
-  name: Carnegie Mellon University
-upitt:
+  name: Carlow University
+cmu:
   id: 2001
+  name: Carnegie Mellon University
+chatham:
+  id: 2002
+  name: Chatham College
+duke:
+  id: 2003
+  name: Duke University
+edinboro:
+  id: 2004
+  name: Edinboro University
+psu:
+  id: 2005
+  name: Penn State University
+pointpark:
+  id: 2006
+  name: Point Park University
+princeton:
+  id: 2007
+  name: Princeton University
+rmu:
+  id: 2008
+  name: Robert Morris University
+sru:
+  id: 2009
+  name: Slippery Rock University
+stanford:
+  id: 2010
+  name: Stanford University
+upitt:
+  id: 2011
   name: University of Pittsburgh
+wvu:
+  id: 2012
+  name: West Virginia University

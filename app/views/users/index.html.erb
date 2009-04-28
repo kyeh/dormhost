@@ -2,7 +2,8 @@
 
 <table>
 	<thead class="datagrid">
-		<th width="200">Name</th>
+		<th>Username</th>
+		<th width="200">Full Name</th>
 		<th>Admin?</th>
 		<th>Active?</th>
 		<th width="200">Options</th>
@@ -11,6 +12,7 @@
 <% for user in @users %>
 	<% unless user.id == @user.id %>
   	<tr>
+		<td><%=h user.username %></td>
 		<td><%=h user.first_name + " " + user.last_name %></td>
     	<td>
     		<% if user.is_admin? %>Yes

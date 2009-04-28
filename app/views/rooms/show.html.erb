@@ -32,7 +32,7 @@
 				<%= render :partial => "ratings/rate_static", :locals => { :asset => @room_host } %>
 				
 				<% unless @room_host.rating == 0 %>
-					<%= link_to 'View all reviews for this user', '/user_reviews/all_for_user/' + @user.id.to_s%>
+					<%= link_to 'View all reviews for this user', '/user_reviews/all_for_user/' + @room_host.id.to_s%>
 				<% end %>
 			</td>
 			
@@ -61,7 +61,7 @@
 									Campus:&nbsp;
 								</td>
 								<td>
-									<%=h @college.name %>
+									<a href="http://www.housing.cmu.edu/ResidenceServices/">Carnegie Mellon University</a>
 								</td>
 							</tr>
 								<% if @room_profile.nil? %>

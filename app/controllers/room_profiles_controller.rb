@@ -55,7 +55,7 @@ class RoomProfilesController < ApplicationController
         
       if @room_profile.save
         flash[:notice] = 'RoomProfile was successfully created.'
-        format.html { redirect_to('/marker/map')}
+        format.html { redirect_to(@room_profile)} #'/marker/map')}
         format.xml  { render :xml => @room_profile, :status => :created, :location => @room_profile }
       else
         format.html { render :action => "new" }

@@ -19,8 +19,27 @@
 		<% if @favorites.empty? %>
 		No favorites have been added.
 		<% else %>
+		
 		<% for favorite in @favorites %>
-		<br><br>
+		<% roomhost = User.find(:first, :conditions => ['id = ?', favorite.room.host.user_id]) %>
+		<% hostprofile = Profile.find(:first, :conditions => ['user_id = ?', roomhost.id]) %>
+		<% roomprof = RoomProfile.find(:first, :conditions => ['room_id = ?', favorite.room.id]) %>
+		
+		<table>
+		<tr>
+		<td>
+			<% unless roomprof.nil? %>
+						<% if roomprof.photo_file_name.nil? %>
+						<%= image_tag 'questionMark.png', :width => "100" %>
+						<% else %>
+						<%= image_tag(roomprof.photo.url, :width => "100") %>
+						<% end %>
+					<% else %>
+						<%= image_tag 'questionMark.png', :width => "100" %>
+					<% end %>
+		</td>
+		<td>
+		
 			<%= link_to( h(favorite.room.street_address_1), room_path(favorite.room)) %>
 			<% unless favorite.room.street_address_2.empty? %>
 				<br>
@@ -29,8 +48,7 @@
 			<br>
 			<%= h(favorite.room.city) + " " + h(favorite.room.state) + ", " + h(favorite.room.zip) %>
 			<br>
-			<% roomhost = User.find(:first, :conditions => ['id = ?', favorite.room.host.user_id]) %>
-			<% hostprofile = Profile.find(:first, :conditions => ['user_id = ?', roomhost.id]) %>
+			
 			<table>
 				<tr>
 				<td>
@@ -55,18 +73,23 @@
 					
 					<br>
 					<br>
-					<%= render :partial => 'admin_menu' %>
 				</td>
 				</tr>
 			</table>
-						<% end %>
-			<% end %>
 			
+			
+		</td>
+		</tr>
+		</table>
+			<% end %>
+		<% end %>
+			<%= render :partial => 'admin_menu' %>
 	</td>
   </tr>
 		<tr>
 	    	<td><br>
 			<% for profile in @profiles %>
+				<%= link_to 'View My Profile', profile_path(profile) %><br>
 				<%= link_to 'Edit Profile', edit_profile_path(profile) %>
 			<% end %>
 			</td>
@@ -74,7 +97,7 @@
 			
 		<tr>
 			<td>
-				<br><br><br>
+				<br>
 			<%=link_to 'Change Password', change_password_path %>
 			<% form_for :user, @user, :url => { :action => "suspend"} do |f| -%>
 				<%= f.hidden_field :id %>
