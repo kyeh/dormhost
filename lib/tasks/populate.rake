@@ -7,12 +7,12 @@ namespace :db do
     
     [Room, RoomProfile, Profile].each(&:delete_all)
     
-    College.populate 20 do |college|
-      college.name = Populator.words(1..3).titleize
-      college.street_address_1  = Faker::Address.street_address
-      college.city              = Faker::Address.city
-      college.state             = Faker::Address.us_state_abbr
-    end
+#    College.populate 20 do |college|
+#      college.name = Populator.words(1..3).titleize
+#      college.street_address_1  = Faker::Address.street_address
+#      college.city              = Faker::Address.city
+#      college.state             = Faker::Address.us_state_abbr
+#    end
     
     #edit to change number of rooms generated
     ROOM_NUMBER= 100

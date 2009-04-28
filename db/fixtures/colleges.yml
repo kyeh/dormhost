@@ -1,39 +1,63 @@
+brown: 2000
+  id:
+  name: Brown University
 carlow:
-  id: 2000
+  id: 2001
   name: Carlow University
 cmu:
-  id: 2001
+  id: 2002
   name: Carnegie Mellon University
 chatham:
-  id: 2002
+  id: 2003
   name: Chatham College
 duke:
-  id: 2003
+  id: 2004
   name: Duke University
 edinboro:
-  id: 2004
-  name: Edinboro University
-psu:
   id: 2005
+  name: Edinboro University
+mercer:
+  id: 2006
+  name: Mercer County Community College
+nyu:
+  id: 2007
+  name: New York University
+osu:
+  id: 2008
+  name: Ohio State University
+psu:
+  id: 2009
   name: Penn State University
 pointpark:
-  id: 2006
+  id: 2010
   name: Point Park University
 princeton:
-  id: 2007
+  id: 2011
   name: Princeton University
 rmu:
-  id: 2008
+  id: 2012
   name: Robert Morris University
 sru:
-  id: 2009
+  id: 2013
   name: Slippery Rock University
 stanford:
-  id: 2010
+  id: 2014
   name: Stanford University
+tufts:
+  id: 2015
+  name: Tufts University
+uchicago:
+  id: 2016
+  name: University of Chicago
+umaryland:
+  id: 2017
+  name: University of Maryland
 upitt:
-  id: 2011
+  id: 2018
   name: University of Pittsburgh
+usc:
+  id: 2019
+  name: University of Southern California
 wvu:
-  id: 2012
+  id: 2020
   name: West Virginia University
