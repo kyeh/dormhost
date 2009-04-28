@@ -14,38 +14,38 @@
 </td>
 <td>
 <p>
-	<b>College</b>:
+	<%= label_tag 'College' %>:
 	<%=h @profile.college.name %>
 </p>
 
 <p>
-	<b>Birthdate</b>:
+	<%= label_tag 'Birthdate' %>:
 	<%=h @profile.birthdate %>
 </p>
 <p>
-	<b>Graduation Year</b>:
+	<%= label_tag 'Graduation Year' %>:
 	2010
 <!--	<%=h @profile.grad_year %>  -->
 </p>	
 <p>
-	<b>Phone Number</b>:
+	<%= label_tag 'Phone Number' %>:
 	<%=h @profile.phone %>
 </p>
 <p>
-	<b>Living Style</b>:
+	<%= label_tag 'Living Style' %>:
 	<%=h @profile.living_style %>
 </p>
 <p>
-	<b>Bedtime</b>:
+	<%= label_tag 'Bedtime' %>:
 	<%=h @profile.bedtime %>
 </p>
 <p>
-	<b>Interests</b>:
+	<%= label_tag 'Interests' %>:
 	<%=h @profile.interests %>
 </p>
 
 <p>
-	<b>Smoker?</b>:
+	<%= label_tag 'Smoker?' %>
 	<% if @profile.smoker == true %>Yes
 	<% else %> No
 	<% end %>
