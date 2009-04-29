@@ -7,9 +7,9 @@ class MarkersController < ApplicationController
   end
   
   def created
-    @room_profile = RoomProfile.find(params[:marker][:room_id])
+    @room_profile = RoomProfile.find(params[:marker][:id])
     flash[:notice] = 'RoomProfile was successfully created.'
-    redirect_to :controller => :room_profiles , :action => :show, :id=> params[:marker][:room_id] 
+    redirect_to :controller => :room_profiles , :action => :show, :id=> params[:marker][:id] 
   end
   
   def create   

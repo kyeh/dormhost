@@ -61,7 +61,7 @@ class RoomProfilesController < ApplicationController
           format.html { redirect_to(@room_profile)} #'/marker/map')}
           format.xml  { render :xml => @room_profile, :status => :created, :location => @room_profile }
         else
-          format.html { redirect_to(new_marker_path(:room_id => @room_profile.room_id))} #'/marker/map')}
+          format.html { redirect_to(new_marker_path(:room_id => @room_profile.room_id, :room_profile_id => @room_profile.id))} #'/marker/map')}
           format.xml  { render :xml => @room_profile, :status => :created, :location => @room_profile }
         end
       else

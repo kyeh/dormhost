@@ -58,6 +58,7 @@
 				<p>
 					<% form_for :marker, :url => { :action => "created" } do |f| -%>
 						<%= f.hidden_field :room_id, :value => params[:room_id] %>
+						<%= f.hidden_field :id, :value => params[:room_profile_id] %>
 						<%= f.submit "Create" %>
 					<% end %>
 				</p>
