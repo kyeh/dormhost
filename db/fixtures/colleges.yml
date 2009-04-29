@@ -1,5 +1,5 @@
-brown: 2000
-  id:
+brown: 
+  id: 2000
   name: Brown University
 carlow:
   id: 2001

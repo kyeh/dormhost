@@ -18,7 +18,7 @@ function createMarker(){
 	var request = GXmlHttp.create();
 	
 	//call the create action back on the server
-	request.open('GET', 'create' + getVars, true);
+	request.open('GET', 'http://localhost:3000/markers/create' + getVars, true);
 	request.onreadystatechange = function(){
 		if (request.readyState == 4) {
 			//the request is complete.
@@ -67,7 +67,7 @@ function listMarkers() {
 	var request = GXmlHttp.create();
 	
 	//tell the request where to retrieve data from.
-	request.open('GET', 'list', true);
+	request.open('GET', 'http://localhost:3000/markers/list', true);
 	
 	//request object has state when doing a get
 	//tell the request what to do when the state changes.
@@ -76,7 +76,7 @@ function listMarkers() {
 			//parse the result to JSON, by eval-ing it.
 			//the response is an array of markers
 			markers=eval( "(" + request.responseText + ")");
-			document.write(request.responseText);
+			
 			for(var i = 0; i< markers.length ; i++){
 				
 				var marker=markers[i].marker;
@@ -144,6 +144,8 @@ function init()
 		});
 	}
 }
+
+  
 
 window.onload =init;
 window.onunload = GUnload;
