@@ -23,7 +23,7 @@ class RoomProfilesController < ApplicationController
   # GET /room_profiles/1.xml
   def show
     @room_profile = RoomProfile.find(params[:id])
-    #@room = @room_profile.room
+    @room = Room.find(@room_profile.room_id)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -51,12 +51,19 @@ class RoomProfilesController < ApplicationController
   # POST /room_profiles.xml
   def create
     @room_profile = RoomProfile.new(params[:room_profile])
+    
     respond_to do |format|
         
       if @room_profile.save
-        flash[:notice] = 'RoomProfile was successfully created.'
-        format.html { redirect_to(@room_profile)} #'/marker/map')}
-        format.xml  { render :xml => @room_profile, :status => :created, :location => @room_profile }
+        
+        if @room_profile.google_map == "No"
+          flash[:notice] = 'RoomProfile was successfully created.'
+          format.html { redirect_to(@room_profile)} #'/marker/map')}
+          format.xml  { render :xml => @room_profile, :status => :created, :location => @room_profile }
+        else
+          format.html { redirect_to(new_marker_path(:room_id => @room_profile.room_id))} #'/marker/map')}
+          format.xml  { render :xml => @room_profile, :status => :created, :location => @room_profile }
+        end
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @room_profile.errors, :status => :unprocessable_entity }

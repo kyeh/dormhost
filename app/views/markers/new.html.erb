@@ -4,8 +4,67 @@
 <head>
 	<script src="http://maps.google.com/maps?file=api&v=2&key=ABQIAAAApYAAWQLCpKidmDF3vKJhxRTJQa0g3IQ9GZqIMmInSLzwtGDKaBTdapThRrHK4PBstysnofBjGciQjA" type="text/javascript"></script>
 	<%=javascript_include_tag 'application'%>
+	<%=hidden_field_tag 'full_address', @room.full_address %>
+	<script type="text/javascript">
+		var full_address=window.document.getElementById("full_address").value;
+	</script>
+	
 </head>
 <body>
-	<div id="map" style="width: 500px; height: 225px"></div>
+	<h1>Mark your location </h1>
+	<table>
+		<tr>
+			<td width="250px">
+				<div id="map" style="width: 250px; height: 250px"></div>
+				<p>
+					&nbsp;
+				</p>
+				<p>
+					&nbsp;
+				</p>
+			</td>
+			<td>
+				<p>
+					Instructions
+				</p>
+				<b style="font-size:11px;">
+				<p>
+					1. Your location has been centered base on the address provided.
+				</p>
+				<p>
+					2. Click on the map to place a marker.
+				</p>
+				
+				<p>
+					3. Enter additional details such as cost, distance to places of interest in the form.
+				</p>
+				
+				<p>
+					4. Click 'Save Location'.
+				</p>
+				
+				<p>
+					5. Click the 'Undo' button if you would like to relocate your marker.
+				</p>
+				<p>
+					6. Click on 'Create' to finish posting your room.
+				</p>
+				<p>
+					<input type="button" value="Undo" onclick="undoMap()">
+				</p>
+				<p>
+					&nbsp;
+				</p>
+				<p>
+					<% form_for :marker, :url => { :action => "created" } do |f| -%>
+						<%= f.hidden_field :room_id, :value => params[:room_id] %>
+						<%= f.submit "Create" %>
+					<% end %>
+				</p>
+				</b>
+			</td>
+		</tr>
+	</table>
+		
 </body>
 </html>

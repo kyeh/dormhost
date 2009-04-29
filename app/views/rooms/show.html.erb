@@ -1,3 +1,18 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"~CCC
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<script src="http://maps.google.com/maps?file=api&v=2&key=ABQIAAAApYAAWQLCpKidmDF3vKJhxRTJQa0g3IQ9GZqIMmInSLzwtGDKaBTdapThRrHK4PBstysnofBjGciQjA" type="text/javascript"></script>
+	<%=javascript_include_tag 'show_map'%>
+	<%=hidden_field_tag 'full_address', @room.full_address %>
+	<%=hidden_field_tag 'id', @room.id %>
+	<script type="text/javascript">
+		var id = window.document.getElementById("id").value;
+		var full_address=window.document.getElementById("full_address").value;	
+	</script>
+	
+</head>
+
 <br><br>
 <%= link_to("< Back", :back) %>
 <table>
@@ -20,6 +35,8 @@
 			<% end %>
 			
 		</td>
+		
+			
 			<td width="350" valign = "top">
 				<h1><%=h @room_host.first_name %></h1>
 			<% unless @host_profile.nil? %>
@@ -35,7 +52,7 @@
 					<%= link_to 'View all reviews for this user', '/user_reviews/all_for_user/' + @room_host.id.to_s%>
 				<% end %>
 			</td>
-			
+						
 	</tr>
 </table>		
 <br>
@@ -76,6 +93,7 @@
 								<td>	
 									<%=h number_to_currency(@room_profile.cost) %>
 								</td>
+								
 							</tr>
 							<tr>
 								<td valign = "top" align = "left">
@@ -116,12 +134,16 @@
 									<td>
 										<%=h @room_profile.food %>
 									</td>
+									
+						
 								</tr>
 								<% end %>
 						</table>
 						
 						
 					</td>
+					
+					
 					<td valign="top" width="300" align="left">
 						
 						<table>
@@ -214,23 +236,25 @@
 	<tr>
 		<td width="350"><br>
 			<% unless @host.id == @room.host_id %>
+				<%= link_to "View Location on Google Map",{ :controller => "markers", :action => "show", :id => @room.id},:popup => ['Room Location', 'height=300,width=520']%><br>
 				<% if !@reserved.nil? %>
 					You have already requested this room.
 					<% else %>
 					<%= link_to 'Request this room', new_transaction_path(:room_id => @room.id, :renter_id => @renter.id) %>
 				<% end %><br>
+				
 			<% if @fav.nil? %>
 				<%=link_to("Add Room to Favorites", favorites_url(:favorite => {:user_id => @user.id, :room_id => @room.id}), :method => :post) %>
 			<% else %>
 				<%= link_to("Remove Room from Favorites", favorite_path(@fav), :confirm => 'Are you sure you wish to delete this favorite?', :method => :delete) %>
 			<% end %>
-		
 		</td>
 		<td><br><br>
 			<% hostmail = @room_host.email %>
 			<a href="mailto:<%=hostmail%>"><b>Contact Host<b></a>
 				<% end %>	
 		</td>
+		
 	</tr>
 </table>
 

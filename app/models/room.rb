@@ -23,4 +23,8 @@ class Room < ActiveRecord::Base
 
     cattr_reader :per_page
     @@per_page = 5
+    
+  def full_address
+    "#{street_address_1}, #{city}, #{state}, #{zip}"
+  end
 end

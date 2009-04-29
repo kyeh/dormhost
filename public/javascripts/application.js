@@ -1,9 +1,43 @@
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
 var map;
-var centerLatitude =  40.4411801;
-var centerLongitude = -79.9428294;
+var centerLatitude =  10.4411801;
+var centerLongitude = -170.9428294;
 var startZoom = 15;
+var change = false;
+var mapListener;
+var marker
+
+var room_id = getParameters('room_id');
+var geocoder = new GClientGeocoder(); 
+
+ function findAddress(address) {  
+    geocoder.getLatLng(  
+        address,  
+        function(pt) {  
+        if (!pt) {  
+            var location = new GLatLng(centerLatitude,centerLongitude);
+		    map.setCenter(location,startZoom,G_HYBRID_MAP);
+			
+        } else {  
+			map.setCenter(pt, startZoom,G_HYBRID_MAP);  
+			
+    	}  
+    }  
+	);  
+}
+  
+function getParameters(name)
+{
+  name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+  var regexS = "[\\?&]"+name+"=([^&#]*)";
+  var regex = new RegExp( regexS );
+  var results = regex.exec( window.location.href );
+  if( results == null )
+    return "";
+  else
+    return results[1];
+}
 
 function createMarker(){
 	var lng = document.getElementById("longitude").value;
@@ -13,12 +47,20 @@ function createMarker(){
 	"&m[lng]=" +
 	lng +
 	"&m[lat]=" +
-	lat;
+	lat +
+	"&m[room_id]=" +
+	room_id;
 	
 	var request = GXmlHttp.create();
 	
 	//call the create action back on the server
-	request.open('GET', 'http://localhost:3000/markers/create' + getVars, true);
+	if (change == false) {
+		request.open('GET', 'http://localhost:3000/markers/create' + getVars, true);
+		
+	}
+	else {
+		request.open('GET', 'http://localhost:3000/markers/update' + getVars, true);	
+	}
 	request.onreadystatechange = function(){
 		if (request.readyState == 4) {
 			//the request is complete.
@@ -42,9 +84,13 @@ function createMarker(){
 			else {
 				//create a new marker and add its info window
 				var latlng = new GLatLng(parseFloat(lat), parseFloat(lng));
-				var marker = addMarkerToMap(latlng, content);
+				marker = addMarkerToMap(latlng, content);
 				map.addOverlay(marker);
 				map.closeInfoWindow();
+
+				//GEvent.removeListener(mapListener);
+			
+				//map.setCenter(lat,lng);
 			}
 		}
 	}
@@ -52,14 +98,52 @@ function createMarker(){
 	return false;
 }
 
+function undoMap() {
+	change = true;
+	map.removeOverlay(marker)
+	mapListener = GEvent.addListener(map,'click', function(overlay,latlng){
+			//create an HTML DOM form element.
+			var inputForm = document.createElement("form");
+			inputForm.setAttribute("action", "");
+			inputForm.onsubmit = function(){
+				createMarker();
+				return false;
+			};
+			
+			//retrieve the longitude and latitude of the click point
+			var lng = latlng.lng();
+			var lat = latlng.lat();
+			
+			inputForm.innerHTML = '<fieldset style ="width:200px;">' +
+			'<legend>Mark Your Room</legend>' +
+			'<label for="details">Details</label>' +
+			'<input type="text" id="details" name="m[details]" style="width:100%;" />' +
+			'<input type="submit" value="Save Location" />' +
+			'<input type="hidden" id="longitude" name="m[lng]" value="' +
+			lng +
+			'"/>' +
+			'<input type="hidden" id="latitude" name="m[lat]" value="' +
+			lat +
+			'"/>' +
+			'<input type="hidden" id="room_id" name="m[room_id]" value="' +
+			room_id +
+			'"/>'
+			'</fieldset>';
+			
+			//open the infoWindow for the form when click
+			map.openInfoWindow(latlng, inputForm);
+		});
+		
+}
+
 //html is res.content in this case
 function addMarkerToMap(latlng,html){
-	var marker = new GMarker(latlng);
-	GEvent.addListener(marker, 'click', function(){
+	var marker1 = new GMarker(latlng);
+	GEvent.addListener(marker1, 'click', function(){
 		var markerHTML = html;
-		marker.openInfoWindowHtml(markerHTML);
+		marker1.openInfoWindowHtml(markerHTML);
 	});
-	return marker;
+	return marker1;
 }
 
 function listMarkers() {
@@ -67,7 +151,7 @@ function listMarkers() {
 	var request = GXmlHttp.create();
 	
 	//tell the request where to retrieve data from.
-	request.open('GET', 'http://localhost:3000/markers/list', true);
+	request.open('GET', 'list', true);
 	
 	//request object has state when doing a get
 	//tell the request what to do when the state changes.
@@ -94,6 +178,7 @@ function listMarkers() {
 						
 					var marker = addMarkerToMap(latlng,html);
 					map.addOverlay(marker);
+					
 				}//end of if lat and lng
 			}//end of for loop
 		}//if
@@ -107,13 +192,17 @@ function init()
 {
 	if (GBrowserIsCompatible()){
 		map = new GMap2(document.getElementById("map"));
-		listMarkers();
+		//listMarkers();
+		//
 		map.addControl(new GSmallMapControl());
 		map.addControl(new GMapTypeControl());
-		var location = new GLatLng(centerLatitude,centerLongitude);
-		map.setCenter(location,startZoom);
 		
-		GEvent.addListener(map,'click', function(overlay,latlng){
+		findAddress(full_address);
+		
+		//var location = new GLatLng(centerLatitude,centerLongitude);
+		//map.setCenter(location,startZoom);
+		
+		mapListener = GEvent.addListener(map,'click', function(overlay,latlng){
 			//create an HTML DOM form element.
 			var inputForm = document.createElement("form");
 			inputForm.setAttribute("action", "");
@@ -130,13 +219,16 @@ function init()
 			'<legend>Mark Your Room</legend>' +
 			'<label for="details">Details</label>' +
 			'<input type="text" id="details" name="m[details]" style="width:100%;" />' +
-			'<input type="submit" value="Save Data" />' +
+			'<input type="submit" value="Save Location" />' +
 			'<input type="hidden" id="longitude" name="m[lng]" value="' +
 			lng +
 			'"/>' +
 			'<input type="hidden" id="latitude" name="m[lat]" value="' +
 			lat +
 			'"/>' +
+			'<input type="hidden" id="room_id" name="m[room_id]" value="' +
+			room_id +
+			'"/>'
 			'</fieldset>';
 			
 			//open the infoWindow for the form when click

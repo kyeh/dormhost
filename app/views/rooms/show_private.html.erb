@@ -19,6 +19,7 @@
 			<td width="350" valign = "top">
 				<br><br>
 				<p>
+				<%= link_to "View Location on Google Map",{ :controller => "markers", :action => "show", :id => @room.id},:popup => ['Room Location', 'height=420,width=520']%><br>
 				<%= link_to 'Edit Room', edit_room_path(@room) %><br>
 				<% if @room_profile.nil? %> 
 				<%= link_to 'Create Room Profile', new_room_profile_path(:room_id => @room.id) %> <br>
@@ -138,6 +139,7 @@
 	<tr>
 		<td width="350"><br>
 			<% unless @host.id == @room.host_id %>
+				
 				<% if !@reserved.nil? %>
 					You have already requested this room.
 					<% else %>

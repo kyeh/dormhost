@@ -24,21 +24,26 @@
 			</p>
 			<p>
 				<%= f.label (:phone, "Phone number") %><b style="color:red;">*</b><BR />
-				<%= f.text_field :phone, :size => 20 %>
+				<%= f.text_field :phone, :size => 20 %><br>
+				<i style="font-size:10px;">E.g. 412-365-1111 </i>
 			</p>
 			<p>
 				<%= f.label :living_style %><b style="color:red;">*</b><BR />
-				<%= f.text_area :living_style, :rows => 6, :cols => 40 %>
+				<%= f.text_area :living_style, :rows => 6, :cols => 40 %><br<br>
+				<i style="font-size:10px;">E.g. Particular about cleanliness of house. </i>
+				
 			</p>
 			</td>
 			<td valign="top">
 			<p>
 				<%= f.label :bedtime %><b style="color:red;">*</b><BR />
 				<%= f.text_field :bedtime, :size => 20 %>
+				<i style="font-size:10px;">E.g. 12am, 2330, etc. </i>
 			</p>
 			<p>
 				<%= f.label :interests %><b style="color:red;">*</b><BR />
-				<%= f.text_area :interests, :rows => 6, :cols => 40 %>
+				<%= f.text_area :interests, :rows => 6, :cols => 40 %><br>
+				<i style="font-size:10px;">E.g. What interests do you have? </i>
 			</p>
 			<p>
 				<%= f.label (:smoker, "Are you a smoker?") %>

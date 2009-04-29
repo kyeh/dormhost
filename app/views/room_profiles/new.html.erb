@@ -15,7 +15,7 @@
 	<p>
 		<%= f.label (:max_capacity, "Available spots") %><b style="color:red;">*</b><br />
 		<%= f.text_field :max_capacity, :size => 20 %><BR />
-		<i style="font-size:10px;">How many people would you be willing to accomdate?</i>
+		<i style="font-size:10px;">How many people would you be willing to accomodate?</i>
 	</p>
 	<p>
 		<%= f.label :pets %><b style="color:red;">*</b><br />
@@ -28,7 +28,7 @@
 		<i style="font-size:10px;">I.e. would you provide breakfast, coffee, etc?</i>
 	</p>
 	<p>
-		<%= f.label (:roommates, "Number of roomates") %><b style="color:red;">*</b>
+		<%= f.label (:roommates, "Number of roommates") %><b style="color:red;">*</b>
 		<%= f.text_field :roommates, :size => 2 %><BR />
 		<i style="font-size:10px;">How many other people do you live with?</i>
 	</p>
@@ -40,6 +40,7 @@
 		<%= f.label (:on_campus, "On campus?") %>
 		<%= f.check_box :on_campus %>
 	</p>
+
 	</td>
 	
 	<td valign="top">
@@ -55,10 +56,18 @@
 		<i style="font-size:10px;">Any specific details regarding the availability of the room, or <BR> anything else a renter should know.</i>
 	</p>
 	
-	<p><br><br><br>
+	<p><br>
 		<%= f.label :room_profile_picture %><br />
 		<%= f.file_field :photo %>
 	</p>
+	
+	<p> <br><br>
+	
+		<%= label_tag 'Would you like to mark your location on Google Map?' %><b style="color:red;">*</b><br/>
+		<%= f.radio_button :google_map, "Yes" %>Yes
+		<%= f.radio_button :google_map, "No" %>No
+	</p>	
+	
 	<%= f.hidden_field :room_id, :value => params[:room_id] %>
 	<%= f.hidden_field :level_id, :value => 1%>
     
