@@ -78,7 +78,7 @@
 									Campus:&nbsp;
 								</td>
 								<td>
-									<a href="http://www.housing.cmu.edu/ResidenceServices/"><%= @room.college %></a>
+									<a href="http://www.housing.cmu.edu/ResidenceServices/"><%=h @room.college.name%></a>
 								</td>
 							</tr>
 								<% if @room_profile.nil? %>

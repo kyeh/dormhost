@@ -127,7 +127,13 @@
 							<p>
 								<%= link_to transaction.room.street_address_1, transaction_path(transaction) %>
 								requested by
-								<%= link_to transaction.renter.user.username, profile_path(transaction.renter.user.id)%>
+								<% rntr = transaction.renter.user %>
+								<% prof = Profile.find(:first, :conditions => ['user_id = ?', rntr.id])%>
+								<% if prof.id.nil? %>
+									<%= transaction.renter.user.username %>
+								<% else %>
+									<%= link_to transaction.renter.user.username, profile_path(prof.id)%>
+								<% end %>
 							</p>
 
 							<% end %>
