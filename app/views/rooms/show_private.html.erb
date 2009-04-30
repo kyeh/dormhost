@@ -129,7 +129,7 @@
 								requested by
 								<% rntr = transaction.renter.user %>
 								<% prof = Profile.find(:first, :conditions => ['user_id = ?', rntr.id])%>
-								<% if prof.id.nil? %>
+								<% if prof.nil? %>
 									<%= transaction.renter.user.username %>
 								<% else %>
 									<%= link_to transaction.renter.user.username, profile_path(prof.id)%>
